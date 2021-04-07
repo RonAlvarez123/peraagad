@@ -1,0 +1,106 @@
+main {
+    .wallet {
+        // border: 1px solid red;
+        margin-top: 15px;
+
+        // &>div {
+        //     border: 1px solid green;
+        // }
+
+        div {
+
+            .walletContainer {
+                align-items: center;
+                background-color: $wallet-background;
+                border-radius: 10px;
+                box-shadow: 0 0 5px gray;
+                display: flex;
+                flex-direction: column;
+                margin: 0 auto;
+                padding: 10px 30px 20px 30px;
+                max-width: 350px;
+
+                &:nth-child(2) {
+                    display: block;
+                    margin-top: 10px;
+                    padding: 0 20px;
+
+                    p {
+
+                        span {
+                            color: $primary-color;
+                            font-weight: bold;
+                        }
+                    }
+
+                    p.text-danger {
+                        font-size: .7em;
+                        text-align: left;
+                    }
+                }
+
+                &>* {
+                    text-align: center;
+                    margin: 5px 0;
+                }
+
+                .dropdown {
+                    margin: 10px 0;
+                }
+
+                .dropdown-toggle {
+                    background-color: $primary-color;
+                    border: 2px solid $primary-color;
+                    // border-radius: 50px;
+                    box-shadow: 0 0 2px rgb(21, 87, 65);
+                    color: $light-color;
+                    font-weight: bold;
+                    padding: 5px 10px;
+                    transition: background-color 250ms, color 250ms, transform 250ms;
+
+                    &:hover,
+                    &:focus {
+                        background-color: $light-color;
+                        color: $primary-color;
+                        transform: scale(1.05);
+                    }
+                }
+
+                .dropdown-menu {
+                    background-color: $light-color;
+
+                    .dropdown-item {
+                        color: $primary-color;
+
+                        &:hover {
+                            background-color: $primary-color;
+                            color: $light-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 768px) {
+    main {
+        .wallet {
+
+            &>div {
+                position: sticky;
+                top: 130px;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    main {
+        .wallet {
+            // margin-left: 10px;
+            width: 30%;
+        }
+    }
+}

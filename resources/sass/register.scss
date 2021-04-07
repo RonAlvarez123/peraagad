@@ -1,0 +1,147 @@
+@import "colors";
+@import "nav";
+@import "layout";
+@import "loginUtilities";
+
+.navbar.navbar-dark {
+
+    ul.navbar-nav {
+        align-items: center;
+
+        p {
+            display: none;
+            color: white;
+            font-size: .8em;
+        }
+
+        .nav-link.login-link {
+            border: 2px solid white;
+            border-radius: 5px;
+            box-shadow: 0 0 5px darken($primary-color, 10%);
+            font-size: 1em;
+            padding: 5px 10px;
+            transition: border 250ms, color 250ms, transform 250ms;
+
+            &:hover {
+                border: 2px solid rgb(246, 197, 92);
+                color: rgb(246, 197, 92);
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+main {
+
+    .content {
+        // border: 1px solid red;
+        display: flex;
+        justify-content: center;
+
+        .contentContainer {
+            // border: 1px solid gray;
+            margin-bottom: 20px;
+            padding: 10px;
+
+            &>* {
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            h4 {
+                font-size: 1.5em;
+                margin-bottom: 5px;
+            }
+
+            h5 {
+                font-size: .65em;
+                margin-bottom: 20px;
+            }
+
+            h6 {
+                font-size: .6em;
+            }
+
+            div {
+                font-size: .8em;
+                max-width: 400px;
+                text-align: left;
+
+                label {
+                    color: rgb(92, 92, 92);
+                    font-weight: bold;
+                }
+            }
+
+            .address-label {
+                margin: 10px auto 2.5px auto;
+                max-width: 400px;
+                text-align: left;
+            }
+
+            .disclaimer {
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    .navbar.navbar-dark {
+
+        ul.navbar-nav {
+            flex-direction: row;
+            font-size: 18px;
+            padding-right: 20px;
+
+            p {
+                display: block;
+                margin: 0 10px 0 0;
+            }
+
+            .nav-link.login-link {
+                padding: 8px 20px;
+            }
+        }
+    }
+
+    main {
+
+        .content {
+            font-size: 18px;
+
+            .contentContainer {
+                padding: 15px;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar.navbar-dark {
+
+        ul.navbar-nav {
+            padding-right: 30px;
+        }
+    }
+
+    main {
+
+        .content {
+            font-size: 20px;
+            margin: 50px 0;
+            width: 100%;
+
+            .contentContainer {
+                // border: 1px solid rgb(165, 165, 165);
+                box-shadow: 0 0 3px gray;
+                padding: 40px;
+                width: 700px;
+
+                div {
+                    max-width: 500px;
+                }
+            }
+        }
+    }
+}
