@@ -24,8 +24,8 @@
                 </ul>
             </div>
             <!-- ------------------ -->
-            <H6>LOCAL DATE: <br>
-                10-10-21</H6>
+            <h6>LOCAL DATE: <br>
+                {{ \Carbon\Carbon::today()->toDateString() }}</h6>
             <h5>YOUR POOL MEMBERS</h5>
             <div class="custom-input-container">
                 <div class="custom-input-label">DIRECT</div>

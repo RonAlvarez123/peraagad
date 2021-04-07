@@ -13,4 +13,12 @@ class ProfileController extends Controller
         $user = User::find(session('loggedUserId'));
         return view('profile.index')->with('user', $user)->with('account', $user->account);
     }
+
+    public function logout()
+    {
+        if (session()->has('loggedUserId')) {
+            session()->forget('loggedUserId');
+            return redirect()->route('auth.index');
+        }
+    }
 }

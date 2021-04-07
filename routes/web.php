@@ -21,3 +21,4 @@ Route::get('/register', [AuthController::class, 'show'])->name('auth.show');
 Route::post('/register', [AuthController::class, 'store'])->name('auth.store');
 
 Route::get('myaccount/profile', [ProfileController::class, 'index'])->name('profile.index');
+Route::post('myaccount/profile', [ProfileController::class, 'logout'])->name('profile.logout');
