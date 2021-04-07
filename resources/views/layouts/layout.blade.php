@@ -23,7 +23,7 @@
         </section>
 
         @unless (Request::path() === 'register')
-            @yield('wallet')
+            @include('layouts.wallet');
         @endunless
     </main>
 

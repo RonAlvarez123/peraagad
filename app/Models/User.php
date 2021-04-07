@@ -12,32 +12,48 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
-
-    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = [];
 
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
+    protected $casts = [];
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'firstname',
+        'middlename',
+        'lastname',
+        'phone_number',
+        'city',
+        'province',
+        'account_code',
+        'password',
     ];
+
+    public function account()
+    {
+        return $this->belongsTo(Account::class, 'user_id', 'user_id');
+    }
+
+    public function codes()
+    {
+        return $this->hasMany(Code::class);
+    }
+
+    public function setUserId()
+    {
+        $this->user_id = $this->id;
+        return $this->save();
+    }
 }

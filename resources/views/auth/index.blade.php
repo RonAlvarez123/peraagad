@@ -7,30 +7,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/auth/index.css') }}">
     <title>Login</title>
 </head>
 
 <body>
     <main>
-        <div class="alert-container">
+        {{-- <div class="alert-container">
             <div class="alert alert-success">
                 A simple success alert—check it out!
             </div>
+        </div> --}}
+        @error('account_code')
+        <div class="alert-container">
+            <div class="alert alert-danger">{{ $message }}</div>
         </div>
-        <div class="sectionContainer has-alert">
+        @enderror
+        {{-- add 'has-alert' when theres an error --}}
+         <div class="sectionContainer {{ $errors->has('account_code') ? 'has-alert' : '' }}"> 
 
             <section class="sectionLogin1">
-                <h4 class="loginHeader">Being financially free is one step away
+                <h4 class="loginHeader">
+                    Being financially free is one step away
                     <br>
                     Login now and start making money!
                 </h4>
-                <form action="">
+                <form action="{{ route('auth.login') }}" method="POST">
+                    @csrf
                     <div class="inputContainer">
-                        <input type="email" name="email" placeholder="Enter Email Address">
+                        <input type="text" name="account_code" placeholder="Enter Account Code" required>
                     </div>
                     <div class="inputContainer">
-                        <input type="password" name="password" placeholder="Enter Password">
+                        <input type="password" name="password" placeholder="Enter Password" required>
                     </div>
                     <div class="buttonGreenContainer"><button type="submit" class="buttonGreen">Login</button></div>
                 </form>
@@ -47,7 +55,7 @@
                     <a href=""><img src="{{ asset('svg/fb.svg') }}" alt=""></a>
                 </div>
                 <div class="linkGreenContainer">
-                    <a href="profile.html" class="linkGreen">Get Code</a>
+                    <a href="" class="linkGreen">Get Code</a>
                     <a href="" class="linkGreen">Cash Out</a>
                 </div>
                 <div class="extraDetails">

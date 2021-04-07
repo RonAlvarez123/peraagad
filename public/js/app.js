@@ -19087,10 +19087,10 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 /***/ }),
 
-/***/ "./resources/sass/login.scss":
-/*!***********************************!*\
-  !*** ./resources/sass/login.scss ***!
-  \***********************************/
+/***/ "./resources/sass/auth/index.scss":
+/*!****************************************!*\
+  !*** ./resources/sass/auth/index.scss ***!
+  \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -19100,10 +19100,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/sass/register.scss":
-/*!**************************************!*\
-  !*** ./resources/sass/register.scss ***!
-  \**************************************/
+/***/ "./resources/sass/auth/show.scss":
+/*!***************************************!*\
+  !*** ./resources/sass/auth/show.scss ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/sass/profile/index.scss":
+/*!*******************************************!*\
+  !*** ./resources/sass/profile/index.scss ***!
+  \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -19417,8 +19430,9 @@ process.umask = function() { return 0; };
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
-/******/ 			"css/register": 0,
-/******/ 			"css/login": 0
+/******/ 			"css/profile/index": 0,
+/******/ 			"css/auth/show": 0,
+/******/ 			"css/auth/index": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -19466,9 +19480,10 @@ process.umask = function() { return 0; };
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/register","css/login"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/register","css/login"], () => (__webpack_require__("./resources/sass/login.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/register","css/login"], () => (__webpack_require__("./resources/sass/register.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/profile/index","css/auth/show","css/auth/index"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/profile/index","css/auth/show","css/auth/index"], () => (__webpack_require__("./resources/sass/auth/index.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/profile/index","css/auth/show","css/auth/index"], () => (__webpack_require__("./resources/sass/auth/show.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/profile/index","css/auth/show","css/auth/index"], () => (__webpack_require__("./resources/sass/profile/index.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
