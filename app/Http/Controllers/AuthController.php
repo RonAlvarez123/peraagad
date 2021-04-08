@@ -13,6 +13,7 @@ class AuthController extends Controller
 {
     public function index()
     {
+        // return session('loggedUserId');
         return view('auth.index');
     }
 
@@ -92,15 +93,14 @@ class AuthController extends Controller
         if ($user) {
             if (Hash::check(request()->input('password'), $user->password)) {
                 request()->session()->put('loggedUserId', $user->id);
-                return redirect()->route('profile.index');
+                // return $user . '<br>' . $user->account . '<br>' . $user->account->role;
+                if ($user->account->role === 'admin') {
+                    return redirect()->route('coderequest.index');
+                } else {
+                    return redirect()->route('profile.index');
+                }
             }
         }
         return redirect()->route('auth.index')->withErrors(['account_code' => 'Account Code or Password is Incorrect.']);
-        //     } else {
-        //         return redirect()->route('auth.index')->withErrors(['account_code' => 'Account Code or Password is Incorrect.']);
-        //     }
-        // } else {
-        //     return redirect()->route('auth.index')->withErrors(['account_code' => 'Account Code or Password is Incorrect.']);
-        // }
     }
 }

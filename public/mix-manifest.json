@@ -1,5 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
+    "/css/coderequests/index.css": "/css/coderequests/index.css",
     "/css/profile/index.css": "/css/profile/index.css",
     "/css/auth/show.css": "/css/auth/show.css",
     "/css/auth/index.css": "/css/auth/index.css"

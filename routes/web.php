@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CodeRequestController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,5 +21,7 @@ Route::post('/', [AuthController::class, 'login'])->name('auth.login');
 Route::get('/register', [AuthController::class, 'show'])->name('auth.show');
 Route::post('/register', [AuthController::class, 'store'])->name('auth.store');
 
-Route::get('myaccount/profile', [ProfileController::class, 'index'])->name('profile.index');
-Route::post('myaccount/profile', [ProfileController::class, 'logout'])->name('profile.logout');
+Route::get('/myaccount/profile', [ProfileController::class, 'index'])->name('profile.index');
+Route::post('/myaccount/profile', [ProfileController::class, 'logout'])->name('profile.logout');
+
+Route::get('/admin/coderequests', [CodeRequestController::class, 'index'])->name('coderequest.index');
