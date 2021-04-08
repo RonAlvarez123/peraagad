@@ -12,7 +12,7 @@ class GetCodeController extends Controller
     public function index()
     {
         $account = Account::where('user_id', session('loggedUserId'))->first();
-        return view('getcode.index')->with('account', $account)->with('codes', $account->codes);
+        return view('getcode.index')->with('account', $account)->with('codes', $account->codes()->where('used', false)->get());
     }
 
     public function create()

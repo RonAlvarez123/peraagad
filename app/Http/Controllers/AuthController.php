@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper;
 use App\Models\Account;
 use App\Models\Code;
 use App\Models\User;
@@ -19,6 +20,9 @@ class AuthController extends Controller
 
     public function show()
     {
+
+        // $account = Account::where('user_id', 3)->first();
+        // return $account->addDirectInvite();
         return view('auth.show');
     }
 
@@ -74,7 +78,9 @@ class AuthController extends Controller
             // 'role' => request()->input('role'), // UNCOMMENT WHEN CREATING AN ACCOUNT FOR ADMIN
         ]);
 
-        // return $user . '<br>' . $account;
+        $account->getSignUpBonus();
+
+        Helper::invites($account);
 
         return redirect()->route('auth.index')->with('status', 'You have successfully registered an account.');
     }

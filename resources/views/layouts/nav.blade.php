@@ -22,7 +22,7 @@
                             MY ACCOUNT
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                            <li><a class="dropdown-item active" href="profile.html">PROFILE</a></li>
+                            <li><a class="dropdown-item active" href="{{ route('profile.index') }}">PROFILE</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
