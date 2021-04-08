@@ -17,6 +17,7 @@ class GetCodeController extends Controller
 
     public function create()
     {
+        //test commit
         $user = User::find(session('loggedUserId'));
         return view('getcode.create')->with('user', $user)->with('account', $user->account);
     }
