@@ -55,8 +55,8 @@
                             GET CODE
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                            <li><a class="dropdown-item" href="requestcode.html">REQUEST CODE</a></li>
-                            <li><a class="dropdown-item" href="myvalidcodes.html">MY VALID CODES</a></li>
+                            <li><a class="dropdown-item" href="{{ route('getcode.create') }}">REQUEST CODE</a></li>
+                            <li><a class="dropdown-item" href="{{ route('getcode.index') }}">MY VALID CODES</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">

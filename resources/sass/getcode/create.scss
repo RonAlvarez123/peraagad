@@ -1,0 +1,107 @@
+@import "../colors";
+@import "../nav";
+@import "../layout";
+@import "../wallet";
+@import "../custom-input";
+@import "../loginUtilities";
+
+main {
+    .content {
+        // border: 1px solid red;
+
+        .contentContainer {
+            align-items: center;
+            border: 1px solid gray;
+            border-radius: 3px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: space-around;
+            padding: 20px;
+
+            & > * {
+                text-align: center;
+                margin: 5px 0;
+            }
+
+            h4 {
+                font-size: 1.5em;
+            }
+
+            h5 {
+                font-size: 0.8em;
+            }
+
+            div {
+                // border: 1px solid red;
+                color: gray;
+                width: 100%;
+
+                label,
+                p {
+                    font-size: 0.8em;
+                }
+
+                input {
+                    margin: 0 auto;
+                    max-width: 200px;
+                    text-align: center;
+                }
+            }
+
+            .buttonGreenContainer {
+                max-width: 300px;
+                font-size: 0.8em;
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    main {
+        .content {
+            font-size: 17px;
+
+            // .contentContainer {
+
+            // }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    main {
+        .content {
+            font-size: 20px;
+
+            .contentContainer {
+                // h4 {
+                //     font-size: 1.3em;
+                // }
+
+                // h5 {
+                //     font-size: .9em;
+                // }
+
+                & > * {
+                    margin: 0;
+                }
+
+                div {
+                    align-items: center;
+                    display: flex;
+                    justify-content: center;
+
+                    & > * {
+                        margin: 0 10px;
+                    }
+
+                    input {
+                        margin: 0;
+                        max-width: 150px;
+                    }
+                }
+            }
+        }
+    }
+}

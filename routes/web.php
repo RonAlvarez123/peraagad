@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CodeRequestController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\GetCodeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +25,10 @@ Route::post('/register', [AuthController::class, 'store'])->name('auth.store');
 Route::get('/myaccount/profile', [ProfileController::class, 'index'])->name('profile.index');
 Route::post('/myaccount/profile', [ProfileController::class, 'logout'])->name('profile.logout');
 
+Route::get('/getcode/myvalidcodes', [GetCodeController::class, 'index'])->name('getcode.index');
+Route::get('/getcode/requestcode', [GetCodeController::class, 'create'])->name('getcode.create');
+Route::post('/getcode/requestcode', [GetCodeController::class, 'store'])->name('getcode.store');
+
 Route::get('/admin/coderequests', [CodeRequestController::class, 'index'])->name('coderequest.index');
+Route::post('/admin/coderequests', [CodeRequestController::class, 'accept'])->name('coderequest.accept');
+Route::delete('/admin/coderequests', [CodeRequestController::class, 'decline'])->name('coderequest.decline');

@@ -48,7 +48,7 @@ class AuthController extends Controller
             // 'role' => ['required', 'in:user,moderator,admin'], // UNCOMMENT WHEN CREATING AN ACCOUNT FOR ADMIN
         ]);
 
-        // $validCode->setToUsed();
+        $validCode->setToUsed();
 
         $user = User::create([
             'firstname' => request()->input('firstname'),
@@ -76,7 +76,7 @@ class AuthController extends Controller
 
         // return $user . '<br>' . $account;
 
-        return redirect()->route('auth.index');
+        return redirect()->route('auth.index')->with('status', 'You have successfully registered an account.');
     }
 
     public function login()
@@ -101,6 +101,6 @@ class AuthController extends Controller
                 }
             }
         }
-        return redirect()->route('auth.index')->withErrors(['account_code' => 'Account Code or Password is Incorrect.']);
+        return redirect()->back()->withErrors(['account_code' => 'Account Code or Password is Incorrect.']);
     }
 }

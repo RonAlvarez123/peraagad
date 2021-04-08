@@ -10,4 +10,18 @@ class CodeRequest extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    protected $fillable = [
+        'user_id',
+        'number_of_codes',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'user_id');
+    }
+
+    public function account()
+    {
+    }
 }

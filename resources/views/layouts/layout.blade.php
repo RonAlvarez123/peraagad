@@ -18,16 +18,19 @@
     @include('layouts.nav')
 
     <main>
-        @if ($account->role === 'admin')
-            @yield('adminContent')
-        @else
+        @if (Request::path() === 'register')
             <section class="content">
                 @yield('contentContainer')
             </section>
-
-            @unless (Request::path() === 'register')
+        @else
+            @if ($account->role === 'admin')
+                @yield('adminContent')
+            @else
+                <section class="content">
+                    @yield('contentContainer')
+                </section>
                 @include('layouts.wallet')
-            @endunless
+            @endif
         @endif
     </main>
 

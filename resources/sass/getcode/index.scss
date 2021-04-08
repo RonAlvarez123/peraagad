@@ -1,0 +1,72 @@
+@import "../colors";
+@import "../nav";
+@import "../layout";
+@import "../wallet";
+@import "../custom-input";
+
+main {
+
+    .content {
+        // border: 1px solid red;
+
+        &>h6 {
+            font-size: .8em;
+            margin: 15px 0;
+        }
+
+        .contentContainer {
+            // border: 1px solid green;
+
+            &>* {
+                text-align: center;
+            }
+
+            h4 {
+                font-size: 1.5em;
+            }
+
+            h6 {
+                color: gray;
+                font-size: .7em;
+                font-weight: lighter;
+                margin: 10px 0 20px 0;
+            }
+
+            .list-group {
+                font-size: .7em;
+                margin: 0 auto;
+                max-width: 300px;
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    main {
+
+        .content {
+            font-size: 18px;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    main {
+
+        .content {
+            font-size: 22px;
+
+            &>h6 {
+                margin: 0;
+            }
+
+            .contentContainer {
+                min-height: 470px;
+
+                .list-group {
+                    margin-top: 50px;
+                }
+            }
+        }
+    }
+}

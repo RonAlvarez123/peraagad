@@ -13,18 +13,23 @@
 
 <body>
     <main>
-        {{-- <div class="alert-container">
-            <div class="alert alert-success">
-                A simple success alert—check it out!
+        @if (session()->has('status'))
+            <div class="alert-container">
+                <div class="alert alert-success">{{ session('status') }}</div>
             </div>
-        </div> --}}
+        @endif
         @error('account_code')
-        <div class="alert-container">
-            <div class="alert alert-danger">{{ $message }}</div>
-        </div>
+            <div class="alert-container">
+                <div class="alert alert-danger">{{ $message }}</div>
+            </div>
         @enderror
-        {{-- add 'has-alert' when theres an error --}}
-         <div class="sectionContainer {{ $errors->has('account_code') ? 'has-alert' : '' }}"> 
+
+        @error('password')
+            <div class="alert-container">
+                <div class="alert alert-danger">{{ $message }}</div>
+            </div>
+        @enderror
+        <div class="sectionContainer {{ session()->has('status') ? 'has-alert' : '' }} {{ $errors->has('account_code') ? 'has-alert' : '' }} {{ $errors->has('password') ? 'has-alert' : '' }}"> 
 
             <section class="sectionLogin1">
                 <h4 class="loginHeader">

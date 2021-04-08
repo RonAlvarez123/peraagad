@@ -19087,6 +19087,19 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 /***/ }),
 
+/***/ "./resources/sass/getcode/index.scss":
+/*!*******************************************!*\
+  !*** ./resources/sass/getcode/index.scss ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/sass/auth/index.scss":
 /*!****************************************!*\
   !*** ./resources/sass/auth/index.scss ***!
@@ -19130,6 +19143,19 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************************************!*\
   !*** ./resources/sass/coderequests/index.scss ***!
   \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/sass/getcode/create.scss":
+/*!********************************************!*\
+  !*** ./resources/sass/getcode/create.scss ***!
+  \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -19443,10 +19469,12 @@ process.umask = function() { return 0; };
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
+/******/ 			"css/getcode/create": 0,
 /******/ 			"css/coderequests/index": 0,
 /******/ 			"css/profile/index": 0,
 /******/ 			"css/auth/show": 0,
-/******/ 			"css/auth/index": 0
+/******/ 			"css/auth/index": 0,
+/******/ 			"css/getcode/index": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -19494,11 +19522,13 @@ process.umask = function() { return 0; };
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/coderequests/index","css/profile/index","css/auth/show","css/auth/index"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/coderequests/index","css/profile/index","css/auth/show","css/auth/index"], () => (__webpack_require__("./resources/sass/auth/index.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/coderequests/index","css/profile/index","css/auth/show","css/auth/index"], () => (__webpack_require__("./resources/sass/auth/show.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/coderequests/index","css/profile/index","css/auth/show","css/auth/index"], () => (__webpack_require__("./resources/sass/profile/index.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/coderequests/index","css/profile/index","css/auth/show","css/auth/index"], () => (__webpack_require__("./resources/sass/coderequests/index.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/getcode/index"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/getcode/index"], () => (__webpack_require__("./resources/sass/auth/index.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/getcode/index"], () => (__webpack_require__("./resources/sass/auth/show.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/getcode/index"], () => (__webpack_require__("./resources/sass/profile/index.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/getcode/index"], () => (__webpack_require__("./resources/sass/coderequests/index.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/getcode/index"], () => (__webpack_require__("./resources/sass/getcode/create.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/getcode/index"], () => (__webpack_require__("./resources/sass/getcode/index.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

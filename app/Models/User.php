@@ -51,6 +51,11 @@ class User extends Authenticatable
         return $this->hasMany(Code::class);
     }
 
+    public function coderequests()
+    {
+        return $this->hasMany(CodeRequest::class, 'user_id', 'user_id');
+    }
+
     public function setUserId()
     {
         $this->user_id = $this->id;

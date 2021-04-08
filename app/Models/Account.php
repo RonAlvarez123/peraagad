@@ -24,6 +24,6 @@ class Account extends Model
 
     public function codes()
     {
-        return $this->hasMany(Code::class, 'user_id');
+        return $this->hasMany(Code::class, 'user_id', 'user_id');
     }
 }

@@ -11,6 +11,11 @@ class Code extends Model
 
     public $timestamps = false;
 
+    protected $fillable = [
+        'user_id',
+        'account_code',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -18,7 +23,7 @@ class Code extends Model
 
     public function account()
     {
-        return $this->belongsTo(Account::class);
+        return $this->belongsTo(Account::class, 'user_id', 'user_id');
     }
 
     public function setToUsed()
