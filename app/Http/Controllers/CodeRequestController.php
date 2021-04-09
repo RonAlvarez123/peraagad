@@ -15,31 +15,32 @@ class CodeRequestController extends Controller
 
     public function index()
     {
-        // $coderequest = CodeRequest::find(1);
-        // return $coderequest->user;
         $user = User::find(session('loggedUserId'));
         return view('coderequests.index')->with('account', $user->account)->with('coderequests', CodeRequest::all());
     }
 
     public function accept()
     {
-        // return  request()->input('user_id') . ' ' . request()->input('number_of_codes') . 'accepted' . request()->input('coderequest_id');
-        // $numberOfCodes = request()->input('number_of_codes');
-        // $userId = request()->input('user_id');
-        // $codeRequestId = request()->input('coderequest_id');
-
         for ($i = 0; $i < request()->input('number_of_codes'); $i++) {
             $this->createCode(request()->input('user_id'));
         }
 
-        CodeRequest::where('id', request()->input('coderequest_id'))->delete();
+        $result = CodeRequest::destroy(request()->input('coderequest_id'));
 
-        return redirect()->route('coderequest.index');
+        if ($result == true) {
+            return redirect()->route('coderequest.index')->with('acceptMessage', 'You have successfully accepted a code request.');
+        }
+        return redirect()->route('coderequest.index')->with('errorMessage', 'Code Request Approval Failed');
     }
 
     public function decline()
     {
-        return 'declined' . request()->input('coderequest_id');
+        $result = CodeRequest::destroy(request()->input('coderequest_id'));
+
+        if ($result == true) {
+            return redirect()->route('coderequest.index')->with('declineMessage', 'You have successfully declined a code request.');
+        }
+        return redirect()->route('coderequest.index')->with('errorMessage', 'Code Request Declination Failed');
     }
 
     public function createCode($userId)

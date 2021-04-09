@@ -31,6 +31,21 @@ class Account extends Model
         return $this->hasMany(Code::class, 'user_id', 'user_id');
     }
 
+    public function timesRequestedForCode()
+    {
+        return $this->hasMany(CodeRequest::class, 'user_id', 'user_id');
+    }
+
+    public function totalCodeRequests()
+    {
+        $codeRequests = $this->timesRequestedForCode;
+        $totalCodeRequests = 0;
+        foreach ($codeRequests as $codeRequest) {
+            $totalCodeRequests += $codeRequest->number_of_codes;
+        }
+        return $totalCodeRequests;
+    }
+
     public function getReferredAccounts()
     {
         return $this->hasMany(Account::class, 'referrer_id', 'user_id');

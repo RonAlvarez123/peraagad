@@ -18,12 +18,19 @@
     </section>
 
     <section class="list-group content">
+        @if (session()->has('acceptMessage'))
+            <h5 class="alert alert-success text-success text-center">{{ session('acceptMessage') }}</h5>
+        @elseif (session()->has('declineMessage'))
+            <h5 class="alert alert-warning text-danger text-center">{{ session('declineMessage') }}</h5>
+        @elseif (session()->has('errorMessage'))
+            <h5 class="alert alert-danger text-danger text-center">{{ session('errorMessage') }}</h5>
+        @endif
         @forelse ($coderequests as $coderequest)
         <div>
             <div class="list-group-item">
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">{{ $coderequest->user->account_code }}<span class="badge bg-primary rounded-pill">{{ $coderequest->number_of_codes }}</span></h5>
-                    <small class="text-muted">3 days ago</small>
+                    <small class="text-muted">{{ \Carbon\Carbon::parse($coderequest->requested_at)->diffForHumans() }}</small>
                 </div>
                 <div class="user-details">
                     <small class="text-muted">{{ $coderequest->user->phone_number }}</small>

@@ -20,7 +20,6 @@ class AuthController extends Controller
 
     public function show()
     {
-
         // $account = Account::where('user_id', 3)->first();
         // return $account->addDirectInvite();
         return view('auth.show');
@@ -61,10 +60,7 @@ class AuthController extends Controller
             'phone_number' => request()->input('phone_number'),
             'city' => request()->input('city'),
             'province' => request()->input('province'),
-
-            'account_code' => request()->input('account_code'), // MAKE THIS A COMMENT WHEN CREATING AN ACCOUNT FOR ADMIN
-            // 'account_code' => 'admin', // UNCOMMENT WHEN CREATING AN ACCOUNT FOR ADMIN
-
+            'account_code' => request()->input('account_code'),
             'password' => Hash::make(request()->input('password')),
         ]);
 
@@ -78,9 +74,8 @@ class AuthController extends Controller
             // 'role' => request()->input('role'), // UNCOMMENT WHEN CREATING AN ACCOUNT FOR ADMIN
         ]);
 
-        $account->getSignUpBonus();
-
-        Helper::invites($account);
+        $account->getSignUpBonus(); // MAKE THIS A COMMENT WHEN CREATING AN ACCOUNT FOR ADMIN
+        Helper::invites($account); // MAKE THIS A COMMENT WHEN CREATING AN ACCOUNT FOR ADMIN
 
         return redirect()->route('auth.index')->with('status', 'You have successfully registered an account.');
     }

@@ -17,6 +17,7 @@ class CreateCodeRequestsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->integer('number_of_codes');
+            $table->timestamp('requested_at');
         });
     }
 
