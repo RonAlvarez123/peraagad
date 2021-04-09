@@ -10,7 +10,7 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $user = User::find(session('loggedUserId'));
+        $user = User::find(session('loggedUserId'), ['user_id', 'firstname', 'middlename', 'lastname', 'phone_number', 'city', 'province', 'account_code']);
         return view('profile.index')->with('user', $user)->with('account', $user->account);
     }
 

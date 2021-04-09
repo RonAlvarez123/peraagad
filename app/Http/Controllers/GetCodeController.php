@@ -12,13 +12,22 @@ class GetCodeController extends Controller
 {
     public function index()
     {
-        $account = Account::where('user_id', session('loggedUserId'))->first();
+        $account = Account::where('user_id', session('loggedUserId'))->first(); // OLD
         // return $account . '<br>' . $account->timesRequestedForCode()->count();
+
+
+        $account = Account::where('user_id', session('loggedUserId'))  // NEW
+            ->with(['codes' => function ($query) {
+                $query->where('used', false);
+            }])
+            ->withCount(['timesRequestedForCode', 'codes'])
+            ->first();
+
+        // return $account;
+
+
         // I should test the difference of -- $account->timesRequestedForCode()->count() VS $account->timesRequestedForCode->count() //
-        return view('getcode.index')
-            ->with('account', $account)
-            ->with('codes', $account->codes()->where('used', false)->get())
-            ->with('times_requested_for_code', $account->timesRequestedForCode()->count());
+        return view('getcode.index')->with('account', $account);
     }
 
     public function create()

@@ -38,12 +38,7 @@ class Account extends Model
 
     public function totalCodeRequests()
     {
-        $codeRequests = $this->timesRequestedForCode;
-        $totalCodeRequests = 0;
-        foreach ($codeRequests as $codeRequest) {
-            $totalCodeRequests += $codeRequest->number_of_codes;
-        }
-        return $totalCodeRequests;
+        return $this->hasMany(CodeRequest::class, 'user_id', 'user_id')->sum('number_of_codes');
     }
 
     public function getReferredAccounts()

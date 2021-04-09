@@ -15,8 +15,13 @@ class CodeRequestController extends Controller
 
     public function index()
     {
-        $user = User::find(session('loggedUserId'));
-        return view('coderequests.index')->with('account', $user->account)->with('coderequests', CodeRequest::all());
+        $user = User::find(session('loggedUserId'), ['id', 'user_id']);
+
+        // $user = User::find(session('loggedUserId'))->with('account')->first();
+        // return $user;
+        return view('coderequests.index')
+            ->with('account', $user->account)
+            ->with('coderequests', CodeRequest::with('user')->get()); // <-------- WITH EAGER LOADING //
     }
 
     public function accept()
