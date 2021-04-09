@@ -34,9 +34,7 @@ class CodeRequestController extends Controller
 
         CodeRequest::where('id', request()->input('coderequest_id'))->delete();
 
-        return view('coderequests.index');
-
-        /**    ERROR WHEN THERE IS NO CODE REQUESTS -------- SHOULD FIX IT IMMEDIATELY    **/
+        return redirect()->route('coderequest.index');
     }
 
     public function decline()

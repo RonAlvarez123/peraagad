@@ -11,7 +11,14 @@
 @section('contentContainer')
     <div class="contentContainer">
         <h4>My Valid Codes</h4>
-        <h6>THESE ARE ALL YOUR AVAILABLE ACCOUNT CODES THAT YOU CAN SELL</h6>
+        @if(count($codes) > 0)
+            <h6>THESE ARE ALL YOUR AVAILABLE ACCOUNT CODES THAT YOU CAN SELL</h6>
+        @else
+            <h6>
+                YOU HAVE NO AVAILABLE ACCOUNT CODES <br>
+                PLEASE GO TO REQUEST CODE TAB TO GET A CODE
+            </h6>
+        @endif
         <ul class="list-group">
             @foreach ($codes as $code)
                 <li class="list-group-item">{{ $code->account_code }}</li>
