@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Account;
 use App\Models\CodeRequest;
-use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -12,34 +11,20 @@ class GetCodeController extends Controller
 {
     public function index()
     {
-        // $account = Account::where('user_id', session('loggedUserId'))->first(); // OLD
-        // return $account . '<br>' . $account->timesRequestedForCode()->count();
-
-
-        $account = Account::where('user_id', session('loggedUserId'))  // NEW
+        // I should test the difference of -- $account->timesRequestedForCode()->count() VS $account->timesRequestedForCode->count() //
+        return view('getcode.index')->with('account', Account::select('user_id', 'money', 'level', 'direct', 'indirect', 'role')->where('user_id', session('loggedUserId'))  // NEW
             ->with([
                 'codes' => function ($query) {
-                    $query->where('used', false);
+                    $query->select('user_id', 'account_code')->where('used', false);
                 }
             ])
             ->withCount(['timesRequestedForCode', 'codes'])
-            ->first();
-
-        // I should test the difference of -- $account->timesRequestedForCode()->count() VS $account->timesRequestedForCode->count() //
-        return view('getcode.index')->with('account', $account);
+            ->first());
     }
 
     public function create()
     {
-        // $user = User::find(session('loggedUserId'));
-        $user = User::select('user_id')->where('id', session('loggedUserId'))
-            ->with([
-                'account' => function ($query) {
-                    $query->select('user_id', 'money', 'direct', 'indirect', 'role');
-                }
-            ])
-            ->first();
-        return view('getcode.create')->with('user', $user)->with('account', $user->account);
+        return view('getcode.create')->with('account', Account::select('money', 'direct', 'indirect', 'role')->where('user_id', session('loggedUserId'))->first());
     }
 
     public function store()

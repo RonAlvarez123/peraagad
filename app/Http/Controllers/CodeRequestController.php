@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Helper;
+use App\Models\Account;
 use App\Models\Code;
 use App\Models\CodeRequest;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class CodeRequestController extends Controller
@@ -15,13 +15,14 @@ class CodeRequestController extends Controller
 
     public function index()
     {
-        $user = User::find(session('loggedUserId'), ['id', 'user_id']);
-
-        // $user = User::find(session('loggedUserId'))->with('account')->first();
-        // return $user;
         return view('coderequests.index')
-            ->with('account', $user->account)
-            ->with('coderequests', CodeRequest::with('user')->get()); // <-------- WITH EAGER LOADING //
+            ->with('account', Account::select('user_id', 'role')->where('user_id', session('loggedUserId'))->first())
+            ->with('coderequests', CodeRequest::select('id', 'user_id', 'number_of_codes', 'requested_at')
+                ->with([
+                    'user' => function ($query) {
+                        $query->select('user_id', 'firstname', 'middlename', 'lastname', 'phone_number', 'city', 'province', 'account_code');
+                    }
+                ])->get()); // <-------- WITH EAGER LOADING //
     }
 
     public function accept()
