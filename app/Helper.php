@@ -2,8 +2,7 @@
 
 namespace App;
 
-use App\Models\User;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Account;
 
 class Helper
 {
@@ -24,5 +23,21 @@ class Helper
         $str .= '-' . $suffix;
 
         return $str;
+    }
+
+    public static function invites(Account $account) // pang indirect - kelangan pa puliduhin
+    {
+        for ($i = 1; $i <= 6; $i++) {
+            if ($account->referrer_id === null) {
+                break;
+            }
+            $account = $account->getReferrerAccount;
+            if ($i === 1) {
+                $account->addDirectInvite();
+            } else {
+                $account->addIndirectInvite();
+            }
+        }
+        return 'no Errors';
     }
 }
