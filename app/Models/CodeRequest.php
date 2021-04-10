@@ -14,6 +14,7 @@ class CodeRequest extends Model
     protected $fillable = [
         'user_id',
         'number_of_codes',
+        'requested_at',
     ];
 
     public function user()
@@ -23,5 +24,6 @@ class CodeRequest extends Model
 
     public function account()
     {
+        return $this->belongsTo(Account::class, 'user_id', 'user_id');
     }
 }
