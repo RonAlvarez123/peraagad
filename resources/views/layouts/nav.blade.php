@@ -23,7 +23,7 @@
                                 VIEW ALL REQUESTS
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item {{ Request::path() === 'admin/coderequests' ? 'active' : '' }}" href="{{ route('coderequest.index') }}">CODE REQUESTS</a></li>
+                                <li><a class="dropdown-item {{ Route::currentRouteName() === 'coderequest.index' ? 'active' : '' }}" href="{{ route('coderequest.index') }}">CODE REQUESTS</a></li>
                                 <li><a class="dropdown-item" href="#">CASHOUT REQUESTS</a></li>
                             </ul>
                         </li>
@@ -33,7 +33,7 @@
                                 ADD
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">CAPTCHA</a></li>
+                                <li><a class="dropdown-item {{ Route::currentRouteName() === 'admincaptcha.create' ? 'active' : '' }}" href="{{ route('admincaptcha.create') }}">CAPTCHA</a></li>
                                 <li><a class="dropdown-item" href="#">MATH SOLVER</a></li>
                                 <li><a class="dropdown-item" href="#">SPELLING BEE</a></li>
                             </ul>
@@ -49,7 +49,7 @@
                                 MY ACCOUNT
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item {{ Request::path() === 'myaccount/profile' ? 'active' : '' }}" href="{{ route('profile.index') }}">PROFILE</a></li>
+                                <li><a class="dropdown-item {{ Route::currentRouteName() === 'profile.index' ? 'active' : '' }}" href="{{ route('profile.index') }}">PROFILE</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -87,8 +87,8 @@
                                 GET CODE
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item {{ Request::path() === 'getcode/requestcode' ? 'active' : '' }}" href="{{ route('getcode.create') }}">REQUEST CODE</a></li>
-                                <li><a class="dropdown-item {{ Request::path() === 'getcode/myvalidcodes' ? 'active' : '' }}" href="{{ route('getcode.index') }}">MY VALID CODES</a></li>
+                                <li><a class="dropdown-item {{ Route::currentRouteName() === 'getcode.create' ? 'active' : '' }}" href="{{ route('getcode.create') }}">REQUEST CODE</a></li>
+                                <li><a class="dropdown-item {{ Route::currentRouteName() === 'getcode.index' ? 'active' : '' }}" href="{{ route('getcode.index') }}">MY VALID CODES</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">

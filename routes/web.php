@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminCaptchaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CodeRequestController;
 use App\Http\Controllers\ProfileController;
@@ -32,3 +33,6 @@ Route::post('/getcode/requestcode', [GetCodeController::class, 'store'])->name('
 Route::get('/admin/coderequests', [CodeRequestController::class, 'index'])->name('coderequest.index');
 Route::post('/admin/coderequests', [CodeRequestController::class, 'accept'])->name('coderequest.accept');
 Route::delete('/admin/coderequests', [CodeRequestController::class, 'decline'])->name('coderequest.decline');
+
+Route::get('/admin/add/captcha', [AdminCaptchaController::class, 'create'])->name('admincaptcha.create');
+Route::post('/admin/add/captcha', [AdminCaptchaController::class, 'store'])->name('admincaptcha.store');
