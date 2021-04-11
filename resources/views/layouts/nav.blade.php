@@ -16,52 +16,85 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                 <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            MY ACCOUNT
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                            <li><a class="dropdown-item active" href="{{ route('profile.index') }}">PROFILE</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><form action="{{ route('profile.logout') }}" method="POST">@csrf<button type="submit" class="dropdown-item" href="">LOG OUT</button></form></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            WAYS TO EARN
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">UPLOAD RECEIPT</a></li>
-                            <li><a class="dropdown-item" href="#">CAPTCHA</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">SIGN UP BONUS</a></li>
-                            <li><a class="dropdown-item" href="#">MONTHLY BONUS</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">MATH SOLVER</a></li>
-                            <li><a class="dropdown-item" href="#">ROULLETE</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            GET CODE
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{{ route('getcode.create') }}">REQUEST CODE</a></li>
-                            <li><a class="dropdown-item" href="{{ route('getcode.index') }}">MY VALID CODES</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">ABOUT</a>
-                    </li>
+                    @if ($account->role === 'admin')
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                VIEW ALL REQUESTS
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item {{ Request::path() === 'admin/coderequests' ? 'active' : '' }}" href="{{ route('coderequest.index') }}">CODE REQUESTS</a></li>
+                                <li><a class="dropdown-item" href="#">CASHOUT REQUESTS</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                ADD
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">CAPTCHA</a></li>
+                                <li><a class="dropdown-item" href="#">MATH SOLVER</a></li>
+                                <li><a class="dropdown-item" href="#">SPELLING BEE</a></li>
+                            </ul>
+                        </li>
+                        <form action="{{ route('profile.logout') }}" method="POST" class="nav-item">
+                            @csrf
+                            <button type="submit" class="nav-link stand-alone" aria-current="page">LOG OUT</button>
+                        </form>
+                    @else
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                MY ACCOUNT
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item {{ Request::path() === 'myaccount/profile' ? 'active' : '' }}" href="{{ route('profile.index') }}">PROFILE</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <form action="{{ route('profile.logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item" href="">LOG OUT</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                WAYS TO EARN
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">UPLOAD RECEIPT</a></li>
+                                <li><a class="dropdown-item" href="#">CAPTCHA</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">SIGN UP BONUS</a></li>
+                                <li><a class="dropdown-item" href="#">MONTHLY BONUS</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">MATH SOLVER</a></li>
+                                <li><a class="dropdown-item" href="#">ROULLETE</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                GET CODE
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item {{ Request::path() === 'getcode/requestcode' ? 'active' : '' }}" href="{{ route('getcode.create') }}">REQUEST CODE</a></li>
+                                <li><a class="dropdown-item {{ Request::path() === 'getcode/myvalidcodes' ? 'active' : '' }}" href="{{ route('getcode.index') }}">MY VALID CODES</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">ABOUT</a>
+                        </li>
+                    @endif
                 </ul>
             </div>
         @endif

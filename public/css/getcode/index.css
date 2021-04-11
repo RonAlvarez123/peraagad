@@ -11,6 +11,11 @@
 .navbar.navbar-dark .navLogo {
   height: 80px;
 }
+.navbar.navbar-dark .nav-item button.stand-alone {
+  background-color: #0ab0ae;
+  border: none;
+  color: white;
+}
 .navbar.navbar-dark .nav-link {
   color: white;
   font-weight: bold;
