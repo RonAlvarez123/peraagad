@@ -12,9 +12,12 @@
     <section class="content">
         <form action="{{ route('admincaptcha.store') }}" method="POST" class="contentContainer" enctype="multipart/form-data">
             @csrf
-            @if($errors->has('captcha_value') || $errors->has('file'))
+            @if (session('status'))
+                <div class="alert alert-success text-success mb-5">{{ session('status') }}</div>
+            @endif
+            @if($errors->has('value') || $errors->has('file'))
                 <div class="alert alert-danger text-danger mb-5">
-                    @error('capthca_value')
+                    @error('value')
                         {{ $message }}
                     @enderror
                     @error('file')
@@ -23,7 +26,7 @@
                 </div>
             @endif
             <h4>Add Captcha</h4>
-            <input type="text" class="form-control" placeholder="Captcha Value" required name="captcha_value">
+            <input type="text" class="form-control" placeholder="Captcha Value" required name="value">
             <input class="form-control" type="file" id="formFile" required name="file">
             <button type="submit">SUBMIT</button>
         </form>

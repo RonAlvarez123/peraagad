@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper;
 use App\Models\Account;
+use App\Models\Captcha;
 use App\Rules\SpecialChars;
 use Illuminate\Http\Request;
 
@@ -17,15 +18,21 @@ class AdminCaptchaController extends Controller
     public function store()
     {
         request()->validate([
-            'captcha_value' => ['required', new SpecialChars],
+            'value' => ['required', 'min:6', new SpecialChars],
             'file' => ['required', 'mimetypes:image/svg,image/svg+xml'],
         ]);
 
-        $filePath = request()->file('file')->storeAs(
-            'public/captcha',
-            Helper::renameFile('public/captcha', request()->file('file')->getClientOriginalName())
-        );
+        request()->file('file')->storeAs('public/captcha', $filePath = Helper::renameFile('/captcha', request()->file('file')->getClientOriginalName()));
 
-        return $filePath;
+        $captcha = Captcha::create([
+            'value' => request()->input('value'),
+            'path' => $filePath,
+        ]);
+
+        if (!$captcha) {
+            return redirect()->route('admincaptcha.create')->withErrors(['value' => 'Captcha addition failed.']);
+        }
+
+        return redirect()->route('admincaptcha.create')->with('status', 'Captcha added successfuly.');
     }
 }

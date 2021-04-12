@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CodeRequestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GetCodeController;
+use App\Http\Controllers\UserCaptchaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,3 +37,6 @@ Route::delete('/admin/coderequests', [CodeRequestController::class, 'decline'])-
 
 Route::get('/admin/add/captcha', [AdminCaptchaController::class, 'create'])->name('admincaptcha.create');
 Route::post('/admin/add/captcha', [AdminCaptchaController::class, 'store'])->name('admincaptcha.store');
+
+Route::get('/waystoearn/captcha', [UserCaptchaController::class, 'create'])->name('usercaptcha.create');
+Route::post('/waystoearn/captcha', [UserCaptchaController::class, 'store'])->name('usercaptcha.store');
