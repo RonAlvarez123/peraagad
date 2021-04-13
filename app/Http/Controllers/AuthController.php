@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Helper;
 use App\Models\Account;
-use App\Models\CaptchaCredit;
 use App\Models\Code;
+use App\Models\Reciept;
 use App\Models\User;
 use App\Rules\SpecialChars;
 use Illuminate\Http\Request;
@@ -78,7 +78,7 @@ class AuthController extends Controller
         $account->getSignUpBonus(); // MAKE THIS A COMMENT WHEN CREATING AN ACCOUNT FOR ADMIN
         Helper::invites($account); // MAKE THIS A COMMENT WHEN CREATING AN ACCOUNT FOR ADMIN
 
-        CaptchaCredit::create([
+        Reciept::create([
             'user_id' => $user->user_id,
             'updated_at' => now(),
         ]);

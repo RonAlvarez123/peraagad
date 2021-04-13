@@ -50,9 +50,9 @@ class Account extends Model
         return $this->belongsTo(Account::class, 'referrer_id', 'user_id');
     }
 
-    public function captchaCredit()
+    public function reciept()
     {
-        return $this->hasOne(CaptchaCredit::class, 'user_id', 'user_id');
+        return $this->hasOne(Reciept::class, 'user_id', 'user_id');
     }
 
     public function getSignUpBonus()

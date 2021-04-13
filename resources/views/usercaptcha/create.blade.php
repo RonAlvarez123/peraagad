@@ -10,6 +10,9 @@
 
 @section('contentContainer')
     <form action="{{ route('usercaptcha.store') }}" method="POST" class="contentContainer">
+        @error('value')
+            <div class="alert alert-danger text-danger text-center">{{ $message }}</div>
+        @enderror
         @csrf
         <h4>Captcha</h4>
         <div class="captchaContainer">

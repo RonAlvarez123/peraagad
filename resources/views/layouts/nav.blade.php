@@ -67,16 +67,8 @@
                                 WAYS TO EARN
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">UPLOAD RECEIPT</a></li>
+                                <li><a class="dropdown-item {{ Route::currentRouteName() === 'reciept.edit' ? 'active' : '' }}" href="{{ route('reciept.edit') }}">UPLOAD RECEIPT</a></li>
                                 <li><a class="dropdown-item {{ Route::currentRouteName() === 'usercaptcha.create' ? 'active' : '' }}" href="{{ route('usercaptcha.create') }}">CAPTCHA</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">SIGN UP BONUS</a></li>
-                                <li><a class="dropdown-item" href="#">MONTHLY BONUS</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
                                 <li><a class="dropdown-item" href="#">MATH SOLVER</a></li>
                                 <li><a class="dropdown-item" href="#">ROULLETE</a></li>
                             </ul>

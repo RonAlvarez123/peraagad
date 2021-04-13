@@ -22,4 +22,5 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/getcode/create.scss', 'public/css/getcode', [])
     .sass('resources/sass/getcode/index.scss', 'public/css/getcode', [])
     .sass('resources/sass/admincaptcha/create.scss', 'public/css/admincaptcha', [])
-    .sass('resources/sass/usercaptcha/create.scss', 'public/css/usercaptcha', []);
+    .sass('resources/sass/usercaptcha/create.scss', 'public/css/usercaptcha', [])
+    .sass('resources/sass/reciept/edit.scss', 'public/css/reciept', []);

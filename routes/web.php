@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CodeRequestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GetCodeController;
+use App\Http\Controllers\RecieptController;
 use App\Http\Controllers\UserCaptchaController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,9 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/waystoearn/captcha', [UserCaptchaController::class, 'create'])->name('usercaptcha.create');
         Route::post('/waystoearn/captcha', [UserCaptchaController::class, 'store'])->name('usercaptcha.store');
+
+        Route::get('/waystoearn/uploadreciept', [RecieptController::class, 'edit'])->name('reciept.edit');
+        Route::put('/waystoearn/uploadreciept', [RecieptController::class, 'update'])->name('reciept.update');
     });
 
 

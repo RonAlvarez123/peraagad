@@ -58,9 +58,9 @@ class User extends Authenticatable
         return $this->hasMany(CodeRequest::class, 'user_id', 'user_id');
     }
 
-    public function captchaCredit()
+    public function reciept()
     {
-        return $this->hasOne(CaptchaCredit::class, 'user_id', 'user_id');
+        return $this->hasOne(Reciept::class, 'user_id', 'user_id');
     }
 
     public function setUserId()
