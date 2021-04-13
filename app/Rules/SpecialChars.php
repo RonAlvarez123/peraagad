@@ -25,7 +25,7 @@ class SpecialChars implements Rule
      */
     public function passes($attribute, $value)
     {
-        $specialchars = ['.', '@'];
+        $specialchars = ['.', '@', '<', '>', ';', '/'];
         foreach ($specialchars as $specialchar) {
             if (stripos($value, $specialchar) !== false) {
                 return false;
