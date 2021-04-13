@@ -92,8 +92,8 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             request()->session()->regenerate();
 
-            return auth()->user()->account->role === 'admin' ? redirect()->route('coderequest.index') :
-                redirect()->route('profile.index');
+            return auth()->user()->account->role === 'admin' ? redirect()->intended(route('coderequest.index')) :
+                redirect()->intended(route('profile.index'));
         }
         return redirect()->back()->withErrors([
             'account_code' => 'Account Code or Password is Incorrect.',

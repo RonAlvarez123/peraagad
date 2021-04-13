@@ -60,7 +60,7 @@
                     <a href=""><img src="{{ asset('svg/fb.svg') }}" alt=""></a>
                 </div>
                 <div class="linkGreenContainer">
-                    <a href="" class="linkGreen">Get Code</a>
+                    <a href="{{ route('getcode.create') }}" class="linkGreen">Get Code</a>
                     <a href="" class="linkGreen">Cash Out</a>
                 </div>
                 <div class="extraDetails">
