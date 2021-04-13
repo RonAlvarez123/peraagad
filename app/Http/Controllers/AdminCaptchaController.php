@@ -12,7 +12,8 @@ class AdminCaptchaController extends Controller
 {
     public function create()
     {
-        return view('admincaptcha.create')->with('account', Account::select('user_id', 'role')->where('user_id', session('loggedUserId'))->first());
+        return view('admincaptcha.create')
+            ->with('account', Account::select('user_id', 'role')->where('user_id', auth()->user()->user_id)->first());
     }
 
     public function store()
@@ -30,9 +31,11 @@ class AdminCaptchaController extends Controller
         ]);
 
         if (!$captcha) {
-            return redirect()->route('admincaptcha.create')->withErrors(['value' => 'Captcha addition failed.']);
+            return redirect()->route('admincaptcha.create')
+                ->withErrors(['value' => 'Captcha addition failed.']);
         }
 
-        return redirect()->route('admincaptcha.create')->with('status', 'Captcha added successfuly.');
+        return redirect()->route('admincaptcha.create')
+            ->with('status', 'Captcha added successfuly.');
     }
 }

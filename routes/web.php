@@ -21,11 +21,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AuthController::class, 'index'])->name('auth.index');
 Route::post('/', [AuthController::class, 'login'])->name('auth.login');
+Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::get('/register', [AuthController::class, 'show'])->name('auth.show');
 Route::post('/register', [AuthController::class, 'store'])->name('auth.store');
 
 Route::get('/myaccount/profile', [ProfileController::class, 'index'])->name('profile.index');
-Route::post('/myaccount/profile', [ProfileController::class, 'logout'])->name('profile.logout');
 
 Route::get('/getcode/myvalidcodes', [GetCodeController::class, 'index'])->name('getcode.index');
 Route::get('/getcode/requestcode', [GetCodeController::class, 'create'])->name('getcode.create');

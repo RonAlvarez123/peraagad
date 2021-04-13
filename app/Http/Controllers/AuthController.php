@@ -8,13 +8,13 @@ use App\Models\Code;
 use App\Models\User;
 use App\Rules\SpecialChars;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
     public function index()
     {
-        // return session('loggedUserId');
         return view('auth.index');
     }
 
@@ -87,21 +87,25 @@ class AuthController extends Controller
             'password' => ['required', 'min:5'],
         ]);
 
-        $user = User::where('account_code', request()->input('account_code'))->first();
+        $credentials = request()->only('account_code', 'password');
 
-        // return request()->session()->all();
+        if (Auth::attempt($credentials)) {
+            request()->session()->regenerate();
 
-        if ($user) {
-            if (Hash::check(request()->input('password'), $user->password)) {
-                request()->session()->put('loggedUserId', $user->id);
-                // return $user . '<br>' . $user->account . '<br>' . $user->account->role;
-                if ($user->account->role === 'admin') {
-                    return redirect()->route('coderequest.index');
-                } else {
-                    return redirect()->route('profile.index');
-                }
-            }
+            return auth()->user()->account->role === 'admin' ? redirect()->route('coderequest.index') :
+                redirect()->route('profile.index');
         }
-        return redirect()->back()->withErrors(['account_code' => 'Account Code or Password is Incorrect.']);
+        return redirect()->back()->withErrors([
+            'account_code' => 'Account Code or Password is Incorrect.',
+        ]);
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+
+        return redirect()->route('auth.index');
     }
 }

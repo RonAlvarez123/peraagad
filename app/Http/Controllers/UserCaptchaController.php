@@ -11,7 +11,7 @@ class UserCaptchaController extends Controller
     public function create()
     {
         return view('usercaptcha.create')
-            ->with('account', Account::select('user_id', 'role')->where('user_id', session('loggedUserId'))->first())
+            ->with('account', Account::select('user_id', 'role')->where('user_id', auth()->user()->user_id)->first())
             ->with('captcha', Captcha::getRandomCaptcha());
     }
 

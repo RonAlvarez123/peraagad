@@ -38,7 +38,7 @@
                                 <li><a class="dropdown-item" href="#">SPELLING BEE</a></li>
                             </ul>
                         </li>
-                        <form action="{{ route('profile.logout') }}" method="POST" class="nav-item">
+                        <form action="{{ route('auth.logout') }}" method="POST" class="nav-item">
                             @csrf
                             <button type="submit" class="nav-link stand-alone" aria-current="page">LOG OUT</button>
                         </form>
@@ -54,7 +54,7 @@
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li>
-                                    <form action="{{ route('profile.logout') }}" method="POST">
+                                    <form action="{{ route('auth.logout') }}" method="POST">
                                         @csrf
                                         <button type="submit" class="dropdown-item" href="">LOG OUT</button>
                                     </form>
@@ -100,3 +100,5 @@
         @endif
     </div>
 </nav>
+{{-- <div>{{ print_r(session()->all()) }}</div>
+<div>{{ print_r(auth()->user()) }}</div> --}}

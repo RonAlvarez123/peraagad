@@ -6,6 +6,7 @@ use App\Helper;
 use App\Models\Account;
 use App\Models\Code;
 use App\Models\CodeRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CodeRequestController extends Controller
@@ -15,8 +16,9 @@ class CodeRequestController extends Controller
 
     public function index()
     {
+        // return User::find(auth()->user()->user_id);
         return view('coderequests.index')
-            ->with('account', Account::select('user_id', 'role')->where('user_id', session('loggedUserId'))->first())
+            ->with('account', Account::select('user_id', 'role')->where('user_id', auth()->user()->user_id)->first())
             ->with('coderequests', CodeRequest::select('id', 'user_id', 'number_of_codes', 'requested_at')
                 ->with([
                     'user' => function ($query) {
