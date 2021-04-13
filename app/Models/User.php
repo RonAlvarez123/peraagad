@@ -58,6 +58,11 @@ class User extends Authenticatable
         return $this->hasMany(CodeRequest::class, 'user_id', 'user_id');
     }
 
+    public function captchaCredit()
+    {
+        return $this->hasOne(CaptchaCredit::class, 'user_id', 'user_id');
+    }
+
     public function setUserId()
     {
         $this->user_id = $this->id;

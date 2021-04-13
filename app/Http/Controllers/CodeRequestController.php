@@ -36,9 +36,11 @@ class CodeRequestController extends Controller
         $result = CodeRequest::destroy(request()->input('coderequest_id'));
 
         if ($result == true) {
-            return redirect()->route('coderequest.index')->with('acceptMessage', 'You have successfully accepted a code request.');
+            return redirect()->route('coderequest.index')
+                ->with('acceptMessage', 'You have successfully accepted a code request.');
         }
-        return redirect()->route('coderequest.index')->with('errorMessage', 'Code Request Approval Failed');
+        return redirect()->route('coderequest.index')
+            ->with('errorMessage', 'Code Request Approval Failed');
     }
 
     public function decline()
@@ -46,9 +48,11 @@ class CodeRequestController extends Controller
         $result = CodeRequest::destroy(request()->input('coderequest_id'));
 
         if ($result == true) {
-            return redirect()->route('coderequest.index')->with('declineMessage', 'You have successfully declined a code request.');
+            return redirect()->route('coderequest.index')
+                ->with('declineMessage', 'You have successfully declined a code request.');
         }
-        return redirect()->route('coderequest.index')->with('errorMessage', 'Code Request Declination Failed');
+        return redirect()->route('coderequest.index')
+            ->with('errorMessage', 'Code Request Declination Failed');
     }
 
     public function createCode($userId)

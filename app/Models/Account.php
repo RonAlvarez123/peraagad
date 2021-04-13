@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Ramsey\Uuid\Type\Decimal;
 
 class Account extends Model
 {
@@ -51,6 +50,11 @@ class Account extends Model
         return $this->belongsTo(Account::class, 'referrer_id', 'user_id');
     }
 
+    public function captchaCredit()
+    {
+        return $this->hasOne(CaptchaCredit::class, 'user_id', 'user_id');
+    }
+
     public function getSignUpBonus()
     {
         $this->money += $this->signUpBonus;
@@ -62,16 +66,18 @@ class Account extends Model
         $this->direct += 1;
         $this->money += ($this->codePrice * .4);
         return $this->save();
-        // return $this->money;
-        // return $this->direct;
     }
 
     public function addIndirectInvite()
     {
         $this->indirect += 1;
         $this->money += ($this->codePrice * .02);
+        return $this->save();;
+    }
+
+    public function getMoneyFromCaptcha($rate = 0)
+    {
+        $this->money += $rate;
         return $this->save();
-        // return $this->money;
-        // return $this->indirect;
     }
 }

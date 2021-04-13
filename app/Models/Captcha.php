@@ -16,8 +16,15 @@ class Captcha extends Model
         'path',
     ];
 
+    private $captchaRate = 0.02;
+
     public static function getRandomCaptcha()
     {
         return self::inRandomOrder()->first();
+    }
+
+    public function getCaptchaRate()
+    {
+        return $this->captchaRate;
     }
 }
