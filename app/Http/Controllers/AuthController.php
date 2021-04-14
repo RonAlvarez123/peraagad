@@ -21,8 +21,6 @@ class AuthController extends Controller
 
     public function show()
     {
-        // $account = Account::where('user_id', 3)->first();
-        // return $account->addDirectInvite();
         return view('auth.show');
     }
 
@@ -35,7 +33,9 @@ class AuthController extends Controller
         ])->first();
 
         if (!$validCode) {
-            return back()->withErrors(['account_code' => 'You have entered an invalid code.']);
+            return back()
+                ->withInput()
+                ->withErrors(['account_code' => 'You have entered an invalid code.']);
         }
         // --- END OF COMMENT HERE ---
 
@@ -100,9 +100,11 @@ class AuthController extends Controller
             return auth()->user()->account->role === 'admin' ? redirect()->intended(route('coderequest.index')) :
                 redirect()->intended(route('profile.index'));
         }
-        return redirect()->back()->withErrors([
-            'account_code' => 'Account Code or Password is Incorrect.',
-        ]);
+        return back()
+            ->withInput()
+            ->withErrors([
+                'account_code' => 'Account Code or Password is Incorrect.',
+            ]);
     }
 
     public function logout()

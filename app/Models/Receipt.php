@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,7 +17,7 @@ class Receipt extends Model
         'updated_at',
     ];
 
-    private static $receiptPartners = [
+    private static $partners = [
         'puregold',
         'ever',
         'ultramega',
@@ -29,7 +30,7 @@ class Receipt extends Model
         'bayad center',
     ];
 
-    private $receiptRate = 1;
+    private static $rate = 1;
 
     public function account()
     {
@@ -41,8 +42,22 @@ class Receipt extends Model
         return $this->belongsTo(User::class, 'user_id', 'user_id');
     }
 
-    public static function getReceiptPartners()
+    public static function getPartners()
     {
-        return self::$receiptPartners;
+        return self::$partners;
+    }
+
+    public static function getRate()
+    {
+        return self::$rate;
+    }
+
+    public function updateReceipt()
+    {
+        if ($this->updated_at != null && Carbon::parse($this->updated_at)->addMinutes(30) >= now()) {
+            return false;
+        }
+        $this->updated_at = now();
+        return $this->save();
     }
 }

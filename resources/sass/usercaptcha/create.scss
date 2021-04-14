@@ -8,6 +8,8 @@
 
 main {
     .content {
+        border-bottom: 2px solid gray;
+        padding-bottom: 40px;
 
         .contentContainer {
             max-width: 500px;
@@ -55,11 +57,9 @@ main {
     main {
 
         .content {
-            border-bottom: 2px solid gray;
             display: flex;
             font-size: 17px;
             justify-content: center;
-            margin-bottom: 40px;
         }
     }
 }

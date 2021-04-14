@@ -16,6 +16,8 @@ main {
     }
 
     .content {
+        border-bottom: 2px solid gray;
+        padding-bottom: 40px;
         text-align: center;
 
         .contentContainer {
@@ -56,7 +58,13 @@ main {
 
 @media (min-width: 576px) {
     main {
-        font-size: 17px;
+
+        content {
+            color: red;
+            font-size: 17px;
+            display: flex;
+            justify-content: center;
+        }
     }
 }
 
@@ -64,7 +72,6 @@ main {
 @media (min-width: 768px) {
     main {
         align-items: flex-start;
-        font-size: 19px;
 
         &>* {
             max-width: 700px;
@@ -72,7 +79,11 @@ main {
         }
 
         .content {
+            border-bottom: none;
+            font-size: 20px;
+            margin-bottom: 20px;
             width: 100%;
+
 
             .contentContainer {
                 max-width: 500px;

@@ -5,7 +5,7 @@
     "/css/profile/index.css": "/css/profile/index.css",
     "/css/auth/show.css": "/css/auth/show.css",
     "/css/auth/index.css": "/css/auth/index.css",
-    "/css/reciept/edit.css": "/css/reciept/edit.css",
+    "/css/receipt/edit.css": "/css/receipt/edit.css",
     "/css/usercaptcha/create.css": "/css/usercaptcha/create.css",
     "/css/admincaptcha/create.css": "/css/admincaptcha/create.css",
     "/css/getcode/index.css": "/css/getcode/index.css"

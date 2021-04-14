@@ -1,15 +1,15 @@
 @extends('layouts.layout')
 
 @section('customStyle')
-    <link rel="stylesheet" href="{{ asset('css/reciept/edit.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/receipt/edit.css') }}">
 @endsection
 
 @section('title')
-    <title>Upload Reciept</title>
+    <title>Upload Receipt</title>
 @endsection
 
 @section('contentContainer')
-    <form action="{{ route('reciept.update') }}" method="POST" class="contentContainer my-3 mx-auto" enctype="multipart/form-data">
+    <form action="{{ route('receipt.update') }}" method="POST" class="contentContainer my-3 mx-auto" enctype="multipart/form-data">
         @csrf
         @method('put')
         @if (session('status'))
@@ -25,7 +25,7 @@
                 @enderror
             </div>
         @endif
-        <h4>Upload Reciept</h4>
+        <h4>Upload Receipt</h4>
         <input class="form-control" type="file" id="formFile" required name="file">
         <select class="form-select" aria-label="Default select example" required name="partner">
             @foreach ($partners as $partner)

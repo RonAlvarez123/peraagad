@@ -40,7 +40,7 @@
                 <form action="{{ route('auth.login') }}" method="POST">
                     @csrf
                     <div class="inputContainer">
-                        <input type="text" name="account_code" placeholder="Enter Account Code" required>
+                        <input type="text" name="account_code" placeholder="Enter Account Code" required value="{{ old('account_code') }}">
                     </div>
                     <div class="inputContainer">
                         <input type="password" name="password" placeholder="Enter Password" required>
