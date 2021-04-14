@@ -9,11 +9,12 @@
 @endsection
 
 @section('contentContainer')
-    <form action="{{ route('usercaptcha.store') }}" method="POST" class="contentContainer">
+    <form action="{{ route('usercaptcha.update') }}" method="POST" class="contentContainer">
+        @csrf
+        @method('put')
         @error('value')
             <div class="alert alert-danger text-danger text-center">{{ $message }}</div>
         @enderror
-        @csrf
         <h4>Captcha</h4>
         @if ($captcha)
             <div class="captchaContainer">

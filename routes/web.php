@@ -42,8 +42,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/getcode/requestcode', [GetCodeController::class, 'create'])->name('getcode.create');
         Route::post('/getcode/requestcode', [GetCodeController::class, 'store'])->name('getcode.store');
 
-        Route::get('/waystoearn/captcha', [UserCaptchaController::class, 'create'])->name('usercaptcha.create');
-        Route::post('/waystoearn/captcha', [UserCaptchaController::class, 'store'])->name('usercaptcha.store');
+        Route::get('/waystoearn/captcha', [UserCaptchaController::class, 'edit'])->name('usercaptcha.edit');
+        Route::put('/waystoearn/captcha', [UserCaptchaController::class, 'update'])->name('usercaptcha.update');
 
         Route::get('/waystoearn/uploadreceipt', [ReceiptController::class, 'edit'])->name('receipt.edit');
         Route::put('/waystoearn/uploadreceipt', [ReceiptController::class, 'update'])->name('receipt.update');
