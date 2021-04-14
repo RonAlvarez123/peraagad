@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img class="navLogo" src="{{ asset('svg/navlogo.svg') }}" alt=""></a>
+        <a class="navbar-brand" href="{{ route('profile.index') }}"><img class="navLogo" src="{{ asset('svg/navlogo.svg') }}" alt=""></a>
         @if (Request::path() === 'register')
             <ul class="navbar-nav">
                 <p class="mb-1">Already a Member?</p>
@@ -34,7 +34,6 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
                                 <li><a class="dropdown-item {{ Route::currentRouteName() === 'admincaptcha.create' ? 'active' : '' }}" href="{{ route('admincaptcha.create') }}">CAPTCHA</a></li>
-                                <li><a class="dropdown-item" href="#">MATH SOLVER</a></li>
                                 <li><a class="dropdown-item" href="#">SPELLING BEE</a></li>
                             </ul>
                         </li>
@@ -69,8 +68,8 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
                                 <li><a class="dropdown-item {{ Route::currentRouteName() === 'receipt.edit' ? 'active' : '' }}" href="{{ route('receipt.edit') }}">UPLOAD RECEIPT</a></li>
                                 <li><a class="dropdown-item {{ Route::currentRouteName() === 'usercaptcha.edit' ? 'active' : '' }}" href="{{ route('usercaptcha.edit') }}">CAPTCHA</a></li>
-                                <li><a class="dropdown-item" href="#">MATH SOLVER</a></li>
-                                <li><a class="dropdown-item" href="#">ROULLETE</a></li>
+                                <li><a class="dropdown-item {{ Route::currentRouteName() === 'recipe.edit' ? 'active' : '' }}" href="{{ route('recipe.edit') }}">SHARE RECIPE</a></li>
+                                <li><a class="dropdown-item" href="#">SPELLING BEE</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">

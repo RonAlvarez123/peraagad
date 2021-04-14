@@ -6,6 +6,7 @@ use App\Http\Controllers\CodeRequestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GetCodeController;
 use App\Http\Controllers\ReceiptController;
+use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\UserCaptchaController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +48,9 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/waystoearn/uploadreceipt', [ReceiptController::class, 'edit'])->name('receipt.edit');
         Route::put('/waystoearn/uploadreceipt', [ReceiptController::class, 'update'])->name('receipt.update');
+
+        Route::get('/waystoearn/sharerecipe', [RecipeController::class, 'edit'])->name('recipe.edit');
+        Route::put('/waystoearn/sharerecipe', [RecipeController::class, 'update'])->name('recipe.update');
     });
 
 

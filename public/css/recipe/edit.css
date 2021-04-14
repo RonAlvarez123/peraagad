@@ -1,0 +1,318 @@
+.navbar.navbar-dark {
+  background-color: #0ab0ae;
+  box-shadow: 0 0 5px black;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.navbar.navbar-dark .navbar-brand {
+  padding: 0 0 0 10px;
+}
+.navbar.navbar-dark .navLogo {
+  height: 80px;
+}
+.navbar.navbar-dark .nav-item button.stand-alone {
+  background-color: #0ab0ae;
+  border: none;
+  color: white;
+}
+.navbar.navbar-dark .nav-link {
+  color: white;
+  font-weight: bold;
+}
+.navbar.navbar-dark .nav-link:hover {
+  color: #e6ddca;
+}
+.navbar.navbar-dark .nav-link:focus {
+  color: #f6c55c;
+}
+.navbar.navbar-dark .dropdown-menu .dropdown-item:hover {
+  background-color: #dcdcdc;
+  color: #a76406;
+}
+.navbar.navbar-dark .dropdown-menu .dropdown-item.active {
+  background-color: #0ab0ae;
+  color: white;
+}
+
+@media (min-width: 576px) {
+  .navbar.navbar-dark .navbar-brand {
+    padding: 0 0 0 20px;
+  }
+  .navbar.navbar-dark .navLogo {
+    height: 100px;
+  }
+}
+@media (min-width: 768px) {
+  .navbar.navbar-dark .navbar-collapse {
+    justify-content: flex-end;
+    padding: 0 20px 0 0;
+  }
+}
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+main section {
+  margin: 0px 0;
+}
+main .content {
+  margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+  main {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  main .content {
+    margin: 20px 40px;
+    width: 60%;
+  }
+}
+main .wallet {
+  margin-top: 15px;
+}
+main .wallet div .walletContainer {
+  align-items: center;
+  background-color: #eeeeee;
+  border-radius: 10px;
+  box-shadow: 0 0 5px gray;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 10px 30px 20px 30px;
+  max-width: 350px;
+}
+main .wallet div .walletContainer:nth-child(2) {
+  display: block;
+  margin-top: 10px;
+  padding: 0 20px;
+}
+main .wallet div .walletContainer:nth-child(2) p span {
+  color: #0ab0ae;
+  font-weight: bold;
+}
+main .wallet div .walletContainer:nth-child(2) p.text-danger {
+  font-size: 0.7em;
+  text-align: left;
+}
+main .wallet div .walletContainer > * {
+  text-align: center;
+  margin: 5px 0;
+}
+main .wallet div .walletContainer .dropdown {
+  margin: 10px 0;
+}
+main .wallet div .walletContainer .dropdown-toggle {
+  background-color: #0ab0ae;
+  border: 2px solid #0ab0ae;
+  box-shadow: 0 0 2px #155741;
+  color: white;
+  font-weight: bold;
+  padding: 5px 10px;
+  transition: background-color 250ms, color 250ms, transform 250ms;
+}
+main .wallet div .walletContainer .dropdown-toggle:hover, main .wallet div .walletContainer .dropdown-toggle:focus {
+  background-color: white;
+  color: #0ab0ae;
+  transform: scale(1.05);
+}
+main .wallet div .walletContainer .dropdown-menu {
+  background-color: white;
+}
+main .wallet div .walletContainer .dropdown-menu .dropdown-item {
+  color: #0ab0ae;
+}
+main .wallet div .walletContainer .dropdown-menu .dropdown-item:hover {
+  background-color: #0ab0ae;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  main .wallet > div {
+    position: sticky;
+    top: 130px;
+  }
+}
+@media (min-width: 768px) {
+  main .wallet {
+    width: 30%;
+  }
+}
+.custom-input-container {
+  box-shadow: 0 0 3px #8c8c8c;
+  width: 100%;
+  display: flex;
+}
+.custom-input-container > * {
+  padding: 5px 10px;
+}
+.custom-input-container .custom-input-label {
+  background-color: #eeeeee;
+  border-right: 1px solid #c7c7c7;
+  padding: 5px 10px;
+  width: 90px;
+}
+.custom-input-container .custom-input {
+  background-color: white;
+  flex: 1;
+}
+
+.extraDetails {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8em;
+}
+
+.buttonGreenContainer {
+  display: flex;
+  justify-content: center;
+  width: 60%;
+}
+.buttonGreenContainer .buttonGreen {
+  background-color: #0ab0ae;
+  border: 2px solid #0ab0ae;
+  border-radius: 50px;
+  box-shadow: 0 0 2px #888888;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 5px 20px;
+  width: 100%;
+  transition: background-color 250ms, color 250ms, transform 250ms;
+}
+.buttonGreenContainer .buttonGreen:hover {
+  background-color: white;
+  color: #0ab0ae;
+  transform: scale(1.05);
+}
+
+.linkGreenContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.linkGreenContainer .linkGreen {
+  background-color: #07807e;
+  border: 1px solid white;
+  box-shadow: 0 0 4px #1f1f1f;
+  color: white;
+  font-weight: bold;
+  margin: 15px 0;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  width: 50%;
+  transition: background-color 250ms, color 250ms;
+}
+.linkGreenContainer .linkGreen:hover {
+  background-color: #0e293f;
+  color: white;
+}
+
+.normalLink {
+  transition: color 250ms;
+}
+
+.normalLink:hover {
+  color: #187b8d;
+}
+
+.socialMedia {
+  display: flex;
+  justify-content: center;
+}
+.socialMedia a {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  margin: 0 20px;
+  transition: transform 250ms;
+}
+.socialMedia a:hover {
+  transform: scale(1.15);
+}
+.socialMedia img {
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .buttonGreenContainer {
+    width: 60%;
+  }
+}
+main {
+  align-items: center;
+  font-size: 15px;
+}
+main > * {
+  max-width: 500px;
+  width: 100%;
+}
+main .content {
+  border-bottom: 2px solid gray;
+  padding-bottom: 40px;
+  text-align: center;
+}
+main .content .contentContainer > * {
+  text-align: center;
+  margin-bottom: 10px;
+}
+main .content .contentContainer h4 {
+  font-size: 1.5em;
+}
+main .content .contentContainer input {
+  font-size: 0.8em;
+}
+main .content .contentContainer button {
+  background-color: white;
+  border: 2px solid #0ab0ae;
+  border-radius: 5px;
+  box-shadow: 0 0 3px #021f1f;
+  color: #0ab0ae;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 5px 10px;
+  transition: background-color 250ms, color 250ms;
+}
+main .content .contentContainer button:hover {
+  background-color: #0ab0ae;
+  color: white;
+}
+
+@media (min-width: 576px) {
+  main content {
+    color: red;
+    font-size: 17px;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (min-width: 768px) {
+  main {
+    align-items: flex-start;
+  }
+  main > * {
+    max-width: 700px;
+    width: 100%;
+  }
+  main .content {
+    border-bottom: none;
+    font-size: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  main .content .contentContainer {
+    max-width: 500px;
+  }
+  main .content .contentContainer button {
+    padding: 8px 20px;
+  }
+}

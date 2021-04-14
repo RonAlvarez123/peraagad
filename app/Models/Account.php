@@ -55,6 +55,11 @@ class Account extends Model
         return $this->hasOne(Receipt::class, 'user_id', 'user_id');
     }
 
+    public function recipe()
+    {
+        return $this->hasOne(Recipe::class, 'user_id', 'user_id');
+    }
+
     public function getSignUpBonus()
     {
         $this->money += $this->signUpBonus;
@@ -87,6 +92,11 @@ class Account extends Model
     }
 
     public function getMoneyFromReceipt($rate = 0)
+    {
+        return $this->getMoney($rate);
+    }
+
+    public function getMoneyFromRecipe($rate = 0)
     {
         return $this->getMoney($rate);
     }

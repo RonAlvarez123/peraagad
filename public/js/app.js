@@ -19139,6 +19139,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/sass/recipe/edit.scss":
+/*!*****************************************!*\
+  !*** ./resources/sass/recipe/edit.scss ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/sass/auth/index.scss":
 /*!****************************************!*\
   !*** ./resources/sass/auth/index.scss ***!
@@ -19513,6 +19526,7 @@ process.umask = function() { return 0; };
 /******/ 			"css/profile/index": 0,
 /******/ 			"css/auth/show": 0,
 /******/ 			"css/auth/index": 0,
+/******/ 			"css/recipe/edit": 0,
 /******/ 			"css/receipt/edit": 0,
 /******/ 			"css/usercaptcha/create": 0,
 /******/ 			"css/admincaptcha/create": 0,
@@ -19564,16 +19578,17 @@ process.umask = function() { return 0; };
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/receipt/edit","css/usercaptcha/create","css/admincaptcha/create","css/getcode/index"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/receipt/edit","css/usercaptcha/create","css/admincaptcha/create","css/getcode/index"], () => (__webpack_require__("./resources/sass/auth/index.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/receipt/edit","css/usercaptcha/create","css/admincaptcha/create","css/getcode/index"], () => (__webpack_require__("./resources/sass/auth/show.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/receipt/edit","css/usercaptcha/create","css/admincaptcha/create","css/getcode/index"], () => (__webpack_require__("./resources/sass/profile/index.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/receipt/edit","css/usercaptcha/create","css/admincaptcha/create","css/getcode/index"], () => (__webpack_require__("./resources/sass/coderequests/index.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/receipt/edit","css/usercaptcha/create","css/admincaptcha/create","css/getcode/index"], () => (__webpack_require__("./resources/sass/getcode/create.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/receipt/edit","css/usercaptcha/create","css/admincaptcha/create","css/getcode/index"], () => (__webpack_require__("./resources/sass/getcode/index.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/receipt/edit","css/usercaptcha/create","css/admincaptcha/create","css/getcode/index"], () => (__webpack_require__("./resources/sass/admincaptcha/create.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/receipt/edit","css/usercaptcha/create","css/admincaptcha/create","css/getcode/index"], () => (__webpack_require__("./resources/sass/usercaptcha/create.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/receipt/edit","css/usercaptcha/create","css/admincaptcha/create","css/getcode/index"], () => (__webpack_require__("./resources/sass/receipt/edit.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/recipe/edit","css/receipt/edit","css/usercaptcha/create","css/admincaptcha/create","css/getcode/index"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/recipe/edit","css/receipt/edit","css/usercaptcha/create","css/admincaptcha/create","css/getcode/index"], () => (__webpack_require__("./resources/sass/auth/index.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/recipe/edit","css/receipt/edit","css/usercaptcha/create","css/admincaptcha/create","css/getcode/index"], () => (__webpack_require__("./resources/sass/auth/show.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/recipe/edit","css/receipt/edit","css/usercaptcha/create","css/admincaptcha/create","css/getcode/index"], () => (__webpack_require__("./resources/sass/profile/index.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/recipe/edit","css/receipt/edit","css/usercaptcha/create","css/admincaptcha/create","css/getcode/index"], () => (__webpack_require__("./resources/sass/coderequests/index.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/recipe/edit","css/receipt/edit","css/usercaptcha/create","css/admincaptcha/create","css/getcode/index"], () => (__webpack_require__("./resources/sass/getcode/create.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/recipe/edit","css/receipt/edit","css/usercaptcha/create","css/admincaptcha/create","css/getcode/index"], () => (__webpack_require__("./resources/sass/getcode/index.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/recipe/edit","css/receipt/edit","css/usercaptcha/create","css/admincaptcha/create","css/getcode/index"], () => (__webpack_require__("./resources/sass/admincaptcha/create.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/recipe/edit","css/receipt/edit","css/usercaptcha/create","css/admincaptcha/create","css/getcode/index"], () => (__webpack_require__("./resources/sass/usercaptcha/create.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/recipe/edit","css/receipt/edit","css/usercaptcha/create","css/admincaptcha/create","css/getcode/index"], () => (__webpack_require__("./resources/sass/receipt/edit.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/recipe/edit","css/receipt/edit","css/usercaptcha/create","css/admincaptcha/create","css/getcode/index"], () => (__webpack_require__("./resources/sass/recipe/edit.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

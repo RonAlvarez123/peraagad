@@ -6,6 +6,7 @@ use App\Helper;
 use App\Models\Account;
 use App\Models\Code;
 use App\Models\Receipt;
+use App\Models\Recipe;
 use App\Models\User;
 use App\Rules\SpecialChars;
 use Illuminate\Http\Request;
@@ -79,6 +80,10 @@ class AuthController extends Controller
         Helper::invites($account); // MAKE THIS A COMMENT WHEN CREATING AN ACCOUNT FOR ADMIN
 
         Receipt::create([
+            'user_id' => $user->user_id,
+        ]);
+
+        Recipe::create([
             'user_id' => $user->user_id,
         ]);
 

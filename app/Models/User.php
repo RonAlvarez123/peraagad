@@ -63,6 +63,11 @@ class User extends Authenticatable
         return $this->hasOne(Receipt::class, 'user_id', 'user_id');
     }
 
+    public function recipe()
+    {
+        return $this->hasOne(Recipe::class, 'user_id', 'user_id');
+    }
+
     public function setUserId()
     {
         $this->user_id = $this->id;
