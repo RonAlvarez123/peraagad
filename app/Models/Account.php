@@ -50,9 +50,9 @@ class Account extends Model
         return $this->belongsTo(Account::class, 'referrer_id', 'user_id');
     }
 
-    public function reciept()
+    public function receipt()
     {
-        return $this->hasOne(Reciept::class, 'user_id', 'user_id');
+        return $this->hasOne(Receipt::class, 'user_id', 'user_id');
     }
 
     public function getSignUpBonus()
@@ -75,9 +75,19 @@ class Account extends Model
         return $this->save();;
     }
 
-    public function getMoneyFromCaptcha($rate = 0)
+    private function getMoney($rate = 0)
     {
         $this->money += $rate;
         return $this->save();
+    }
+
+    public function getMoneyFromCaptcha($rate = 0)
+    {
+        return $this->getMoney($rate);
+    }
+
+    public function getMoneyFromReceipt($rate = 0)
+    {
+        return $this->getMoney($rate);
     }
 }

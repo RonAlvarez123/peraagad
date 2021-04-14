@@ -58,9 +58,9 @@ class User extends Authenticatable
         return $this->hasMany(CodeRequest::class, 'user_id', 'user_id');
     }
 
-    public function reciept()
+    public function receipt()
     {
-        return $this->hasOne(Reciept::class, 'user_id', 'user_id');
+        return $this->hasOne(Receipt::class, 'user_id', 'user_id');
     }
 
     public function setUserId()
