@@ -37,6 +37,7 @@ class Helper
             $account = $account->getReferrerAccount;
             if ($i === 1) {
                 $account->addDirectInvite();
+                $account->colorGame->setMultiplier($account->direct);
             } else {
                 $account->addIndirectInvite();
             }

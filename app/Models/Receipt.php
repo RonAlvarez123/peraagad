@@ -71,10 +71,14 @@ class Receipt extends Model
 
     public function getRemainingTime()
     {
-        $result = Carbon::now()->diffInRealMinutes(Carbon::parse($this->updated_at)->addHours(8)) / 60;
+        $result = Carbon::now()->diffInRealMinutes(Carbon::parse($this->updated_at)->addHours(8)->addSeconds(2)) / 60;
         $time = explode('.', $result);
         $hours = $time[0];
-        $minutes = substr($time[1], 0, 2);
+        $minutes = 0;
+        if (array_key_exists('1', $time)) {
+            $minutes = (substr($time[1], 0, 2) * .01) * 60;
+            $minutes = (int)round($minutes);
+        }
         return "{$hours} hours and {$minutes} minutes";
     }
 }

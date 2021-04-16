@@ -66,6 +66,11 @@ class Account extends Model
         return $this->hasOne(UserCaptcha::class, 'user_id', 'user_id');
     }
 
+    public function colorGame()
+    {
+        return $this->hasOne(ColorGame::class, 'user_id', 'user_id');
+    }
+
     public function getSignUpBonus()
     {
         $this->money += $this->signUpBonus;

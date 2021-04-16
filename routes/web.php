@@ -3,10 +3,10 @@
 use App\Http\Controllers\AdminCaptchaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CodeRequestController;
+use App\Http\Controllers\ColorGameController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GetCodeController;
 use App\Http\Controllers\ReceiptController;
-use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\UserCaptchaController;
 use Illuminate\Support\Facades\Route;
 
@@ -50,8 +50,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/waystoearn/uploadreceipt', [ReceiptController::class, 'edit'])->name('receipt.edit');
         Route::put('/waystoearn/uploadreceipt', [ReceiptController::class, 'update'])->name('receipt.update');
 
-        Route::get('/waystoearn/sharerecipe', [RecipeController::class, 'edit'])->name('recipe.edit');
-        Route::put('/waystoearn/sharerecipe', [RecipeController::class, 'update'])->name('recipe.update');
+        Route::get('/waystoearn/colorgame', [ColorGameController::class, 'edit'])->name('colorgame.edit');
+        Route::put('/waystoearn/colorgame', [ColorGameController::class, 'update'])->name('colorgame.update');
     });
 
 

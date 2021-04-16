@@ -68,6 +68,11 @@ class User extends Authenticatable
         return $this->hasOne(UserCaptcha::class, 'user_id', 'user_id');
     }
 
+    public function colorGame()
+    {
+        return $this->hasOne(ColorGame::class, 'user_id', 'user_id');
+    }
+
     public function setUserId()
     {
         $this->user_id = $this->id;

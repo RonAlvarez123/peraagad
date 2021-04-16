@@ -16,7 +16,7 @@ class CreateUserCaptchasTable extends Migration
         Schema::create('user_captchas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->integer('number_of_captcha')->default(0);
+            $table->integer('number_of_captcha')->default(1);
             $table->timestamp('updated_at')->nullable()->default(null);
         });
     }

@@ -17,6 +17,7 @@ class CreateColorGamesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->integer('points')->default(0);
+            $table->string('multiplier')->default(1);
             $table->integer('number_of_times_played')->default(0);
             $table->timestamp('updated_at')->nullable()->default(null);
         });
