@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,8 +18,13 @@ class Account extends Model
         'role',
     ];
 
-    private int $codePrice = 500;
-    private int $signUpBonus = 400;
+    private int $directBonus = 50;
+    private int $indirectBonus = 5;
+    private int $signUpBonus = 200;
+    private $dailyBonus = [
+        'rate' => 5,
+        'limit' => 5,
+    ];
 
     public function user()
     {
@@ -55,9 +61,9 @@ class Account extends Model
         return $this->hasOne(Receipt::class, 'user_id', 'user_id');
     }
 
-    public function recipe()
+    public function userCaptcha()
     {
-        return $this->hasOne(Recipe::class, 'user_id', 'user_id');
+        return $this->hasOne(UserCaptcha::class, 'user_id', 'user_id');
     }
 
     public function getSignUpBonus()
@@ -69,35 +75,39 @@ class Account extends Model
     public function addDirectInvite()
     {
         $this->direct += 1;
-        $this->money += ($this->codePrice * .4);
+        $this->money += $this->directBonus;
         return $this->save();
     }
 
     public function addIndirectInvite()
     {
         $this->indirect += 1;
-        $this->money += ($this->codePrice * .02);
+        $this->money += $this->indirectBonus;
         return $this->save();;
     }
 
-    private function getMoney($rate = 0)
+    public function getMoney($rate = 0)
     {
         $this->money += $rate;
         return $this->save();
     }
 
-    public function getMoneyFromCaptcha($rate = 0)
+    public function isBonusClaimable()
     {
-        return $this->getMoney($rate);
+        if ($this->bonus_claimed_at != null && ($this->number_of_bonus_claimed >= $this->dailyBonus['limit'] || Carbon::parse($this->bonus_claimed_at)->addSeconds(15) >= now())) {
+            return false;
+        }
+        return true;
     }
 
-    public function getMoneyFromReceipt($rate = 0)
+    public function getDailyBonus()
     {
-        return $this->getMoney($rate);
-    }
-
-    public function getMoneyFromRecipe($rate = 0)
-    {
-        return $this->getMoney($rate);
+        if ($this->isBonusClaimable()) {
+            $this->number_of_bonus_claimed += 1;
+            $this->bonus_claimed_at = now();
+            $this->money += $this->dailyBonus['rate'];
+            return $this->save();
+        }
+        return false;
     }
 }

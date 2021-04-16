@@ -7,13 +7,18 @@
 
 main {
     .content {
+        .alert {
+            box-shadow: 0 0 3px gray;;
+        }
+
         .contentContainer {
-            font-size: 1em;
-            border: 1px solid gray;
+            background-color: rgb(247, 247, 247);
             border-radius: 3px;
+            box-shadow: 0 0 3px gray;
+            font-size: 1em;
 
             &>* {
-                border-bottom: 1px solid gray;
+                border-bottom: 1px solid rgb(204, 204, 204);
             }
 
             h4 {

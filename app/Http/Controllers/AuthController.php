@@ -6,8 +6,8 @@ use App\Helper;
 use App\Models\Account;
 use App\Models\Code;
 use App\Models\Receipt;
-use App\Models\Recipe;
 use App\Models\User;
+use App\Models\UserCaptcha;
 use App\Rules\SpecialChars;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -83,7 +83,7 @@ class AuthController extends Controller
             'user_id' => $user->user_id,
         ]);
 
-        Recipe::create([
+        UserCaptcha::create([
             'user_id' => $user->user_id,
         ]);
 

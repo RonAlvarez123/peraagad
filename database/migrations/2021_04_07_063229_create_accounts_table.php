@@ -22,6 +22,8 @@ class CreateAccountsTable extends Migration
             $table->bigInteger('direct')->default(0);
             $table->bigInteger('indirect')->default(0);
             $table->string('role')->default('user');
+            $table->integer('number_of_bonus_claimed')->default(0);
+            $table->timestamp('bonus_claimed_at')->nullable()->default(null);
         });
     }
 

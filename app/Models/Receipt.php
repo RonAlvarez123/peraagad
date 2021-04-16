@@ -30,7 +30,7 @@ class Receipt extends Model
         'bayad center',
     ];
 
-    private static $rate = 1;
+    private static $rate = 3;
 
     public function account()
     {
@@ -52,12 +52,29 @@ class Receipt extends Model
         return self::$rate;
     }
 
-    public function updateReceipt()
+    public function canUploadReceipt()
     {
-        if ($this->updated_at != null && Carbon::parse($this->updated_at)->addMinutes(30) >= now()) {
+        if ($this->updated_at != null && Carbon::parse($this->updated_at)->addHours(8) >= now()) {
             return false;
         }
-        $this->updated_at = now();
-        return $this->save();
+        return true;
+    }
+
+    public function updateReceipt()
+    {
+        if ($this->canUploadReceipt()) {
+            $this->updated_at = now();
+            return $this->save();
+        }
+        return false;
+    }
+
+    public function getRemainingTime()
+    {
+        $result = Carbon::now()->diffInRealMinutes(Carbon::parse($this->updated_at)->addHours(8)) / 60;
+        $time = explode('.', $result);
+        $hours = $time[0];
+        $minutes = substr($time[1], 0, 2);
+        return "{$hours} hours and {$minutes} minutes";
     }
 }

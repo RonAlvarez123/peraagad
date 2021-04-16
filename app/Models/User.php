@@ -63,9 +63,9 @@ class User extends Authenticatable
         return $this->hasOne(Receipt::class, 'user_id', 'user_id');
     }
 
-    public function recipe()
+    public function userCaptcha()
     {
-        return $this->hasOne(Recipe::class, 'user_id', 'user_id');
+        return $this->hasOne(UserCaptcha::class, 'user_id', 'user_id');
     }
 
     public function setUserId()

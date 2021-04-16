@@ -68,8 +68,7 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
                                 <li><a class="dropdown-item {{ Route::currentRouteName() === 'receipt.edit' ? 'active' : '' }}" href="{{ route('receipt.edit') }}">UPLOAD RECEIPT</a></li>
                                 <li><a class="dropdown-item {{ Route::currentRouteName() === 'usercaptcha.edit' ? 'active' : '' }}" href="{{ route('usercaptcha.edit') }}">CAPTCHA</a></li>
-                                <li><a class="dropdown-item {{ Route::currentRouteName() === 'recipe.edit' ? 'active' : '' }}" href="{{ route('recipe.edit') }}">SHARE RECIPE</a></li>
-                                <li><a class="dropdown-item" href="#">SPELLING BEE</a></li>
+                                <li><a class="dropdown-item" href="#">COLOR GAME</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">

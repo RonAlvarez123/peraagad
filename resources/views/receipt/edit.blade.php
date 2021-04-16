@@ -25,13 +25,19 @@
                 @enderror
             </div>
         @endif
+
         <h4>Upload Receipt</h4>
-        <input class="form-control" type="file" id="formFile" required name="file">
-        <select class="form-select" aria-label="Default select example" required name="partner">
-            @foreach ($partners as $partner)
-                <option value="{{ $partner }}">{{ ucwords($partner) }}</option>
-            @endforeach
-        </select>
-        <button type="submit">SUBMIT</button>
+
+        @if ($receipt->canUploadReceipt())
+            <input class="form-control" type="file" id="formFile" required name="file">
+            <select class="form-select" aria-label="Default select example" required name="partner">
+                @foreach ($partners as $partner)
+                    <option value="{{ $partner }}">{{ ucwords($partner) }}</option>
+                @endforeach
+            </select>
+            <button type="submit">SUBMIT</button>
+        @else
+            <div class="alert alert-secondary text-secondary mb-5">You already uploaded. Please wait the reciept interval time for {{ $receipt->getRemainingTime() }} to upload again.</div>
+        @endif
     </form>
 @endsection

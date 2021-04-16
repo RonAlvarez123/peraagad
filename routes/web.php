@@ -38,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
     */
     Route::middleware(['role.user'])->group(function () {
         Route::get('/myaccount/profile', [ProfileController::class, 'index'])->name('profile.index');
+        Route::post('/myaccount/profile', [ProfileController::class, 'bonus'])->name('profile.bonus');
 
         Route::get('/getcode/myvalidcodes', [GetCodeController::class, 'index'])->name('getcode.index');
         Route::get('/getcode/requestcode', [GetCodeController::class, 'create'])->name('getcode.create');
