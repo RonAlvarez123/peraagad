@@ -43,7 +43,6 @@
                 to be updated on our latest promos <br>
                 and exciting news!
             </p>
-            <p class="text-danger">*note</p>
         </div>
     </div>
 </section>

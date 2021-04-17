@@ -82,22 +82,22 @@ main .sectionContainer .content .colorsContainer button {
 main .sectionContainer .content .colorsContainer button:hover {
   transform: scale(1.1);
 }
-main .sectionContainer .content .colorsContainer button:nth-child(1) {
+main .sectionContainer .content .colorsContainer button:nth-child(3) {
   background-color: #e95151;
 }
-main .sectionContainer .content .colorsContainer button:nth-child(2) {
+main .sectionContainer .content .colorsContainer button:nth-child(4) {
   background-color: orange;
 }
-main .sectionContainer .content .colorsContainer button:nth-child(3) {
+main .sectionContainer .content .colorsContainer button:nth-child(5) {
   background-color: yellow;
 }
-main .sectionContainer .content .colorsContainer button:nth-child(4) {
+main .sectionContainer .content .colorsContainer button:nth-child(6) {
   background-color: #3fe03f;
 }
-main .sectionContainer .content .colorsContainer button:nth-child(5) {
+main .sectionContainer .content .colorsContainer button:nth-child(7) {
   background-color: #7581ee;
 }
-main .sectionContainer .content .colorsContainer button:nth-child(6) {
+main .sectionContainer .content .colorsContainer button:nth-child(8) {
   background-color: #d275ee;
 }
 main .sectionContainer .stats {

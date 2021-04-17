@@ -51,6 +51,7 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/waystoearn/uploadreceipt', [ReceiptController::class, 'update'])->name('receipt.update');
 
         Route::get('/waystoearn/colorgame', [ColorGameController::class, 'edit'])->name('colorgame.edit');
+        Route::post('/waystoearn/colorgame', [ColorGameController::class, 'claim'])->name('colorgame.claim');
         Route::put('/waystoearn/colorgame', [ColorGameController::class, 'update'])->name('colorgame.update');
     });
 

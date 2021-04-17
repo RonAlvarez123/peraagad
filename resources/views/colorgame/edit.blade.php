@@ -20,18 +20,29 @@
     <main>
         <div class="sectionContainer">
             <section class="content">
+                @if (session('status'))
+                    <div class="alert alert-info text-success text-center" role="alert">{{ session('status') }}</div>
+                @endif
+                @error('reward')
+                    <div class="alert alert-danger text-danger text-center" role="alert">{{ $message }}</div>
+                @enderror
                 <h4>Color Game</h4>
-                <h6>Pick a color to win points.</h6>
-                <form action="{{ route('colorgame.update') }}" method="POST" class="colorsContainer">
-                    @csrf
-                    @method('put')
-                    <button type="submit"></button>
-                    <button type="submit"></button>
-                    <button type="submit"></button>
-                    <button type="submit"></button>
-                    <button type="submit"></button>
-                    <button type="submit"></button>
-                </form>
+                @if ($account->colorGame->canPlay())
+                    <h6>Pick a color to win points.</h6>
+                    <form action="{{ route('colorgame.update') }}" method="POST" class="colorsContainer">
+                        @csrf
+                        @method('put')
+                        <button type="submit"></button>
+                        <button type="submit"></button>
+                        <button type="submit"></button>
+                        <button type="submit"></button>
+                        <button type="submit"></button>
+                        <button type="submit"></button>
+                    </form>
+                @else
+                    <div class="alert alert-secondary text-secondary text-center" role="alert">You already played. Please come back after {{ $account->colorGame->getRemainingTime() }} to play again.</div>
+                    <div><a href="{{ route('colorgame.edit') }}" class="btn btn-secondary mx-auto">Refresh</a></div>
+                @endif
             </section>
             <section class="stats">
                 <p>Total Points: <span>{{ number_format($account->colorGame->points) }}</span></p>
@@ -45,7 +56,8 @@
                         <div class="col-4 col-sm-4">PHP</div>
                     </div>
                     @foreach ($rewards as $reward)
-                        <form action="" method="POST" class="row dataContainer">
+                        <form action="{{ route('colorgame.claim') }}" method="POST" class="row dataContainer">
+                            @csrf
                             <div class="col-4 col-sm-4">{{ number_format($reward['points']) }}</div>
                             <div class="col-4 col-sm-4">{{ number_format($reward['money']) }}</div>
                             <input type="hidden" name="reward" value="{{ $reward['id'] }}">

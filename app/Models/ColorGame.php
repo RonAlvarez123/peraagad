@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -39,6 +40,15 @@ class ColorGame extends Model
         ],
     ];
 
+    private $peak = 10;
+
+    private $rate = [
+        'min' => 40,
+        'max' => 100
+    ];
+
+    private $playResult = '';
+
     public function account()
     {
         return $this->belongsTo(Account::class, 'user_id', 'user_id');
@@ -54,6 +64,16 @@ class ColorGame extends Model
         return self::$rewards;
     }
 
+    public static function getRewardIds()
+    {
+        $rewardIds = [];
+        $rewards = self::getRewards();
+        foreach ($rewards as $reward) {
+            $rewardIds[] = $reward['id'];
+        }
+        return $rewardIds;
+    }
+
     public function setMultiplier($directInvites)
     {
         if ($directInvites >= 1 && $directInvites <= 4) {
@@ -64,5 +84,70 @@ class ColorGame extends Model
             $this->multiplier = '3';
         }
         return $this->save();
+    }
+
+    public function getValidTime()
+    {
+        return Carbon::parse($this->updated_at)->addHours(8);
+    }
+
+    public function canPlay()
+    {
+        if ($this->updated_at != null && $this->getValidTime() >= now()) {
+            return false;
+        }
+        return true;
+    }
+
+    public function play()
+    {
+        if ($this->canPlay()) {
+            $recieved = 0;
+            $multiplier = 0;
+            $rate = 0;
+            $this->number_of_times_played += 1;
+
+            if ($this->number_of_times_played % $this->peak === 0) {
+                $multiplier = $this->multiplier;
+                $rate = $this->rate['max'];
+                $recieved = $this->rate['max'] * $this->multiplier;
+            } else {
+                $multiplier = $this->multiplier;
+                $rate = $this->rate['min'];
+                $recieved = $this->rate['min'] * $this->multiplier;
+            }
+            $this->points += $recieved;
+            $this->updated_at = now();
+            $result = $this->save();
+            if ($result) {
+                $this->playResult = "You recieved {$rate} points times {$multiplier} total of {$recieved}";
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function getPlayResult()
+    {
+        return $this->playResult;
+    }
+
+    public function reducePoints($value)
+    {
+        $this->points -= $value;
+        return $this->save();
+    }
+
+    public function getRemainingTime()
+    {
+        $result = Carbon::now()->diffInRealMinutes($this->getValidTime()) / 60;
+        $time = explode('.', $result);
+        $hours = $time[0];
+        $minutes = 0;
+        if (array_key_exists('1', $time)) {
+            $minutes = (substr($time[1], 0, 2) * .01) * 60;
+            $minutes = (int)round($minutes);
+        }
+        return "{$hours} hours and {$minutes} minutes";
     }
 }
