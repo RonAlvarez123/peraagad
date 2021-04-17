@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Account;
 use App\Models\CodeRequest;
+use App\Rules\SpecialChars;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class GetCodeController extends Controller
 {
@@ -31,7 +33,13 @@ class GetCodeController extends Controller
     {
         request()->validate([
             'number_of_codes' => ['required', 'gte:1', 'lte:9'],
+            'password' => ['required', new SpecialChars]
         ]);
+
+        if (!Hash::check(request()->input('password'), auth()->user()->password)) {
+            return redirect()->route('getcode.create')
+                ->withErrors(['password' => 'Incorrect Password']);
+        }
 
         CodeRequest::create([
             'user_id' => auth()->user()->user_id,

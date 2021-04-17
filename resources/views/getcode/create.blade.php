@@ -9,23 +9,35 @@
 @endsection
 
 @section('contentContainer')
+    @if (session('status'))
+        <div class="alert alert-success text-success text-center mx-auto">{{ session('status') }}</div>
+    @endif
     <form action="{{ route('getcode.store') }}" method="POST" class="contentContainer">
         @csrf
-        @if (session()->has('status'))
-            <div class="alert alert-success text-success">{{ session('status') }}</div>
-        @endif
-        @error('number_of_codes')
-            <div class="alert alert-danger text-danger">{{ $message }}</div>
-        @enderror
         <h4>Request Account Codes</h4>
-        <h5>HOW MANY ACCOUNT CODES WOULD YOU LIKE TO BUY?</h5>
-        <div>
-            <label>Enter Desired No. of Codes</label>
-            <input type="number" name="number_of_codes" class="form-control" min="0" max="9" required>
-            <p>1 - 9</p>
+        <h6>How many account codes would you like to buy?</h6>
+        <div class="mb-3">
+            <label class="form-label">Number of Codes: <span>(1 - 9)</span></label>
+            <input type="number" class="form-control {{ $errors->has('number_of_codes') ? 'border-danger' : '' }}" min="0" max="9" required name="number_of_codes">
+            @error('number_of_codes')
+                <p class="text-danger">{{ $message }}</p>
+            @enderror
         </div>
-        <h5>TO PROCESS YOUR REQUEST <br>CLICK SUBMIT </h5>
-        <h5 class="text-danger">AND SEND THE PROOF OF YOUR PAYMENT <br>TO OUR FACEBOOK PAGE </h5>
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control {{ $errors->has('password') ? 'border-danger' : '' }}" required name="password">
+            @error('password')
+                <p class="text-danger">{{ $message }}</p>
+            @else
+                <article>
+                    Please type your password to confirm that it is you who is performing the code request.
+                </article>
+            @enderror
+        </div>
+        <p class="instructions">
+            Click Submit to process your request <br>
+            <span class="text-danger">and send the proof of your payment to our Facebook Page.</span>
+        </p>
         <div class="buttonGreenContainer">
             <button type="submit" class="btn btn-primary buttonGreen">SUBMIT</button>
         </div>
