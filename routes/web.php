@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminCaptchaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CodeRequestController;
@@ -37,6 +38,8 @@ Route::middleware(['auth'])->group(function () {
     |-------------------------------------------------
     */
     Route::middleware(['role.user'])->group(function () {
+        Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+
         Route::get('/myaccount/profile', [ProfileController::class, 'index'])->name('profile.index');
         Route::post('/myaccount/profile', [ProfileController::class, 'bonus'])->name('profile.bonus');
 

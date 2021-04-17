@@ -23,9 +23,9 @@
                     <li><a class="dropdown-item" href="cashout.html">BANK TRANSFER</a></li>
                 </ul>
             </div>
-            <!-- ------------------ -->
+
             <h6>LOCAL DATE: <br>
-                {{ \Carbon\Carbon::today()->toDateString() }}</h6>
+                {{ today()->toDateString() }}</h6>
             <h5>YOUR POOL MEMBERS</h5>
             <div class="custom-input-container">
                 <div class="custom-input-label">DIRECT</div>
@@ -36,7 +36,7 @@
                 <div class="custom-input">{{ $account->indirect }}</div>
             </div>
         </div>
-        <div class="walletContainer">
+        <div class="walletContainer py-2">
             <h4 class="text-danger">ANNOUNCEMENT!!!</h4>
             <p>Join our Facebook Group <br>
                 <span>PERA AGAD OFFICIAL MEMBERS GROUP</span> <br>

@@ -40,6 +40,13 @@ class ColorGame extends Model
         ],
     ];
 
+    /*
+    *-------------------------
+    * MAKE THE RATE HALF, WHEN NUMBER OF TIMES PLAYED REACHES FULL RATE LIMIT 
+    *-------------------------
+    */
+    private $fullRateLimit = 90;
+
     private $peak = 10;
 
     private $rate = [
@@ -88,7 +95,7 @@ class ColorGame extends Model
 
     public function getValidTime()
     {
-        return Carbon::parse($this->updated_at)->addHours(8);
+        return Carbon::parse($this->updated_at)->addMinute(2);
     }
 
     public function canPlay()
@@ -107,20 +114,25 @@ class ColorGame extends Model
             $rate = 0;
             $this->number_of_times_played += 1;
 
+            if ($this->number_of_times_played > $this->fullRateLimit) {
+                $this->rate['max'] /= 2;
+                $this->rate['min'] /= 2;
+            }
+
             if ($this->number_of_times_played % $this->peak === 0) {
                 $multiplier = $this->multiplier;
                 $rate = $this->rate['max'];
-                $recieved = $this->rate['max'] * $this->multiplier;
+                $recieved = $rate * $multiplier;
             } else {
                 $multiplier = $this->multiplier;
                 $rate = $this->rate['min'];
-                $recieved = $this->rate['min'] * $this->multiplier;
+                $recieved = $rate * $multiplier;
             }
             $this->points += $recieved;
             $this->updated_at = now();
             $result = $this->save();
             if ($result) {
-                $this->playResult = "You recieved {$rate} points times {$multiplier} total of {$recieved}";
+                $this->playResult = "You recieved {$rate} points times {$multiplier} total of {$recieved} points.";
                 return true;
             }
         }

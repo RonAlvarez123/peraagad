@@ -24,4 +24,5 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/admincaptcha/create.scss', 'public/css/admincaptcha', [])
     .sass('resources/sass/usercaptcha/create.scss', 'public/css/usercaptcha', [])
     .sass('resources/sass/receipt/edit.scss', 'public/css/receipt', [])
-    .sass('resources/sass/colorgame/edit.scss', 'public/css/colorgame', []);
+    .sass('resources/sass/colorgame/edit.scss', 'public/css/colorgame', [])
+    .sass('resources/sass/about/index.scss', 'public/css/about', []);

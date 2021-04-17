@@ -29,16 +29,16 @@ class AuthController extends Controller
     public function store()
     {
         // --- WHEN CREATING AN ACCOUNT FOR AN ADMIN, CONVERT ALL CODES INTO COMMENTS FROM HERE ---
-        $validCode = Code::where([
-            'account_code' => request()->input('account_code'),
-            'used' => false
-        ])->first();
+        // $validCode = Code::where([
+        //     'account_code' => request()->input('account_code'),
+        //     'used' => false
+        // ])->first();
 
-        if (!$validCode) {
-            return back()
-                ->withInput()
-                ->withErrors(['account_code' => 'You have entered an invalid code.']);
-        }
+        // if (!$validCode) {
+        //     return back()
+        //         ->withInput()
+        //         ->withErrors(['account_code' => 'You have entered an invalid code.']);
+        // }
         // --- END OF COMMENT HERE ---
 
         request()->validate([
@@ -54,7 +54,7 @@ class AuthController extends Controller
             // 'role' => ['required', 'in:user,moderator,admin'], // UNCOMMENT WHEN CREATING AN ACCOUNT FOR ADMIN
         ]);
 
-        $validCode->setToUsed();
+        // $validCode->setToUsed();
 
         $user = User::create([
             'firstname' => request()->input('firstname'),
@@ -71,9 +71,9 @@ class AuthController extends Controller
 
         $account = Account::create([
             'user_id' => $user->user_id,
-            'referrer_id' => $validCode->user_id, // MAKE THIS A COMMENT WHEN CREATING AN ACCOUNT FOR ADMIN
+            // 'referrer_id' => $validCode->user_id, // MAKE THIS A COMMENT WHEN CREATING AN ACCOUNT FOR ADMIN
 
-            // 'referrer_id' => null, // UNCOMMENT WHEN CREATING AN ACCOUNT FOR ADMIN
+            'referrer_id' => null, // UNCOMMENT WHEN CREATING AN ACCOUNT FOR ADMIN
             // 'role' => request()->input('role'), // UNCOMMENT WHEN CREATING AN ACCOUNT FOR ADMIN
         ]);
 

@@ -17,18 +17,25 @@ class Receipt extends Model
         'updated_at',
     ];
 
-    private static $partners = [
-        'puregold',
-        'ever',
-        'ultramega',
-        'sm supermarket',
-        'meralco',
-        'pldt',
-        'converge',
-        'primewater',
-        'nawasa',
-        'bayad center',
+    private static $categories = [
+        'grocery receipt',
+        'electric bill',
+        'water bill',
+        'internet bill',
+        'bus ticket',
+        'home appliances receipt',
+        'furniture receipt',
+        'bookstore receipt',
+        'fast food receipt',
+        'restaurant receipt',
+        'LRT ticket',
+        'MRT ticket',
+        'money remittance receipt',
+        'jewelry store receipt',
+        'clothes and accessories receipt',
     ];
+
+    private $fullRateLimit = 90;
 
     private static $rate = 3;
 
@@ -42,9 +49,9 @@ class Receipt extends Model
         return $this->belongsTo(User::class, 'user_id', 'user_id');
     }
 
-    public static function getPartners()
+    public static function getCategories()
     {
-        return self::$partners;
+        return self::$categories;
     }
 
     public static function getRate()
@@ -52,9 +59,14 @@ class Receipt extends Model
         return self::$rate;
     }
 
+    public function getValidTime()
+    {
+        return Carbon::parse($this->updated_at)->addMinute(2);
+    }
+
     public function canUploadReceipt()
     {
-        if ($this->updated_at != null && Carbon::parse($this->updated_at)->addHours(8) >= now()) {
+        if ($this->updated_at != null && $this->getValidTime() >= now()) {
             return false;
         }
         return true;
@@ -63,6 +75,9 @@ class Receipt extends Model
     public function updateReceipt()
     {
         if ($this->canUploadReceipt()) {
+            if ($this->number_of_times_uploaded > $this->fullRateLimit) {
+                self::$rate = 2;
+            }
             $this->updated_at = now();
             return $this->save();
         }
@@ -71,7 +86,7 @@ class Receipt extends Model
 
     public function getRemainingTime()
     {
-        $result = Carbon::now()->diffInRealMinutes(Carbon::parse($this->updated_at)->addHours(8)->addSeconds(2)) / 60;
+        $result = Carbon::now()->diffInRealMinutes($this->getValidTime()) / 60;
         $time = explode('.', $result);
         $hours = $time[0];
         $minutes = 0;

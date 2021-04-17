@@ -5,6 +5,7 @@
     "/css/profile/index.css": "/css/profile/index.css",
     "/css/auth/show.css": "/css/auth/show.css",
     "/css/auth/index.css": "/css/auth/index.css",
+    "/css/about/index.css": "/css/about/index.css",
     "/css/colorgame/edit.css": "/css/colorgame/edit.css",
     "/css/receipt/edit.css": "/css/receipt/edit.css",
     "/css/usercaptcha/create.css": "/css/usercaptcha/create.css",

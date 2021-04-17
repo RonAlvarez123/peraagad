@@ -15,9 +15,9 @@
         @if (session('status'))
             <div class="alert alert-success text-success mb-5">{{ session('status') }}</div>
         @endif
-        @if($errors->has('partner') || $errors->has('file'))
+        @if($errors->has('category') || $errors->has('file'))
             <div class="alert alert-danger text-danger mb-5">
-                @error('partner')
+                @error('category')
                     {{ $message }}
                 @enderror
                 @error('file')
@@ -30,9 +30,9 @@
 
         @if ($receipt->canUploadReceipt())
             <input class="form-control" type="file" id="formFile" required name="file">
-            <select class="form-select" aria-label="Default select example" required name="partner">
-                @foreach ($partners as $partner)
-                    <option value="{{ $partner }}">{{ ucwords($partner) }}</option>
+            <select class="form-select" aria-label="Default select example" required name="category">
+                @foreach ($categories as $category)
+                    <option value="{{ $category }}">{{ ucwords($category) }}</option>
                 @endforeach
             </select>
             <button type="submit">SUBMIT</button>

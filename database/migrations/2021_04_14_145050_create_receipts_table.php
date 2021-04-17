@@ -16,6 +16,7 @@ class CreateReceiptsTable extends Migration
         Schema::create('receipts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->bigInteger('number_of_times_uploaded')->default(0);
             $table->timestamp('updated_at')->nullable()->default(null);
         });
     }

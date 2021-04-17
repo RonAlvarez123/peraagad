@@ -82,7 +82,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">ABOUT</a>
+                            <a class="nav-link" aria-current="page" href="{{ route('about.index') }}">ABOUT</a>
                         </li>
                     @endif
                 </ul>

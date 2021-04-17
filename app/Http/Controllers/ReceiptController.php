@@ -12,7 +12,7 @@ class ReceiptController extends Controller
     public function edit()
     {
         $userId = auth()->user()->user_id;
-        return view('receipt.edit')->with('partners', Receipt::getPartners())
+        return view('receipt.edit')->with('categories', Receipt::getCategories())
             ->with('account', Account::select('user_id', 'money', 'direct', 'indirect', 'role')->where('user_id', $userId)->first())
             ->with('receipt', Receipt::select('user_id', 'updated_at')->where('user_id', $userId)->first());
     }
@@ -21,7 +21,7 @@ class ReceiptController extends Controller
     {
         request()->validate([
             'file' => ['required', 'mimetypes:image/jpeg,image/png', 'max:1024'],
-            'partner' => ['required', Rule::in(Receipt::getPartners())],
+            'category' => ['required', Rule::in(Receipt::getCategories())],
         ]);
 
         $account = Account::select('id', 'user_id', 'money')->where('user_id', auth()->user()->user_id)->first();
@@ -33,9 +33,9 @@ class ReceiptController extends Controller
                     ->with('status', 'Receipt upload successful.');
             }
             return redirect()->route('receipt.edit');
-            // ->withErrors(['partner' => 'You already uploaded. Please wait some time to upload again.']);
+            // ->withErrors(['category' => 'You already uploaded. Please wait some time to upload again.']);
         }
         return redirect()->route('receipt.edit')
-            ->withErrors(['partner' => 'Receipt upload failed.']);
+            ->withErrors(['category' => 'Receipt upload failed.']);
     }
 }
