@@ -10,7 +10,7 @@
     "/css/about/index.css": "/css/about/index.css",
     "/css/colorgame/edit.css": "/css/colorgame/edit.css",
     "/css/receipt/edit.css": "/css/receipt/edit.css",
-    "/css/usercaptcha/create.css": "/css/usercaptcha/create.css",
+    "/css/usercaptcha/edit.css": "/css/usercaptcha/edit.css",
     "/css/admincaptcha/create.css": "/css/admincaptcha/create.css",
     "/css/getcode/index.css": "/css/getcode/index.css"
 }

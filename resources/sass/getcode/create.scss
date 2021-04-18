@@ -3,7 +3,7 @@
 @import "../layout";
 @import "../wallet";
 @import "../custom-input";
-@import "../loginUtilities";
+@import "../submit";
 
 main {
     gap: 50px;
@@ -47,7 +47,7 @@ main {
 
             article {
                 font-size: .7em;
-                text-align: center;
+                text-align: left;
             }
 
             div {
@@ -58,7 +58,7 @@ main {
                 }
 
                 label {
-                    color: rgb(83, 83, 83);
+                    color: #5c5c5c;
                     font-weight: bold;
                 }
 
@@ -70,6 +70,10 @@ main {
             .instructions {
                 margin-top: 30px;
                 margin-bottom: 20px;
+            }
+
+            .error-message {
+                text-align: left;
             }
         }
     }

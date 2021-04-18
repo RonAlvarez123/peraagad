@@ -96,7 +96,7 @@ main {
     
         .rewards {
             background-color: rgb(241, 241, 241);
-            box-shadow: 0 0 5px gray;
+            box-shadow: 0 0 3px gray;
             margin: 20px auto 0 auto;
             max-width: 500px;
             padding: 20px 0 10px 0;
@@ -141,11 +141,11 @@ main {
 
 @media (min-width: 576px) {
     main {
-        font-size: 17px;
 
         .sectionContainer {
 
             .content {
+                font-size: 17px;
 
                 .colorsContainer {
                     gap: 20px;
@@ -168,16 +168,21 @@ main {
 
 @media (min-width: 768px) {
     main {
-        font-size: 20px;
 
         .sectionContainer {
             max-width: 700px;
 
             .content {
+                font-size: 20px;
 
                 .colorsContainer {
                     grid-template-columns: 1fr 1fr 1fr;
                 }
+            }
+
+            .alert, .btn-secondary {
+                margin: 0 auto;
+                max-width: 600px;
             }
         }
     }

@@ -34,12 +34,10 @@
 main {
 
     .content {
-        // border: 1px solid red;
         display: flex;
         justify-content: center;
 
         .contentContainer {
-            // border: 1px solid gray;
             margin-bottom: 20px;
             padding: 10px;
 
@@ -133,7 +131,7 @@ main {
             width: 100%;
 
             .contentContainer {
-                // border: 1px solid rgb(165, 165, 165);
+                background-color: rgb(241, 241, 241);
                 box-shadow: 0 0 3px gray;
                 padding: 40px;
                 width: 700px;

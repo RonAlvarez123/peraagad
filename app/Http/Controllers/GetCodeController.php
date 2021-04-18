@@ -41,7 +41,8 @@ class GetCodeController extends Controller
 
         if (!Hash::check(request()->input('password'), auth()->user()->password)) {
             return redirect()->route('getcode.create')
-                ->withErrors(['password' => 'Incorrect Password']);
+                ->withErrors(['password' => 'Incorrect Password'])
+                ->withInput();
         }
 
         CodeRequest::create([

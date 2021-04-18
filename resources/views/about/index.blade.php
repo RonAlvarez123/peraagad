@@ -32,7 +32,7 @@
                 through bills and receipts.
             </p>
             <p>
-                Our team is made up of smart and talented people that are passionate about creating astonishining
+                Our team is made up of smart and talented people that are passionate about creating astonishing
                 results in assisting businesses achieve their marketing goals.
             </p>
         </section>

@@ -173,11 +173,20 @@ main {
     }
 }
 
+@media (min-width: 576px) {
+    main {
+
+        .content {
+            font-size: 17px;
+        }
+    }
+}
+
 @media (min-width: 768px) {
     main {
 
         .content {
-            font-size: 20px;
+            font-size: 19px;
 
             .contentContainer {
 

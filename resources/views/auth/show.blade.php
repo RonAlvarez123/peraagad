@@ -92,7 +92,7 @@
             <label class="form-label">Confirm Password</label>
             <input type="password" class="form-control" name="password_confirmation">
         </div>
-        <h6 class="disclaimer">
+        <h6 class="disclaimer my-4">
             By Creating an Account, you agree to our policies. <br>
             You may recieve SMS Notifications from us and can opt out any time.
         </h6>

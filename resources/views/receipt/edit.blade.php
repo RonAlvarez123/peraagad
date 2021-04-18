@@ -11,7 +11,7 @@
 
 @section('contentContainer')
     @if (session('status'))
-        <div class="alert alert-success text-success text-center mb-3">{{ session('status') }}</div>
+        <h6 class="alert alert-info text-secondary text-center mb-3">{{ session('status') }}</h6>
     @endif
 
     <form action="{{ route('receipt.update') }}" method="POST" enctype="multipart/form-data" class="contentContainer mt-5">
@@ -22,7 +22,7 @@
             <div class="file-upload-container">
                 <input type="file" name="file">
                 <div class="file-upload">
-                    <p>NO FILE SELECTED</p>
+                    <p class="{{ $errors->has('file') ? 'border-danger text-danger' : '' }}">NO FILE SELECTED</p>
                     <button type="button">CHOOSE FILE</button>
                 </div>
                 @error('file')
@@ -30,7 +30,7 @@
                 @enderror
             </div>
 
-            <div class="mb-3">
+            <div class="mb-3 select-container">
                 <label class="form-label">Category</label>
                 <select class="form-select" aria-label="Default select example" name="category" required>
                     @foreach ($categories as $category)
@@ -39,13 +39,20 @@
                 </select>
                 @error('category')
                     <p class="text-danger error-message">{{ $message }}</p>
+                @else
+                    <p class="instructions">
+                        Choose the corresponding category that applies to your receipt.
+                    </p>
                 @enderror
             </div>
-            <div class="buttonGreenContainer">
-                <button type="submit" class="btn btn-primary buttonGreen">UPLOAD</button>
+            <div class="mt-4">
+                <button type="submit" class="button-submit">SUBMIT</button>
             </div>
         @else
-            <div class="alert mb-5 already-uploaded">You already uploaded. Please wait the reciept interval time for {{ $receipt->getRemainingTime() }} to upload again.</div>
+            <h6 class="alert alert-secondary text-center text-secondary mb-5">You already uploaded. Please wait the reciept interval time for {{ $receipt->getRemainingTime() }} to upload again.</h6>
+            <div>
+                <a href="" class="btn btn-secondary text-light fw-bold col-12">RELOAD</a>
+            </div>
         @endif
        
     </form>

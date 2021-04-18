@@ -3,55 +3,64 @@
 @import "../layout";
 @import "../wallet";
 @import "../custom-input";
-@import "../fileupload";
 @import "../submit";
+@import "../unselectable";
+
 
 main {
-    gap: 50px;
 
     .content {
-
-        .alert {
-            margin: 0 auto;
-            max-width: 400px;
-        }
 
         .contentContainer {
             background-color: rgb(241, 241, 241);
             box-shadow: 0 0 3px gray;
-            margin: 0 auto;
             max-width: 400px;
+            margin: 0 auto;
             padding: 20px;
 
             & > * {
                 margin: 0 auto;
-                max-width: 400px;
             }
 
-            & > div {
-                margin-bottom: 20px;
+            .captcha-badge {
+                display: flex;
+                justify-content: flex-end;
+
+                span {
+                    transform: translate(20%, -50%);
+                }
             }
 
-            h4 {
+            h4  {
                 font-size: 1.5em;
-                margin-bottom: 40px;
                 text-align: center;
             }
 
-            label, .instructions {
-                color: #5c5c5c;
-                font-size: .8em;
-                font-weight: bold;
-            }
-
-            input, p {
+            p, label, input {
                 font-size: .8em;
             }
 
-            .select-container {
+            .captcha {
+                max-width: 200px;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            .valueContainer {
+                
+                label, p {
+                    color: #5c5c5c;
+                    font-weight: bold;
+                }
 
                 p {
-                    font-size: 13px;
+                    font-size: .7em;
+                }
+
+                .error-message {
+                    font-weight: normal;
                 }
             }
         }
@@ -59,8 +68,9 @@ main {
 }
 
 @media (min-width: 576px) {
+
     main {
-        
+
         .content {
             font-size: 17px;
         }
@@ -68,17 +78,14 @@ main {
 }
 
 @media (min-width: 768px) {
+
     main {
 
         .content {
             font-size: 19px;
-            
-            .alert {
-                max-width: 500px;
-            }
 
             .contentContainer {
-                max-width: 500px;
+                margin-top: 50px;
                 padding: 40px;
             }
         }

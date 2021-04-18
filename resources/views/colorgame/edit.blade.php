@@ -21,14 +21,14 @@
         <div class="sectionContainer">
             <section class="content">
                 @if (session('status'))
-                    <div class="alert alert-info text-success text-center" role="alert">{{ session('status') }}</div>
+                    <h6 class="alert alert-info text-secondary text-center my-3">{{ session('status') }}</h6>
                 @endif
                 @error('reward')
-                    <div class="alert alert-danger text-danger text-center" role="alert">{{ $message }}</div>
+                    <h6 class="alert alert-danger text-danger text-center my-3" role="alert">{{ $message }}</h6>
                 @enderror
                 <h4>Color Game</h4>
                 @if ($account->colorGame->canPlay())
-                    <h6>Pick a color to win points.</h6>
+                    <h6 class="fw-bold text-secondary">Pick a color to win points.</h6>
                     <form action="{{ route('colorgame.update') }}" method="POST" class="colorsContainer">
                         @csrf
                         @method('put')
@@ -40,8 +40,10 @@
                         <button type="submit"></button>
                     </form>
                 @else
-                    <div class="alert alert-secondary text-secondary text-center" role="alert">You already played. Please come back after {{ $account->colorGame->getRemainingTime() }} to play again.</div>
-                    <div><a href="{{ route('colorgame.edit') }}" class="btn btn-secondary mx-auto">Refresh</a></div>
+                    <h6 class="alert alert-secondary text-secondary text-center my-3">You already played. Please come back after {{ $account->colorGame->getRemainingTime() }} to play again.</h6>
+                    <div>
+                        <a href="" class="btn btn-secondary text-light fw-bold col-12 my-3">RELOAD</a>
+                    </div>
                 @endif
             </section>
             <section class="stats">
@@ -58,10 +60,10 @@
                     @foreach ($rewards as $reward)
                         <form action="{{ route('colorgame.claim') }}" method="POST" class="row dataContainer">
                             @csrf
-                            <div class="col-4 col-sm-4">{{ number_format($reward['points']) }}</div>
-                            <div class="col-4 col-sm-4">{{ number_format($reward['money']) }}</div>
+                            <div class="col-4 col-sm-4 fw-bold text-secondary">{{ number_format($reward['points']) }}</div>
+                            <div class="col-4 col-sm-4 fw-bold text-secondary">{{ number_format($reward['money']) }}</div>
                             <input type="hidden" name="reward" value="{{ $reward['id'] }}">
-                            <div class="col-4 col-sm-4"><button class="btn btn-success {{ $reward['points'] > $account->colorGame->points ? 'disabled' : '' }}">Claim</button></div>
+                            <div class="col-4 col-sm-4"><button class="btn btn-success fw-bold {{ $reward['points'] > $account->colorGame->points ? 'disabled' : '' }}">Claim</button></div>
                         </form>
                     @endforeach
                 </div>

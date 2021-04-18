@@ -55,9 +55,9 @@ main {
                 }
             }
         
-            .rewards {
+            .codes {
                 background-color: rgb(241, 241, 241);
-                box-shadow: 0 0 5px gray;
+                box-shadow: 0 0 3px gray;
                 margin: 20px auto 0 auto;
                 max-width: 500px;
                 padding: 20px 0 10px 0;
@@ -155,16 +155,19 @@ main {
 
 @media (min-width: 576px) {
     main {
-        font-size: 17px;
+        
+        .content {
+            font-size: 17px;
+        }
     }
 }
 
 
 @media (min-width: 768px) {
     main {
-        font-size: 19px;
 
         .content {
+            font-size: 19px;
 
             .contentContainer {
                 max-width: 700px;

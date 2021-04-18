@@ -29,15 +29,15 @@
         </div>
 
         @if ($account->hasCodes())
-            <section class="rewards">
+            <section class="codes">
                 <h5>Your Codes</h5>
                 <div class="container tableContainer">
 
                 @foreach ($account->codes as $code)
                     <div class="row dataContainer">
-                        <div class="col-6 col-sm-6">{{ $code->account_code }}</div>
+                        <div class="col-6 col-sm-6 text-secondary fw-bold">{{ $code->account_code }}</div>
                         <div class="col-6 col-sm-6 tool-tip-container">
-                            <button class="btn btn-secondary">Copy</button>
+                            <button class="btn btn-secondary fw-bold">Copy</button>
                             <p class="tool-tip-text">Copied!</p>
                         </div>
                     </div>

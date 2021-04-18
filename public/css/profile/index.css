@@ -286,9 +286,14 @@ main .content .contentContainer .details p {
   margin: 0;
 }
 
+@media (min-width: 576px) {
+  main .content {
+    font-size: 17px;
+  }
+}
 @media (min-width: 768px) {
   main .content {
-    font-size: 20px;
+    font-size: 19px;
   }
   main .content .contentContainer .details {
     display: grid;

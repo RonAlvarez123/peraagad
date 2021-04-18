@@ -201,42 +201,42 @@ main .content .contentContainer .stats p span {
   box-shadow: 0 0 3px black;
   padding: 5px;
 }
-main .content .contentContainer .rewards {
+main .content .contentContainer .codes {
   background-color: #f1f1f1;
-  box-shadow: 0 0 5px gray;
+  box-shadow: 0 0 3px gray;
   margin: 20px auto 0 auto;
   max-width: 500px;
   padding: 20px 0 10px 0;
 }
-main .content .contentContainer .rewards > * {
+main .content .contentContainer .codes > * {
   text-align: center;
 }
-main .content .contentContainer .rewards h5 {
+main .content .contentContainer .codes h5 {
   font-size: 1.2em;
   margin-bottom: 20px;
 }
-main .content .contentContainer .rewards .tableContainer {
+main .content .contentContainer .codes .tableContainer {
   font-size: 0.8em;
   padding: 0 30px;
 }
-main .content .contentContainer .rewards .tableContainer > div {
+main .content .contentContainer .codes .tableContainer > div {
   padding: 10px 0;
 }
-main .content .contentContainer .rewards .tableContainer > div > div {
+main .content .contentContainer .codes .tableContainer > div > div {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-main .content .contentContainer .rewards .tableContainer .headerContainer {
+main .content .contentContainer .codes .tableContainer .headerContainer {
   font-weight: bold;
 }
-main .content .contentContainer .rewards .tableContainer .dataContainer {
+main .content .contentContainer .codes .tableContainer .dataContainer {
   border-bottom: 1px solid gray;
 }
-main .content .contentContainer .rewards .tableContainer .dataContainer:last-child {
+main .content .contentContainer .codes .tableContainer .dataContainer:last-child {
   border-bottom: none;
 }
-main .content .contentContainer .rewards .tableContainer .dataContainer .tool-tip-container .tool-tip-text {
+main .content .contentContainer .codes .tableContainer .dataContainer .tool-tip-container .tool-tip-text {
   background-color: #032e2d;
   border-radius: 5px;
   color: white;
@@ -248,7 +248,7 @@ main .content .contentContainer .rewards .tableContainer .dataContainer .tool-ti
   transform: translateY(-35px);
   visibility: hidden;
 }
-main .content .contentContainer .rewards .tableContainer .dataContainer .tool-tip-container .tool-tip-animate {
+main .content .contentContainer .codes .tableContainer .dataContainer .tool-tip-container .tool-tip-animate {
   -webkit-animation-name: tool-tip-animation;
           animation-name: tool-tip-animation;
   -webkit-animation-duration: 1000ms;
@@ -296,12 +296,12 @@ main .content .contentContainer .instructions {
 }
 
 @media (min-width: 576px) {
-  main {
+  main .content {
     font-size: 17px;
   }
 }
 @media (min-width: 768px) {
-  main {
+  main .content {
     font-size: 19px;
   }
   main .content .contentContainer {

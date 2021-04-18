@@ -37,9 +37,14 @@ class UserCaptcha extends Model
         return self::$rate;
     }
 
+    public function getValidTime()
+    {
+        return Carbon::parse($this->updated_at)->addSeconds(15);
+    }
+
     public function canUseCaptcha()
     {
-        if ($this->updated_at != null && Carbon::parse($this->updated_at)->addSeconds(15) >= now()) {
+        if ($this->updated_at != null && $this->getValidTime() >= now()) {
             return false;
         }
         return true;
@@ -63,5 +68,11 @@ class UserCaptcha extends Model
     {
         $this->updated_at = now();
         return $this->save();
+    }
+
+    public function getRemainingTime()
+    {
+        $seconds = Carbon::now()->diffInSeconds($this->getValidTime());
+        return "{$seconds} seconds";
     }
 }

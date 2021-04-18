@@ -12,12 +12,12 @@
     @if ($account->isBonusClaimable())
         <form action="{{ route('profile.bonus') }}" method="POST" class="alert alert-secondary d-flex align-items-center justify-content-between" role="alert">
             @csrf
-            <p class="m-0 fw-bold">You have a daily bonus!</p>
-            <button type="submit" class="btn btn-success">Claim Bonus</button>
+            <h6 class="m-0 text-secondary">You have a daily bonus!</h6>
+            <button type="submit" class="btn btn-success fw-bold">Claim Bonus</button>
         </form>
     @endif
     @if (session('status'))
-        <div class="alert alert-info text-center" role="alert">{{ session('status') }}</div>
+        <h6 class="alert alert-info text-secondary text-center mb-3">{{ session('status') }}</h6>
     @endif
     <div class="contentContainer">
         <div class="mainHeader">
