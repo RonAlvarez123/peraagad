@@ -36,6 +36,20 @@ class Account extends Model
         return $this->hasMany(Code::class, 'user_id', 'user_id');
     }
 
+    public function hasCodes()
+    {
+        if ($this->totalCodes() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public function totalCodes()
+    {
+        $codes = $this->codes;
+        return count($codes);
+    }
+
     public function timesRequestedForCode()
     {
         return $this->hasMany(CodeRequest::class, 'user_id', 'user_id');

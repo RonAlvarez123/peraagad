@@ -25,7 +25,7 @@
         </div>
         <div class="subHeader">
             <h5>Profile</h5>
-            <div class="text-danger">PLEASE PROVIDE THE CORRECT AND UPDATED INFORMATIONS BELOW</div>
+            <div class="text-danger">Please provide the correct and updated informations below</div>
         </div>
         <div class="details-grid name">
             <div class="firstname">FIRST NAME</div>

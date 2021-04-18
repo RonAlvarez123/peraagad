@@ -14,14 +14,17 @@ class GetCodeController extends Controller
     public function index()
     {
         // I should test the difference of -- $account->timesRequestedForCode()->count() VS $account->timesRequestedForCode->count() //
-        return view('getcode.index')->with('account', Account::select('user_id', 'money', 'level', 'direct', 'indirect', 'role')->where('user_id', auth()->user()->user_id)  // NEW
+        $account = Account::select('user_id', 'money', 'level', 'direct', 'indirect', 'role')->where('user_id', auth()->user()->user_id)  // NEW
             ->with([
                 'codes' => function ($query) {
                     $query->select('user_id', 'account_code')->where('used', false);
                 }
             ])
             ->withCount(['timesRequestedForCode', 'codes'])
-            ->first());
+            ->first();
+        // return $account->codes . $account->hasCodes();
+
+        return view('getcode.index')->with('account', $account);
     }
 
     public function create()

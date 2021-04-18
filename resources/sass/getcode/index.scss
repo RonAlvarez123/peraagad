@@ -5,37 +5,149 @@
 @import "../custom-input";
 
 main {
-
+    gap: 50px;
+ 
     .content {
-        // border: 1px solid red;
-
-        &>h6 {
-            font-size: .8em;
-            margin: 15px 0;
-        }
 
         .contentContainer {
-            // border: 1px solid green;
+            max-width: 400px;
+            margin: 0 auto;
 
-            &>* {
+            & > * {
                 text-align: center;
             }
-
+    
             h4 {
                 font-size: 1.5em;
             }
-
+    
             h6 {
-                color: gray;
-                font-size: .7em;
-                font-weight: lighter;
-                margin: 10px 0 20px 0;
+                font-size: .9em;
+                max-width: 500px;
             }
 
-            .list-group {
-                font-size: .7em;
+
+            .stats {
+                background-color: darken($primary-color, 10%);
+                box-shadow: 0 0 5px gray;
+                color: white;
+                display: flex;
+                justify-content: space-between;
                 margin: 0 auto;
-                max-width: 300px;
+                max-width: 500px;
+                padding: 15px;
+
+                &.stats-desktop {
+                    display: none;
+                }
+        
+                p {
+                    font-size: .8em;
+                    font-weight: bold;
+                    margin: 0;
+        
+                    span {
+                        background-color: darken($primary-color, 27%);
+                        border-radius: 5px;
+                        box-shadow: 0 0 3px black;
+                        padding: 5px;
+                    }
+                }
+            }
+        
+            .rewards {
+                background-color: rgb(241, 241, 241);
+                box-shadow: 0 0 5px gray;
+                margin: 20px auto 0 auto;
+                max-width: 500px;
+                padding: 20px 0 10px 0;
+        
+                & > * {
+                    text-align: center;
+                }
+         
+                h5 {
+                    font-size: 1.2em;
+                    margin-bottom: 20px;
+                }
+        
+                .tableContainer {
+                    font-size: .8em;
+                    padding: 0 30px;
+        
+                    & > div {
+                        padding: 10px 0;
+        
+                        & > div {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+                    }
+        
+                    .headerContainer {
+                        font-weight: bold;
+                    }
+        
+                    .dataContainer {
+                        border-bottom: 1px solid gray;
+        
+                        &:last-child {
+                            border-bottom: none;
+                        }
+
+                        .tool-tip-container {
+                            
+                            .tool-tip-text {
+                                background-color: darken($primary-color, 27%);
+                                border-radius: 5px;
+                                color: white;
+                                font-size: 13px;
+                                font-weight: bold;
+                                margin: 0;
+                                padding: 5px 8px;
+                                position: absolute;
+                                transform: translateY(-35px);
+                                visibility: hidden;
+                            }
+
+                            .tool-tip-animate {
+                                animation-name: tool-tip-animation;
+                                animation-duration: 1000ms;
+                            }
+
+                            @keyframes tool-tip-animation {
+                                0% {
+                                    visibility: unset;
+                                }
+
+                                30% {
+                                    opacity: 1;
+                                    transform: translateY(-35px);
+                                }
+
+                                100% {
+                                    transform: translateY(-45px);
+                                    opacity: 0;
+                                    visibility: hidden;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .instructions {
+                background-color: rgb(170, 22, 22);
+                border: 2px solid rgb(170, 22, 22);
+                border-radius: 0 0 5px 5px;
+                box-shadow: 0 2px 5px gray;
+                color: white;
+                font-size: .8em;
+                font-weight: bold;
+                max-width: 500px;
+                margin: 0 auto;
+                padding: 22px 10px;
             }
         }
     }
@@ -43,30 +155,31 @@ main {
 
 @media (min-width: 576px) {
     main {
-
-        .content {
-            font-size: 18px;
-        }
+        font-size: 17px;
     }
 }
 
+
 @media (min-width: 768px) {
     main {
+        font-size: 19px;
 
         .content {
-            font-size: 22px;
-
-            &>h6 {
-                margin: 0;
-            }
 
             .contentContainer {
-                min-height: 470px;
+                max-width: 700px;
 
-                .list-group {
-                    margin-top: 50px;
+                .stats {
+
+                    &.stats-mobile {
+                        display: none;
+                    }
+
+                    &.stats-desktop {
+                        display: flex;
+                    }
                 }
-            }
+            } 
         }
     }
 }
