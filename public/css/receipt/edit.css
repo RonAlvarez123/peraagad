@@ -248,71 +248,109 @@ main .wallet div .walletContainer .dropdown-menu .dropdown-item:hover {
     width: 60%;
   }
 }
-main {
-  align-items: center;
-  font-size: 15px;
+.file-upload-container .text-danger.error-message {
+  font-size: 13px;
 }
-main > * {
-  max-width: 500px;
-  width: 100%;
+.file-upload-container input {
+  display: none;
 }
-main .content {
-  border-bottom: 2px solid gray;
-  padding-bottom: 40px;
+.file-upload-container .file-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.file-upload-container .file-upload > * {
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 5px 15px;
   text-align: center;
+}
+.file-upload-container .file-upload p {
+  border: 2px dashed rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.5);
+  margin: 0;
+  min-width: 150px;
+}
+.file-upload-container .file-upload button {
+  background-color: #505053;
+  border: 2px solid #505053;
+  box-shadow: 0 0 2px gray;
+  color: white;
+  transition: background-color 250ms;
+}
+.file-upload-container .file-upload button:hover {
+  background-color: #373739;
+}
+
+@media (min-width: 576px) {
+  .file-upload-container {
+    font-size: 17px;
+  }
+  .file-upload-container .file-upload {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+}
+main {
+  gap: 50px;
+}
+main .content .alert {
+  margin: 0 auto;
+  max-width: 400px;
+}
+main .content .contentContainer {
+  background-color: #f1f1f1;
+  box-shadow: 0 0 5px gray;
+  margin: 0 auto;
+  max-width: 400px;
+  padding: 20px;
 }
 main .content .contentContainer > * {
-  text-align: center;
-  margin-bottom: 10px;
+  margin: 0 auto;
+  max-width: 400px;
+}
+main .content .contentContainer > div {
+  margin-bottom: 20px;
+}
+main .content .contentContainer .text-danger.error-message {
+  font-size: 13px;
 }
 main .content .contentContainer h4 {
   font-size: 1.5em;
+  margin-bottom: 40px;
+  text-align: center;
+}
+main .content .contentContainer label {
+  font-size: 0.8em;
+  font-weight: bold;
 }
 main .content .contentContainer input {
   font-size: 0.8em;
 }
-main .content .contentContainer button {
-  background-color: white;
-  border: 2px solid #0ab0ae;
-  border-radius: 5px;
-  box-shadow: 0 0 3px #021f1f;
-  color: #0ab0ae;
-  font-size: 1em;
-  font-weight: bold;
-  padding: 5px 10px;
-  transition: background-color 250ms, color 250ms;
+main .content .contentContainer .buttonGreenContainer {
+  margin: 40px auto 0 auto;
 }
-main .content .contentContainer button:hover {
-  background-color: #0ab0ae;
+main .content .contentContainer .already-uploaded {
+  background-color: #07807e;
   color: white;
+  text-align: center;
 }
 
 @media (min-width: 576px) {
-  main content {
-    color: red;
+  main {
     font-size: 17px;
-    display: flex;
-    justify-content: center;
   }
 }
 @media (min-width: 768px) {
   main {
-    align-items: flex-start;
+    font-size: 19px;
   }
-  main > * {
-    max-width: 700px;
-    width: 100%;
-  }
-  main .content {
-    border-bottom: none;
-    font-size: 20px;
-    margin-bottom: 20px;
-    width: 100%;
+  main .content .alert {
+    max-width: 500px;
   }
   main .content .contentContainer {
     max-width: 500px;
-  }
-  main .content .contentContainer button {
-    padding: 8px 20px;
+    padding: 40px;
   }
 }

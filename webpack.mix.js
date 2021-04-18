@@ -13,6 +13,7 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/getcode/copyToClipboard.js', 'public/js/getcode')
+    .js('resources/js/receipt/fileUpload.js', 'public/js/receipt')
     // .sass('resources/css/app.css', 'public/css', [
     //     //
     // ]);

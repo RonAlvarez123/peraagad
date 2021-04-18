@@ -4,93 +4,87 @@
 @import "../wallet";
 @import "../custom-input";
 @import "../loginUtilities";
-
+@import "../fileupload";
 
 main {
-    align-items: center;
-    font-size: 15px;
-
-    &>* {
-        max-width: 500px;
-        width: 100%;
-    }
+    gap: 50px;
 
     .content {
-        border-bottom: 2px solid gray;
-        padding-bottom: 40px;
-        text-align: center;
+
+        .alert {
+            margin: 0 auto;
+            max-width: 400px;
+        }
 
         .contentContainer {
+            background-color: rgb(241, 241, 241);
+            box-shadow: 0 0 5px gray;
+            margin: 0 auto;
+            max-width: 400px;
+            padding: 20px;
 
-            &>* {
-                text-align: center;
-                margin-bottom: 10px;
+            & > * {
+                margin: 0 auto;
+                max-width: 400px;
+            }
+
+            & > div {
+                margin-bottom: 20px;
+            }
+
+            .text-danger.error-message {
+                font-size: 13px;
             }
 
             h4 {
                 font-size: 1.5em;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+
+            label {
+                font-size: .8em;
+                font-weight: bold;
             }
 
             input {
                 font-size: .8em;
             }
 
-            button {
-                background-color: white;
-                border: 2px solid $primary-color;
-                border-radius: 5px;
-                box-shadow: 0 0 3px darken($primary-color, 30%);
-                color: $primary-color;
-                font-size: 1em;
-                font-weight: bold;
-                padding: 5px 10px;
-                transition: background-color 250ms, color 250ms;
+            .buttonGreenContainer {
+                margin: 40px auto 0 auto;
+            }
 
-
-                &:hover {
-                    background-color: $primary-color;
-                    color: white;
-                }
+            .already-uploaded {
+                background-color: darken($primary-color, 10%);
+                color: white;
+                text-align: center;
             }
         }
     }
 }
 
 @media (min-width: 576px) {
-    main {
 
-        content {
-            color: red;
-            font-size: 17px;
-            display: flex;
-            justify-content: center;
-        }
+    main {
+        font-size: 17px;
     }
 }
 
-
 @media (min-width: 768px) {
-    main {
-        align-items: flex-start;
 
-        &>* {
-            max-width: 700px;
-            width: 100%;
-        }
+    main {
+        font-size: 19px;
 
         .content {
-            border-bottom: none;
-            font-size: 20px;
-            margin-bottom: 20px;
-            width: 100%;
 
+            .alert {
+                max-width: 500px;
+            }
 
             .contentContainer {
                 max-width: 500px;
-                
-                button {
-                    padding: 8px 20px;
-                }
+                padding: 40px;
             }
         }
     }
