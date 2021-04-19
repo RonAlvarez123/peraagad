@@ -2,7 +2,7 @@
 @import "../nav";
 @import "../layout";
 @import "../wallet";
-@import "../custom-input";
+@import "../submit";
 
 main {
     gap: 50px;
@@ -26,16 +26,23 @@ main {
                 max-width: 500px;
             }
 
-
-            .stats {
-                background-color: darken($primary-color, 10%);
-                box-shadow: 0 0 5px gray;
-                color: white;
-                display: flex;
-                justify-content: space-between;
+            .headerContainer, .stats {
+                box-shadow: 0 0 3px gray;
                 margin: 0 auto;
                 max-width: 500px;
                 padding: 15px;
+            }
+
+            .headerContainer {
+                background-color: $light-color;
+                padding: 30px 15px 15px 15px;
+            }
+
+            .stats {
+                background-color: darken($primary-color, 10%);
+                color: white;
+                display: flex;
+                justify-content: space-between;
 
                 &.stats-desktop {
                     display: none;
@@ -56,7 +63,7 @@ main {
             }
         
             .codes {
-                background-color: rgb(241, 241, 241);
+                background-color: $light-color;
                 box-shadow: 0 0 3px gray;
                 margin: 20px auto 0 auto;
                 max-width: 500px;

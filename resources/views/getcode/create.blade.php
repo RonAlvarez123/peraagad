@@ -10,7 +10,7 @@
 
 @section('contentContainer')
     @if (session('status'))
-        <div class="alert alert-success text-success text-center mx-auto">{{ session('status') }}</div>
+        <h6 class="alert alert-info text-secondary text-center mx-auto">{{ session('status') }}</h6>
     @endif
     <form action="{{ route('getcode.store') }}" method="POST" class="contentContainer">
         @csrf

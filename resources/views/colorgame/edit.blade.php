@@ -42,7 +42,7 @@
                 @else
                     <h6 class="alert alert-secondary text-secondary text-center my-3">You already played. Please come back after {{ $account->colorGame->getRemainingTime() }} to play again.</h6>
                     <div>
-                        <a href="" class="btn btn-secondary text-light fw-bold col-12 my-3">RELOAD</a>
+                        <a href="" class="btn btn-secondary text-light fw-bold col-12 col-md-4 my-3">RELOAD PAGE</a>
                     </div>
                 @endif
             </section>

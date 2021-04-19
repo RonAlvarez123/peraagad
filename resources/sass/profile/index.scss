@@ -2,182 +2,99 @@
 @import "../nav";
 @import "../layout";
 @import "../wallet";
-@import "../custom-input";
+@import "../submit";
 
 
 main {
+
     .content {
+        
         .alert {
-            box-shadow: 0 0 3px gray;;
+            margin: 0 auto;
+            max-width: 400px;
         }
 
         .contentContainer {
-            background-color: rgb(247, 247, 247);
-            border-radius: 3px;
+            background-color: $light-color;
             box-shadow: 0 0 3px gray;
-            font-size: 1em;
+            margin: 0 auto;
+            max-width: 400px;
 
-            &>* {
-                border-bottom: 1px solid rgb(204, 204, 204);
-            }
+            .user-profile {
+                padding: 20px;
 
-            h4 {
-                font-size: 1.5em;
-            }
-
-            h5,
-            h6 {
-                color: gray;
-            }
-
-            h5 {
-                font-size: .9em;
-            }
-
-            h6 {
-                font-size: .7em;
-            }
-
-            &:last-child {
-                border-bottom: none;
-            }
-
-            .mainHeader {
-                padding: 10px;
-            }
-
-            .subHeader {
-                padding: 5px 20px;
-
-                &>* {
-                    margin: 0;
+                & > * {
+                    margin: 0 auto;
                 }
 
                 div {
-                    font-size: .6em;
-                }
-            }
+                    border-radius: 50%;
+                    box-shadow: 0 0 3px black;
+                    height: 150px;
+                    margin-top: 20px;
+                    width: 150px;
+                    overflow: hidden;
 
-            .details-grid {
-                display: grid;
-                padding: 10px 20px;
-
-                &>div {
-                    font-size: .65em;
-                    text-align: center;
-                }
-
-                h6,
-                p {
-                    align-items: center;
-                    display: flex;
+                    img {
+                        height: 100%;
+                        width: 100%;
+                    }
                 }
 
-                h6 {
-                    margin-bottom: 0;
-                }
-
-                p {
-                    font-size: .7em;
+                h4 {
+                    color: #3f3f3f;
+                    font-size: 1.2em;
                     font-weight: bold;
-                    justify-content: center;
-                    margin: 0;
+                    margin: 40px 0;
                     text-align: center;
                 }
             }
 
-            .details-grid.name {
-                grid-template-columns: repeat(4, 1fr);
-                grid-template-areas:
-                    ". firstname middlename lastname"
-                    "name first middle last";
+            .user-details {
 
-                .firstname {
-                    grid-area: firstname;
-                }
+                .accordion {
 
-                .middlename {
-                    grid-area: middlename;
-                }
+                    .accordion-item {
 
-                .lastname {
-                    grid-area: lastname;
-                }
+                        .accordion-header {
 
-                h6,
-                p {
-                    align-items: center;
-                    display: flex;
-                }
+                            .accordion-button {
+                                background-color: $light-color;
+                                color: #3f3f3f;
+                                font-weight: bold;
+                                z-index: 0;
 
-                h6 {
-                    grid-area: name;
-                }
+                                &:first-child {
+                                    border-top: 1px solid rgb(214, 214, 214);
+                                }
 
-                .first {
-                    grid-area: first;
-                }
+                                &.collapsed {
+                                    color: #3f3f3f;
+                                }
+                            }
+                        }
 
-                .middle {
-                    grid-area: middle;
-                }
+                        .accordion-collapse {
 
-                .last {
-                    grid-area: last;
-                }
-            }
+                            .accordion-body {
+                                background-color: $light-color;
 
-            .details-grid.address {
-                grid-template-columns: repeat(3, 1fr);
-                grid-template-areas:
-                    ". city province"
-                    "address c p";
+                                label {
+                                    color: rgb(133, 133, 133);
+                                    font-size: .7em;
+                                    font-weight: bold;
+                                }
 
-                .city {
-                    grid-area: city;
-                }
-
-                .province {
-                    grid-area: province;
-                }
-
-                h6 {
-                    grid-area: address;
-                }
-
-                .c {
-                    grid-area: c;
-                }
-
-                .p {
-                    grid-area: p;
+                                h6 {
+                                    color: #383838;
+                                    font-size: .9em;
+                                    font-weight: bold;
+                                }
+                            }
+                        }
+                    }
                 }
             }
-
-            .details {
-                display: flex;
-                justify-content: space-between;
-                padding: 10px 20px;
-
-                h6 {
-                    margin: 0;
-                }
-
-                p {
-                    font-size: .7em;
-                    font-weight: bold;
-                    margin: 0;
-                }
-            }
-        }
-    }
-}
-
-@media (min-width: 576px) {
-    main {
-
-        .content {
-            font-size: 17px;
         }
     }
 }
@@ -186,14 +103,13 @@ main {
     main {
 
         .content {
-            font-size: 19px;
+
+            .alert {
+                max-width: 600px;
+            }
 
             .contentContainer {
-
-                .details {
-                    display: grid;
-                    grid-template-columns: minmax(150px, 30%) 1fr;
-                }
+                max-width: 600px;
             }
         }
     }

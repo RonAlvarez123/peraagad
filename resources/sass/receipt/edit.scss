@@ -2,7 +2,6 @@
 @import "../nav";
 @import "../layout";
 @import "../wallet";
-@import "../custom-input";
 @import "../fileupload";
 @import "../submit";
 
@@ -17,7 +16,7 @@ main {
         }
 
         .contentContainer {
-            background-color: rgb(241, 241, 241);
+            background-color: $light-color;
             box-shadow: 0 0 3px gray;
             margin: 0 auto;
             max-width: 400px;
@@ -49,6 +48,12 @@ main {
             }
 
             .select-container {
+
+                select {
+                    color: #5c5c5c;
+                    font-size: .8em;
+                    font-weight: bold;
+                }
 
                 p {
                     font-size: 13px;

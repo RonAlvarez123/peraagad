@@ -49,9 +49,13 @@
     padding: 0 20px 0 0;
   }
 }
+body {
+  background-color: #f0f0f0;
+}
+
 main {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  margin-bottom: 20px;
   padding: 0 20px;
 }
 main section {
@@ -60,104 +64,130 @@ main section {
 main .content {
   margin-top: 20px;
 }
+main .content > .alert {
+  box-shadow: 0 0 3px gray;
+}
 
 @media (min-width: 768px) {
   main {
-    flex-direction: row;
-    justify-content: space-between;
+    gap: 20px;
+    grid-template-columns: 60% 40%;
+    justify-content: center;
   }
-  main .content {
-    margin: 20px 40px;
-    width: 60%;
+}
+@media (min-width: 1000px) {
+  main {
+    margin: 0 50px 20px 50px;
+  }
+}
+@media (min-width: 1000px) {
+  main {
+    margin: 0 100px 20px 100px;
   }
 }
 main .wallet {
-  margin-top: 15px;
+  margin-bottom: 20px;
 }
-main .wallet div .walletContainer {
-  align-items: center;
-  background-color: #eeeeee;
-  border-radius: 10px;
-  box-shadow: 0 0 5px gray;
+main .wallet .walletContainer, main .wallet .invites {
+  box-shadow: 0 0 3px gray;
+  margin: 20px auto 0 auto;
+  max-width: 400px;
+  padding: 20px;
+}
+main .wallet .walletContainer {
+  background-color: white;
+}
+main .wallet .walletContainer h6 {
+  color: #3f3f3f;
+  font-size: 1em;
+  font-weight: bold;
+}
+main .wallet .walletContainer label, main .wallet .walletContainer select, main .wallet .walletContainer p {
+  color: #3f3f3f;
+  font-weight: bold;
+}
+main .wallet .walletContainer .balance h6 {
+  color: #054f4f;
+  font-size: 1.5em;
+  margin: 0px;
+}
+main .wallet .walletContainer .balance h6 span {
+  color: #3f3f3f;
+  font-size: 0.6em;
+}
+main .wallet .walletContainer .balance label {
+  font-size: 0.6em;
+  transform: translateY(-50%);
+}
+main .wallet .walletContainer div label, main .wallet .walletContainer div select {
+  font-size: 0.8em;
+}
+main .wallet .walletContainer div label, main .wallet .walletContainer div select, main .wallet .walletContainer div p {
+  color: #5c5c5c;
+}
+main .wallet .walletContainer div p {
+  font-size: 0.6em;
+}
+main .wallet .invites {
+  background-color: white;
+  font-weight: bold;
+}
+main .wallet .invites .badge-container {
   display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  padding: 10px 30px 20px 30px;
-  max-width: 350px;
+  justify-content: flex-end;
 }
-main .wallet div .walletContainer:nth-child(2) {
-  display: block;
-  margin-top: 10px;
-  padding: 0 20px;
+main .wallet .invites h6 {
+  color: #3f3f3f;
+  font-size: 1em;
 }
-main .wallet div .walletContainer:nth-child(2) p span {
-  color: #0ab0ae;
-  font-weight: bold;
+main .wallet .invites .tableContainer {
+  background-color: #5c5c5c;
+  box-shadow: 0 0 3px #292929;
+  color: #f8f8f8;
 }
-main .wallet div .walletContainer:nth-child(2) p.text-danger {
-  font-size: 0.7em;
-  text-align: left;
+main .wallet .invites .tableContainer .dataContainer {
+  border-bottom: 1px solid white;
+  display: flex;
+  padding: 5px;
 }
-main .wallet div .walletContainer > * {
+main .wallet .invites .tableContainer .dataContainer:last-child {
+  border: none;
+}
+main .wallet .invites .tableContainer .dataContainer div {
+  flex-basis: 50%;
+  font-size: 0.8em;
   text-align: center;
-  margin: 5px 0;
-}
-main .wallet div .walletContainer .dropdown {
-  margin: 10px 0;
-}
-main .wallet div .walletContainer .dropdown-toggle {
-  background-color: #0ab0ae;
-  border: 2px solid #0ab0ae;
-  box-shadow: 0 0 2px #155741;
-  color: white;
-  font-weight: bold;
-  padding: 5px 10px;
-  transition: background-color 250ms, color 250ms, transform 250ms;
-}
-main .wallet div .walletContainer .dropdown-toggle:hover, main .wallet div .walletContainer .dropdown-toggle:focus {
-  background-color: white;
-  color: #0ab0ae;
-  transform: scale(1.05);
-}
-main .wallet div .walletContainer .dropdown-menu {
-  background-color: white;
-}
-main .wallet div .walletContainer .dropdown-menu .dropdown-item {
-  color: #0ab0ae;
-}
-main .wallet div .walletContainer .dropdown-menu .dropdown-item:hover {
-  background-color: #0ab0ae;
-  color: white;
 }
 
-@media (min-width: 768px) {
-  main .wallet > div {
-    position: sticky;
-    top: 130px;
+@media (min-width: 576px) {
+  main .wallet {
+    font-size: 17px;
+  }
+  main .wallet .walletContainer, main .wallet .invites {
+    padding: 30px;
   }
 }
 @media (min-width: 768px) {
   main .wallet {
-    width: 30%;
+    font-size: 19px;
+  }
+  main .wallet .invites .badge-container .badge {
+    transform: translate(20%, -50%);
   }
 }
-.custom-input-container {
-  box-shadow: 0 0 3px #8c8c8c;
+.button-submit {
+  background-color: #0ab0ae;
+  border: 2px solid #0ab0ae;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
   width: 100%;
-  display: flex;
+  transition: background-color 250ms, border 250ms;
 }
-.custom-input-container > * {
-  padding: 5px 10px;
-}
-.custom-input-container .custom-input-label {
-  background-color: #eeeeee;
-  border-right: 1px solid #c7c7c7;
-  padding: 5px 10px;
-  width: 90px;
-}
-.custom-input-container .custom-input {
-  background-color: white;
-  flex: 1;
+.button-submit:hover {
+  background-color: #07807e;
+  border: 2px solid #07807e;
 }
 
 main {
@@ -177,15 +207,21 @@ main .content .contentContainer h6 {
   font-size: 0.9em;
   max-width: 500px;
 }
-main .content .contentContainer .stats {
-  background-color: #07807e;
-  box-shadow: 0 0 5px gray;
-  color: white;
-  display: flex;
-  justify-content: space-between;
+main .content .contentContainer .headerContainer, main .content .contentContainer .stats {
+  box-shadow: 0 0 3px gray;
   margin: 0 auto;
   max-width: 500px;
   padding: 15px;
+}
+main .content .contentContainer .headerContainer {
+  background-color: white;
+  padding: 30px 15px 15px 15px;
+}
+main .content .contentContainer .stats {
+  background-color: #07807e;
+  color: white;
+  display: flex;
+  justify-content: space-between;
 }
 main .content .contentContainer .stats.stats-desktop {
   display: none;
@@ -202,7 +238,7 @@ main .content .contentContainer .stats p span {
   padding: 5px;
 }
 main .content .contentContainer .codes {
-  background-color: #f1f1f1;
+  background-color: white;
   box-shadow: 0 0 3px gray;
   margin: 20px auto 0 auto;
   max-width: 500px;

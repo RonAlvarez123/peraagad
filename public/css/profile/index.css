@@ -49,9 +49,13 @@
     padding: 0 20px 0 0;
   }
 }
+body {
+  background-color: #f0f0f0;
+}
+
 main {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  margin-bottom: 20px;
   padding: 0 20px;
 }
 main section {
@@ -60,243 +64,198 @@ main section {
 main .content {
   margin-top: 20px;
 }
+main .content > .alert {
+  box-shadow: 0 0 3px gray;
+}
 
 @media (min-width: 768px) {
   main {
-    flex-direction: row;
-    justify-content: space-between;
+    gap: 20px;
+    grid-template-columns: 60% 40%;
+    justify-content: center;
   }
-  main .content {
-    margin: 20px 40px;
-    width: 60%;
+}
+@media (min-width: 1000px) {
+  main {
+    margin: 0 50px 20px 50px;
+  }
+}
+@media (min-width: 1000px) {
+  main {
+    margin: 0 100px 20px 100px;
   }
 }
 main .wallet {
-  margin-top: 15px;
+  margin-bottom: 20px;
 }
-main .wallet div .walletContainer {
-  align-items: center;
-  background-color: #eeeeee;
-  border-radius: 10px;
-  box-shadow: 0 0 5px gray;
+main .wallet .walletContainer, main .wallet .invites {
+  box-shadow: 0 0 3px gray;
+  margin: 20px auto 0 auto;
+  max-width: 400px;
+  padding: 20px;
+}
+main .wallet .walletContainer {
+  background-color: white;
+}
+main .wallet .walletContainer h6 {
+  color: #3f3f3f;
+  font-size: 1em;
+  font-weight: bold;
+}
+main .wallet .walletContainer label, main .wallet .walletContainer select, main .wallet .walletContainer p {
+  color: #3f3f3f;
+  font-weight: bold;
+}
+main .wallet .walletContainer .balance h6 {
+  color: #054f4f;
+  font-size: 1.5em;
+  margin: 0px;
+}
+main .wallet .walletContainer .balance h6 span {
+  color: #3f3f3f;
+  font-size: 0.6em;
+}
+main .wallet .walletContainer .balance label {
+  font-size: 0.6em;
+  transform: translateY(-50%);
+}
+main .wallet .walletContainer div label, main .wallet .walletContainer div select {
+  font-size: 0.8em;
+}
+main .wallet .walletContainer div label, main .wallet .walletContainer div select, main .wallet .walletContainer div p {
+  color: #5c5c5c;
+}
+main .wallet .walletContainer div p {
+  font-size: 0.6em;
+}
+main .wallet .invites {
+  background-color: white;
+  font-weight: bold;
+}
+main .wallet .invites .badge-container {
   display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  padding: 10px 30px 20px 30px;
-  max-width: 350px;
+  justify-content: flex-end;
 }
-main .wallet div .walletContainer:nth-child(2) {
-  display: block;
-  margin-top: 10px;
-  padding: 0 20px;
+main .wallet .invites h6 {
+  color: #3f3f3f;
+  font-size: 1em;
 }
-main .wallet div .walletContainer:nth-child(2) p span {
-  color: #0ab0ae;
-  font-weight: bold;
+main .wallet .invites .tableContainer {
+  background-color: #5c5c5c;
+  box-shadow: 0 0 3px #292929;
+  color: #f8f8f8;
 }
-main .wallet div .walletContainer:nth-child(2) p.text-danger {
-  font-size: 0.7em;
-  text-align: left;
+main .wallet .invites .tableContainer .dataContainer {
+  border-bottom: 1px solid white;
+  display: flex;
+  padding: 5px;
 }
-main .wallet div .walletContainer > * {
+main .wallet .invites .tableContainer .dataContainer:last-child {
+  border: none;
+}
+main .wallet .invites .tableContainer .dataContainer div {
+  flex-basis: 50%;
+  font-size: 0.8em;
   text-align: center;
-  margin: 5px 0;
-}
-main .wallet div .walletContainer .dropdown {
-  margin: 10px 0;
-}
-main .wallet div .walletContainer .dropdown-toggle {
-  background-color: #0ab0ae;
-  border: 2px solid #0ab0ae;
-  box-shadow: 0 0 2px #155741;
-  color: white;
-  font-weight: bold;
-  padding: 5px 10px;
-  transition: background-color 250ms, color 250ms, transform 250ms;
-}
-main .wallet div .walletContainer .dropdown-toggle:hover, main .wallet div .walletContainer .dropdown-toggle:focus {
-  background-color: white;
-  color: #0ab0ae;
-  transform: scale(1.05);
-}
-main .wallet div .walletContainer .dropdown-menu {
-  background-color: white;
-}
-main .wallet div .walletContainer .dropdown-menu .dropdown-item {
-  color: #0ab0ae;
-}
-main .wallet div .walletContainer .dropdown-menu .dropdown-item:hover {
-  background-color: #0ab0ae;
-  color: white;
 }
 
-@media (min-width: 768px) {
-  main .wallet > div {
-    position: sticky;
-    top: 130px;
+@media (min-width: 576px) {
+  main .wallet {
+    font-size: 17px;
+  }
+  main .wallet .walletContainer, main .wallet .invites {
+    padding: 30px;
   }
 }
 @media (min-width: 768px) {
   main .wallet {
-    width: 30%;
+    font-size: 19px;
+  }
+  main .wallet .invites .badge-container .badge {
+    transform: translate(20%, -50%);
   }
 }
-.custom-input-container {
-  box-shadow: 0 0 3px #8c8c8c;
+.button-submit {
+  background-color: #0ab0ae;
+  border: 2px solid #0ab0ae;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
   width: 100%;
-  display: flex;
+  transition: background-color 250ms, border 250ms;
 }
-.custom-input-container > * {
-  padding: 5px 10px;
-}
-.custom-input-container .custom-input-label {
-  background-color: #eeeeee;
-  border-right: 1px solid #c7c7c7;
-  padding: 5px 10px;
-  width: 90px;
-}
-.custom-input-container .custom-input {
-  background-color: white;
-  flex: 1;
+.button-submit:hover {
+  background-color: #07807e;
+  border: 2px solid #07807e;
 }
 
 main .content .alert {
-  box-shadow: 0 0 3px gray;
+  margin: 0 auto;
+  max-width: 400px;
 }
 main .content .contentContainer {
-  background-color: #f7f7f7;
-  border-radius: 3px;
+  background-color: white;
   box-shadow: 0 0 3px gray;
-  font-size: 1em;
+  margin: 0 auto;
+  max-width: 400px;
 }
-main .content .contentContainer > * {
-  border-bottom: 1px solid #cccccc;
+main .content .contentContainer .user-profile {
+  padding: 20px;
 }
-main .content .contentContainer h4 {
-  font-size: 1.5em;
+main .content .contentContainer .user-profile > * {
+  margin: 0 auto;
 }
-main .content .contentContainer h5,
-main .content .contentContainer h6 {
-  color: gray;
+main .content .contentContainer .user-profile div {
+  border-radius: 50%;
+  box-shadow: 0 0 3px black;
+  height: 150px;
+  margin-top: 20px;
+  width: 150px;
+  overflow: hidden;
 }
-main .content .contentContainer h5 {
+main .content .contentContainer .user-profile div img {
+  height: 100%;
+  width: 100%;
+}
+main .content .contentContainer .user-profile h4 {
+  color: #3f3f3f;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 40px 0;
+  text-align: center;
+}
+main .content .contentContainer .user-details .accordion .accordion-item .accordion-header .accordion-button {
+  background-color: white;
+  color: #3f3f3f;
+  font-weight: bold;
+  z-index: 0;
+}
+main .content .contentContainer .user-details .accordion .accordion-item .accordion-header .accordion-button:first-child {
+  border-top: 1px solid #d6d6d6;
+}
+main .content .contentContainer .user-details .accordion .accordion-item .accordion-header .accordion-button.collapsed {
+  color: #3f3f3f;
+}
+main .content .contentContainer .user-details .accordion .accordion-item .accordion-collapse .accordion-body {
+  background-color: white;
+}
+main .content .contentContainer .user-details .accordion .accordion-item .accordion-collapse .accordion-body label {
+  color: #858585;
+  font-size: 0.7em;
+  font-weight: bold;
+}
+main .content .contentContainer .user-details .accordion .accordion-item .accordion-collapse .accordion-body h6 {
+  color: #383838;
   font-size: 0.9em;
-}
-main .content .contentContainer h6 {
-  font-size: 0.7em;
-}
-main .content .contentContainer:last-child {
-  border-bottom: none;
-}
-main .content .contentContainer .mainHeader {
-  padding: 10px;
-}
-main .content .contentContainer .subHeader {
-  padding: 5px 20px;
-}
-main .content .contentContainer .subHeader > * {
-  margin: 0;
-}
-main .content .contentContainer .subHeader div {
-  font-size: 0.6em;
-}
-main .content .contentContainer .details-grid {
-  display: grid;
-  padding: 10px 20px;
-}
-main .content .contentContainer .details-grid > div {
-  font-size: 0.65em;
-  text-align: center;
-}
-main .content .contentContainer .details-grid h6,
-main .content .contentContainer .details-grid p {
-  align-items: center;
-  display: flex;
-}
-main .content .contentContainer .details-grid h6 {
-  margin-bottom: 0;
-}
-main .content .contentContainer .details-grid p {
-  font-size: 0.7em;
   font-weight: bold;
-  justify-content: center;
-  margin: 0;
-  text-align: center;
-}
-main .content .contentContainer .details-grid.name {
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-areas: ". firstname middlename lastname" "name first middle last";
-}
-main .content .contentContainer .details-grid.name .firstname {
-  grid-area: firstname;
-}
-main .content .contentContainer .details-grid.name .middlename {
-  grid-area: middlename;
-}
-main .content .contentContainer .details-grid.name .lastname {
-  grid-area: lastname;
-}
-main .content .contentContainer .details-grid.name h6,
-main .content .contentContainer .details-grid.name p {
-  align-items: center;
-  display: flex;
-}
-main .content .contentContainer .details-grid.name h6 {
-  grid-area: name;
-}
-main .content .contentContainer .details-grid.name .first {
-  grid-area: first;
-}
-main .content .contentContainer .details-grid.name .middle {
-  grid-area: middle;
-}
-main .content .contentContainer .details-grid.name .last {
-  grid-area: last;
-}
-main .content .contentContainer .details-grid.address {
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-areas: ". city province" "address c p";
-}
-main .content .contentContainer .details-grid.address .city {
-  grid-area: city;
-}
-main .content .contentContainer .details-grid.address .province {
-  grid-area: province;
-}
-main .content .contentContainer .details-grid.address h6 {
-  grid-area: address;
-}
-main .content .contentContainer .details-grid.address .c {
-  grid-area: c;
-}
-main .content .contentContainer .details-grid.address .p {
-  grid-area: p;
-}
-main .content .contentContainer .details {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 20px;
-}
-main .content .contentContainer .details h6 {
-  margin: 0;
-}
-main .content .contentContainer .details p {
-  font-size: 0.7em;
-  font-weight: bold;
-  margin: 0;
 }
 
-@media (min-width: 576px) {
-  main .content {
-    font-size: 17px;
-  }
-}
 @media (min-width: 768px) {
-  main .content {
-    font-size: 19px;
+  main .content .alert {
+    max-width: 600px;
   }
-  main .content .contentContainer .details {
-    display: grid;
-    grid-template-columns: minmax(150px, 30%) 1fr;
+  main .content .contentContainer {
+    max-width: 600px;
   }
 }
