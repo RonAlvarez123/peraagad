@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Helper;
 use App\Models\Account;
-use App\Models\Code;
 use App\Models\ColorGame;
 use App\Models\Receipt;
 use App\Models\User;
@@ -49,7 +48,7 @@ class AuthController extends Controller
             'city' => ['required', 'min:3', new SpecialChars],
             'province' => ['required', 'min:3', new SpecialChars],
             'account_code' => ['required', 'unique:users'],
-            'password' => ['required', 'confirmed', 'min:5'],
+            'password' => ['required', 'confirmed', 'min:6'],
 
             // 'role' => ['required', 'in:user,moderator,admin'], // UNCOMMENT WHEN CREATING AN ACCOUNT FOR ADMIN
         ]);

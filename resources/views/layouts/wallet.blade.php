@@ -48,7 +48,8 @@
 </section> --}}
 
 <section class="wallet">
-    <form class="walletContainer">
+    <form action="{{ route('cashout.index') }}" method="GET" class="walletContainer">
+        @csrf
         <h6 class="text-center mb-4">Wallet Details</h6>
         <div class="mb-3 balance text-center">
             <h6>{{ $account->money }} <span>PHP</span></h6>
@@ -56,10 +57,10 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Method</label>
-            <select class="form-select">
-                <option value="1">Bank Transfer</option>
-                <option value="2">Gcash</option>
-                <option value="3">Money Remittance</option>
+            <select class="form-select" name="method" required>
+                <option value="gcash">Gcash</option>
+                <option value="bank transfer">Bank Transfer</option>
+                <option value="money remittance">Money Remittance</option>
             </select>
             <p class="instructions">
                 Choose the corresponding cashout method that you like.

@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -73,9 +75,46 @@ class User extends Authenticatable
         return $this->hasOne(ColorGame::class, 'user_id', 'user_id');
     }
 
+    public function cashout()
+    {
+        return $this->hasOne(Cashout::class, 'user_id', 'user_id');
+    }
+
     public function setUserId()
     {
         $this->user_id = $this->id;
         return $this->save();
+    }
+
+    public function joinedAt()
+    {
+        return Carbon::parse($this->created_at)->diffForHumans();
+    }
+
+    public function getValidTime()
+    {
+        return Carbon::parse($this->updated_at)->addDays(15);
+    }
+
+    public function canChangePassword()
+    {
+        if ($this->getValidTime() >= now()) {
+            return false;
+        }
+        return true;
+    }
+
+    public function changePassword($value)
+    {
+        if ($this->canChangePassword()) {
+            $this->password = Hash::make($value);
+            return $this->save();
+        }
+        return false;
+    }
+
+    public function passwordChangedAt()
+    {
+        return Carbon::parse($this->updated_at)->diffForHumans();
     }
 }

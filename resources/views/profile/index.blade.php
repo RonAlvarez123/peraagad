@@ -69,6 +69,10 @@
         </form>
     @endif
 
+    @error('password_change_error')
+        <h6 class="alert alert-danger text-danger text-center mb-3">{{ $message }}</h6>
+    @enderror
+
     @if (session('status'))
         <h6 class="alert alert-info text-secondary text-center mb-3">{{ session('status') }}</h6>
     @endif
@@ -127,6 +131,10 @@
                                 <label>Account Type</label>
                                 <h6>{{ $account->level }}</h6>
                             </div>
+                            <div class="mb-3">
+                                <label>You joined</label>
+                                <h6>{{ $user->joinedAt() }}</h6>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -171,6 +179,49 @@
                                 <label>Province</label>
                                 <h6>{{ $user->province }}</h6>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            Security
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            @if ($user->canChangePassword())
+                                <form action="{{ route('profile.update') }}" method="POST">
+                                    @csrf
+                                    @method('put')
+                                    <div class="mb-3 col-12 col-md-8 mx-auto">
+                                        <label class="text-secondary">Old Password</label>
+                                        <input type="password" class="form-control {{ $errors->has('old_password') ? 'border-danger' : '' }}" required name="old_password">
+                                        @error('old_password')
+                                            <label class="text-danger">{{ $message }}</label>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3 col-12 col-md-8 mx-auto">
+                                        <label class="text-secondary">New Password</label>
+                                        <input type="password" class="form-control {{ $errors->has('new_password') ? 'border-danger' : '' }}" required name="new_password">
+                                        @error('new_password')
+                                            <label class="text-danger">{{ $message }}</label>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-4 col-12 col-md-8 mx-auto">
+                                        <label class="text-secondary">Confirm New Password</label>
+                                        <input type="password" class="form-control" required name="new_password_confirmation">
+                                    </div>
+                                    <div class="col-12 col-md-8 mx-auto mt-4 mb-3">
+                                        <button class="button-submit" type="submit">CHANGE PASSWORD</button>
+                                    </div>
+                                </form>
+                            @else
+                                <h6>You have changed your password {{ $user->passwordChangedAt() }}. You can change your password again after 15 days from the day that you changed it.</h6>
+                            @endif
                         </div>
                     </div>
                 </div>

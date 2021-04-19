@@ -85,6 +85,11 @@ class Account extends Model
         return $this->hasOne(ColorGame::class, 'user_id', 'user_id');
     }
 
+    public function cashout()
+    {
+        return $this->hasOne(Cashout::class, 'user_id', 'user_id');
+    }
+
     public function getSignUpBonus()
     {
         $this->money += $this->signUpBonus;

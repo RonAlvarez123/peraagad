@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminCaptchaController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CashoutController;
 use App\Http\Controllers\CodeRequestController;
 use App\Http\Controllers\ColorGameController;
 use App\Http\Controllers\ProfileController;
@@ -42,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/myaccount/profile', [ProfileController::class, 'index'])->name('profile.index');
         Route::post('/myaccount/profile', [ProfileController::class, 'bonus'])->name('profile.bonus');
+        Route::put('/myaccount/profile', [ProfileController::class, 'update'])->name('profile.update');
 
         Route::get('/getcode/myvalidcodes', [GetCodeController::class, 'index'])->name('getcode.index');
         Route::get('/getcode/requestcode', [GetCodeController::class, 'create'])->name('getcode.create');
@@ -56,6 +58,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/waystoearn/colorgame', [ColorGameController::class, 'edit'])->name('colorgame.edit');
         Route::post('/waystoearn/colorgame', [ColorGameController::class, 'claim'])->name('colorgame.claim');
         Route::put('/waystoearn/colorgame', [ColorGameController::class, 'update'])->name('colorgame.update');
+
+        Route::get('/cashout', [CashoutController::class, 'index'])->name('cashout.index');
     });
 
 
