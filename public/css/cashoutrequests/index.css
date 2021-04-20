@@ -1,0 +1,171 @@
+.navbar.navbar-dark {
+  background-color: #0ab0ae;
+  box-shadow: 0 0 5px black;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.navbar.navbar-dark .navbar-brand {
+  padding: 0 0 0 10px;
+}
+.navbar.navbar-dark .navLogo {
+  height: 80px;
+}
+.navbar.navbar-dark .nav-item button.stand-alone {
+  background-color: #0ab0ae;
+  border: none;
+  color: white;
+}
+.navbar.navbar-dark .nav-link {
+  color: white;
+  font-weight: bold;
+}
+.navbar.navbar-dark .nav-link:hover {
+  color: #e6ddca;
+}
+.navbar.navbar-dark .nav-link:focus {
+  color: #f6c55c;
+}
+.navbar.navbar-dark .dropdown-menu .dropdown-item:hover {
+  background-color: #dcdcdc;
+  color: #a76406;
+}
+.navbar.navbar-dark .dropdown-menu .dropdown-item.active {
+  background-color: #0ab0ae;
+  color: white;
+}
+
+@media (min-width: 576px) {
+  .navbar.navbar-dark .navbar-brand {
+    padding: 0 0 0 20px;
+  }
+  .navbar.navbar-dark .navLogo {
+    height: 100px;
+  }
+}
+@media (min-width: 768px) {
+  .navbar.navbar-dark .navbar-collapse {
+    justify-content: flex-end;
+    padding: 0 20px 0 0;
+  }
+}
+.button-submit {
+  background-color: #0ab0ae;
+  border: 2px solid #0ab0ae;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+  width: 100%;
+  transition: background-color 250ms, border 250ms;
+}
+.button-submit:hover {
+  background-color: #07807e;
+  border: 2px solid #07807e;
+}
+
+main {
+  padding-top: 20px;
+}
+main .cashoutContent {
+  background-color: white;
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 20px;
+}
+main .cashoutContent.summary {
+  padding: 0;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+}
+main .cashoutContent.summary header {
+  margin-bottom: 20px;
+  padding: 20px;
+}
+main .cashoutContent.summary header h4, main .cashoutContent.summary header h5 {
+  color: #07807e;
+}
+main .cashoutContent.summary header h5 {
+  margin-bottom: 0;
+}
+main .cashoutContent.summary h5, main .cashoutContent.summary h6 {
+  color: #383838;
+}
+main .cashoutContent.summary h5 {
+  font-size: 1em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+main .cashoutContent.summary label {
+  font-size: 0.7em;
+}
+main .cashoutContent.summary h6 {
+  font-size: 1em;
+}
+main .cashoutContent.summary span {
+  font-size: 0.6em;
+}
+main .cashoutContent.summary .amountContainer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+main .cashoutContent.summary .balance {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5em;
+}
+main .cashoutContent.summary a.button-submit {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+main .cashoutContent.summary a.button-submit:hover {
+  color: white;
+}
+main .cashoutContent h4, main .cashoutContent h5, main .cashoutContent h6, main .cashoutContent label, main .cashoutContent p {
+  font-weight: bold;
+}
+main .cashoutContent h4 {
+  color: #383838;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+main .cashoutContent label, main .cashoutContent input {
+  font-size: 0.8em;
+}
+main .cashoutContent label {
+  color: #5c5c5c;
+}
+main .cashoutContent .instructions, main .cashoutContent p {
+  font-size: 0.7em;
+}
+
+@media (min-width: 576px) {
+  main {
+    background-color: #f0f0f0;
+    padding-bottom: 50px;
+  }
+  main .cashoutContent {
+    box-shadow: 0 0 3px gray;
+    font-size: 17px;
+  }
+  main .cashoutContent.summary header {
+    background-color: #07807e;
+  }
+  main .cashoutContent.summary header h4 {
+    color: gold;
+  }
+  main .cashoutContent.summary header h5 {
+    color: white;
+  }
+}
+@media (min-width: 768px) {
+  main .cashoutContent {
+    font-size: 19px;
+    max-width: 600px;
+    padding: 40px;
+  }
+}

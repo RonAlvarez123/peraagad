@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cashout extends Model
+class CashoutRequest extends Model
 {
     use HasFactory;
 
@@ -14,15 +14,8 @@ class Cashout extends Model
     protected $fillable = [
         'user_id',
         'type',
-        'amount',
-        'account_name',
-        'account_number',
-        'bank_name',
-        'recipient_name',
-        'phone_number',
-        'municipality',
-        'province',
-        'address',
+        'total_amount',
+        'deducted_amount',
         'updated_at',
     ];
 
@@ -34,5 +27,10 @@ class Cashout extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'user_id');
+    }
+
+    public function gcash()
+    {
+        return $this->hasOne(Gcash::class, 'cashout_id');
     }
 }

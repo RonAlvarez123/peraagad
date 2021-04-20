@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Models\Account;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class Helper
@@ -43,6 +44,14 @@ class Helper
             }
         }
         return 'no Errors';
+    }
+
+    public static function passwordMatch($value)
+    {
+        if (Hash::check($value, auth()->user()->password)) {
+            return true;
+        }
+        return false;
     }
 
     public static function renameFile($path, $fileName)

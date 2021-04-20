@@ -3,12 +3,16 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminCaptchaController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BankController;
 use App\Http\Controllers\CashoutController;
+use App\Http\Controllers\CashoutRequestController;
 use App\Http\Controllers\CodeRequestController;
 use App\Http\Controllers\ColorGameController;
+use App\Http\Controllers\GcashController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GetCodeController;
 use App\Http\Controllers\ReceiptController;
+use App\Http\Controllers\RemitController;
 use App\Http\Controllers\UserCaptchaController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,8 +27,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::middleware(['throttle:login'])->group(function () {
+    Route::post('/', [AuthController::class, 'login'])->name('auth.login');
+});
+
 Route::get('/', [AuthController::class, 'index'])->name('auth.index');
-Route::post('/', [AuthController::class, 'login'])->name('auth.login');
+
 Route::get('/register', [AuthController::class, 'show'])->name('auth.show');
 Route::post('/register', [AuthController::class, 'store'])->name('auth.store');
 
@@ -59,7 +67,16 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/waystoearn/colorgame', [ColorGameController::class, 'claim'])->name('colorgame.claim');
         Route::put('/waystoearn/colorgame', [ColorGameController::class, 'update'])->name('colorgame.update');
 
-        Route::get('/cashout', [CashoutController::class, 'index'])->name('cashout.index');
+        Route::post('/cashout', [CashoutRequestController::class, 'redirect'])->name('cashoutrequest.redirect');
+
+        Route::get('/cashout/gcash', [GcashController::class, 'create'])->name('gcash.create');
+        Route::post('/cashout/gcash', [GcashController::class, 'store'])->name('gcash.store');
+
+        Route::get('/cashout/bank', [BankController::class, 'create'])->name('bank.create');
+        Route::post('/cashout/bank', [BankController::class, 'store'])->name('bank.store');
+
+        Route::get('/cashout/remit', [RemitController::class, 'create'])->name('remit.create');
+        Route::post('/cashout/remit', [RemitController::class, 'store'])->name('remit.store');
     });
 
 

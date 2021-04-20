@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateRemitsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('remits', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('cashout_id');
+            $table->string('recipient_name');
+            $table->string('phone_number');
+            $table->string('municipality');
+            $table->string('province');
+            $table->string('address');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('remits');
+    }
+}

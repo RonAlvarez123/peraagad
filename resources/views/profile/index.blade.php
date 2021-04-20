@@ -69,7 +69,7 @@
         </form>
     @endif
 
-    @error('password_change_error')
+    @error('main_error')
         <h6 class="alert alert-danger text-danger text-center mb-3">{{ $message }}</h6>
     @enderror
 

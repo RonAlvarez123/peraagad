@@ -43,7 +43,7 @@ class ProfileController extends Controller
             return redirect()->route('profile.index')
                 ->withErrors([
                     'old_password' => 'The password is incorrect.',
-                    'password_change_error' => 'Password change failed.',
+                    'main_error' => 'Password change failed.',
                 ]);
         }
 
@@ -53,6 +53,6 @@ class ProfileController extends Controller
         }
 
         return redirect()->route('profile.index')
-            ->withErrors(['password_change_error' => 'Password change failed.']);
+            ->withErrors(['main_error' => 'Password change failed.']);
     }
 }

@@ -75,9 +75,9 @@ class User extends Authenticatable
         return $this->hasOne(ColorGame::class, 'user_id', 'user_id');
     }
 
-    public function cashout()
+    public function cashoutRequest()
     {
-        return $this->hasOne(Cashout::class, 'user_id', 'user_id');
+        return $this->hasOne(CashoutRequest::class, 'user_id', 'user_id');
     }
 
     public function setUserId()

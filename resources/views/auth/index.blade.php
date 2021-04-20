@@ -13,6 +13,11 @@
 
 <body>
     <main>
+        @error('login_limit')
+            <div class="alert-container">
+                <div class="alert alert-danger">{{ $message }}</div>
+            </div>
+        @enderror
         @if (session()->has('status'))
             <div class="alert-container">
                 <div class="alert alert-success">{{ session('status') }}</div>
