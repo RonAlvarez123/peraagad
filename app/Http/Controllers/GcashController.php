@@ -21,9 +21,8 @@ class GcashController extends Controller
     {
         if (Helper::passwordMatch($request->password)) {
             $account = Account::select('id', 'user_id', 'money', 'role')->where('user_id', auth()->user()->user_id)->first();
-            // return print_r($account->createCashoutRequest()) . '<br>' . $account->getCashoutFee() . '<br>' . $account->getCashoutTax() . '<br>' . $account->getTotalCashout() . '<br>' . $account->getDeductedCashout() . '<br>' . $account->money;
+
             if ($account->createCashoutRequest()) {
-                // return $account->getCashoutFee() . '<br>' . $account->getCashoutTax() . '<br>' . $account->getTotalCashout() . '<br>' . $account->getDeductedCashout() . '<br>' . $account->money;
                 $cashoutRequest = CashoutRequest::create([
                     'user_id' => $account->user_id,
                     'type' => 'gcash',
@@ -44,10 +43,9 @@ class GcashController extends Controller
                     ->with('gcash', $gcash);
             }
             return redirect()->route('profile.index')
-                ->withInput()
                 ->withErrors(['main_error' => 'Your balance is too low to cash out.']);
         }
-        return redirect()->route('cashoutrequest.create', ['method' => 'gcash'])
+        return redirect()->route('gcash.create')
             ->withInput()
             ->withErrors(['password' => 'The password is incorrect']);
     }

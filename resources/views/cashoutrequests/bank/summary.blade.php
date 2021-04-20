@@ -10,15 +10,19 @@
         <section class="container px-4 px-md-5">
             <div class="amountContainer mb-2">
                 <label>Account Name</label>
-                <h6>{{ $gcash->account_name }}</h6>
+                <h6>{{ $bank->account_name }}</h6>
             </div>
             <div class="amountContainer mb-2">
                 <label>Account Number</label>
-                <h6>{{ $gcash->account_number }}</h6>
+                <h6>{{ $bank->account_number }}</h6>
+            </div>
+            <div class="amountContainer mb-2">
+                <label>Bank Name</label>
+                <h6>{{ $bank->bank_name }}</h6>
             </div>
             <div class="amountContainer mb-2">
                 <label>Cashout Type</label>
-                <h6>GCASH</h6>
+                <h6>Bank Transfer</h6>
             </div>
             <div class="amountContainer mb-2">
                 <label>Previous Wallet Balance</label>

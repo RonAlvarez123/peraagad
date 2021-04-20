@@ -9,16 +9,36 @@
         </header>
         <section class="container px-4 px-md-5">
             <div class="amountContainer mb-2">
-                <label>Account Name</label>
-                <h6>{{ $gcash->account_name }}</h6>
+                <label>First Name</label>
+                <h6>{{ $remit->firstname }}</h6>
             </div>
             <div class="amountContainer mb-2">
-                <label>Account Number</label>
-                <h6>{{ $gcash->account_number }}</h6>
+                <label>Middle Name</label>
+                <h6>{{ $remit->middlename }}</h6>
+            </div>
+            <div class="amountContainer mb-2">
+                <label>Last Name</label>
+                <h6>{{ $remit->lastname }}</h6>
+            </div>
+            <div class="amountContainer mb-2">
+                <label>Phone Number</label>
+                <h6>{{ $remit->phone_number }}</h6>
+            </div>
+            <div class="amountContainer mb-2">
+                <label>Municipality</label>
+                <h6>{{ $remit->municipality }}</h6>
+            </div>
+            <div class="amountContainer mb-2">
+                <label>Province</label>
+                <h6>{{ $remit->province }}</h6>
+            </div>
+            <div class="amountContainer mb-2">
+                <label>Home/Street/Barangay</label>
+                <h6>{{ $remit->address }}</h6>
             </div>
             <div class="amountContainer mb-2">
                 <label>Cashout Type</label>
-                <h6>GCASH</h6>
+                <h6>Money Remittance</h6>
             </div>
             <div class="amountContainer mb-2">
                 <label>Previous Wallet Balance</label>

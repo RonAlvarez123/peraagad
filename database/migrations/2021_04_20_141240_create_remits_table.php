@@ -16,7 +16,9 @@ class CreateRemitsTable extends Migration
         Schema::create('remits', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('cashout_id');
-            $table->string('recipient_name');
+            $table->string('firstname');
+            $table->string('middlename');
+            $table->string('lastname');
             $table->string('phone_number');
             $table->string('municipality');
             $table->string('province');

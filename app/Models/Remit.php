@@ -13,7 +13,9 @@ class Remit extends Model
 
     protected $fillable = [
         'cashout_id',
-        'recipient_name',
+        'firstname',
+        'middlename',
+        'lastname',
         'phone_number',
         'municipality',
         'province',

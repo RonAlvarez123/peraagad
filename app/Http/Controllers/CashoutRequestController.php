@@ -17,57 +17,13 @@ class CashoutRequestController extends Controller
                 return redirect()->route('gcash.create');
                 break;
             case 'bank':
-
+                return redirect()->route('bank.create');
                 break;
             case 'remit':
-
+                return redirect()->route('remit.create');
                 break;
             default:
 
-                break;
-        }
-    }
-
-    public function bank()
-    {
-    }
-
-    public function remit()
-    {
-    }
-
-    public function summary()
-    {
-        return view('cashoutrequests.summary');
-    }
-
-    public function store()
-    {
-        $method = request()->input('method');
-
-        switch ($method) {
-            case 'gcash':
-                break;
-            case 'bank':
-                request()->validate([
-                    'account_name' => ['required', new SpecialChars],
-                    'account_number' => ['required', new SpecialChars],
-                    'bank_name' => ['required', new SpecialChars],
-                ]);
-                break;
-            case 'remit':
-                request()->validate([
-                    'firstname' => ['required', new SpecialChars],
-                    'middlename' => ['required', new SpecialChars],
-                    'lastname' => ['required', new SpecialChars],
-                    'phone_number' => ['required', new SpecialChars],
-                    'municipality' => ['required', new SpecialChars],
-                    'province' => ['required', new SpecialChars],
-                    'address' => [new SpecialChars],
-                ]);
-                break;
-            default:
-                return $method;
                 break;
         }
     }

@@ -13,6 +13,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    public $timestamps = false;
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -43,6 +45,7 @@ class User extends Authenticatable
         'province',
         'account_code',
         'password',
+        'created_at',
     ];
 
     public function account()
@@ -98,7 +101,7 @@ class User extends Authenticatable
 
     public function canChangePassword()
     {
-        if ($this->getValidTime() >= now()) {
+        if ($this->updated_at != null && $this->getValidTime() >= now()) {
             return false;
         }
         return true;
@@ -108,6 +111,7 @@ class User extends Authenticatable
     {
         if ($this->canChangePassword()) {
             $this->password = Hash::make($value);
+            $this->updated_at = now();
             return $this->save();
         }
         return false;

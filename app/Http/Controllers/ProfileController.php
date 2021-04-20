@@ -17,6 +17,7 @@ class ProfileController extends Controller
                     $query->select('user_id', 'money', 'level', 'direct', 'indirect', 'role', 'bonus_claimed_at', 'number_of_bonus_claimed');
                 }
             ])->first();
+
         return view('profile.index')->with('user', $user)->with('account', $user->account);
     }
 
@@ -37,12 +38,18 @@ class ProfileController extends Controller
             'new_password' => ['required', 'min:6', 'confirmed'],
         ]);
 
-        $user = User::select('id', 'user_id', 'password')->where('user_id', auth()->user()->user_id)->first();
+        $user = User::select('id', 'user_id', 'password', 'updated_at')->where('user_id', auth()->user()->user_id)->first();
 
         if (!Hash::check(request()->input('old_password'), $user->password)) {
             return redirect()->route('profile.index')
                 ->withErrors([
                     'old_password' => 'The password is incorrect.',
+                    'main_error' => 'Password change failed.',
+                ]);
+        } elseif (Hash::check(request()->input('new_password'), $user->password)) {
+            return redirect()->route('profile.index')
+                ->withErrors([
+                    'new_password' => 'The new password is the same as the old password.',
                     'main_error' => 'Password change failed.',
                 ]);
         }

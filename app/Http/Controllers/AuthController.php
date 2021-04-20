@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helper;
+use App\Http\Requests\UserRequest;
 use App\Models\Account;
 use App\Models\ColorGame;
 use App\Models\Receipt;
@@ -28,7 +29,7 @@ class AuthController extends Controller
         return view('auth.show');
     }
 
-    public function store()
+    public function store(UserRequest $request)
     {
         // --- WHEN CREATING AN ACCOUNT FOR AN ADMIN, CONVERT ALL CODES INTO COMMENTS FROM HERE ---
         // $validCode = Code::where([
@@ -43,30 +44,18 @@ class AuthController extends Controller
         // }
         // --- END OF COMMENT HERE ---
 
-        request()->validate([
-            'firstname' => ['required', 'min:3', new SpecialChars],
-            'middlename' => ['required', 'min:3', new SpecialChars],
-            'lastname' => ['required', 'min:3', new SpecialChars],
-            'phone_number' => ['required', 'unique:users', 'min:11', 'max:11', 'starts_with:09'],
-            'city' => ['required', 'min:3', new SpecialChars],
-            'province' => ['required', 'min:3', new SpecialChars],
-            'account_code' => ['required', 'unique:users'],
-            'password' => ['required', 'confirmed', 'min:6'],
-
-            // 'role' => ['required', 'in:user,moderator,admin'], // UNCOMMENT WHEN CREATING AN ACCOUNT FOR ADMIN
-        ]);
-
         // $validCode->setToUsed();
 
         $user = User::create([
-            'firstname' => request()->input('firstname'),
-            'middlename' => request()->input('middlename'),
-            'lastname' => request()->input('lastname'),
-            'phone_number' => request()->input('phone_number'),
-            'city' => request()->input('city'),
-            'province' => request()->input('province'),
-            'account_code' => request()->input('account_code'),
-            'password' => Hash::make(request()->input('password')),
+            'firstname' => $request->firstname,
+            'middlename' => $request->middlename,
+            'lastname' => $request->lastname,
+            'phone_number' => $request->phone_number,
+            'city' => $request->city,
+            'province' => $request->province,
+            'account_code' => $request->account_code,
+            'password' => Hash::make($request->password),
+            'created_at' => now(),
         ]);
 
         $user->setUserId();
