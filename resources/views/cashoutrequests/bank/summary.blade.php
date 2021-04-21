@@ -17,7 +17,7 @@
             </div>
             <div class="amountContainer mb-2">
                 <label>Bank Partner</label>
-                <h6>{{ $bank->bank_partner }}</h6>
+                <h6>{{ ucwords($bank->bank_partner) }}</h6>
             </div>
             <div class="amountContainer mb-2">
                 <label>Cashout Type</label>

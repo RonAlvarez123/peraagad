@@ -20,6 +20,7 @@ class Remit extends Model
         'municipality',
         'province',
         'address',
+        'remittance_outlet'
     ];
 
     private static $outlets = [

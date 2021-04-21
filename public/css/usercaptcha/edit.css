@@ -199,6 +199,41 @@ main .wallet .invites .tableContainer .dataContainer div {
   -ms-user-select: none;
 }
 
+section#announcement {
+  background-color: #07807e;
+  color: white;
+  margin-top: 20px;
+}
+section#announcement div {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0 auto;
+  max-width: 400px;
+  padding: 20px;
+  text-align: center;
+}
+section#announcement span {
+  color: gold;
+}
+
+@media (min-width: 576px) {
+  section#announcement {
+    font-size: 16px;
+  }
+  section#announcement div {
+    max-width: 500px;
+  }
+}
+@media (min-width: 768px) {
+  section#announcement {
+    font-size: 18px;
+    margin-top: 60px;
+  }
+  section#announcement div {
+    max-width: 900px;
+    padding: 30px;
+  }
+}
 main .content .contentContainer {
   background-color: white;
   box-shadow: 0 0 3px gray;

@@ -41,7 +41,7 @@
             </div>
             <div class="amountContainer mb-2">
                 <label>Remittance Outlet</label>
-                <h6>{{ $remit->remittance_outlet }}</h6>
+                <h6>{{ ucwords($remit->remittance_outlet) }}</h6>
             </div>
             <div class="amountContainer mb-2">
                 <label>Previous Wallet Balance</label>

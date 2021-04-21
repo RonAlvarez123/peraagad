@@ -1,0 +1,41 @@
+section#announcement {
+    background-color: darken($primary-color, 10%);
+    color: white;
+    margin-top: 20px;
+
+
+    div {
+        font-size: 1em;
+        font-weight: bold;
+        margin: 0 auto;
+        max-width: 400px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    span {
+        color: gold;
+    }
+}
+
+@media (min-width: 576px) {
+    section#announcement {
+        font-size: 16px;
+
+        div {
+            max-width: 500px;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    section#announcement {
+        font-size: 18px;
+        margin-top: 60px;
+
+        div {
+            max-width: 900px;
+            padding: 30px;
+        }
+    }
+}
