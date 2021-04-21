@@ -45,13 +45,11 @@ class ColorGame extends Model
     * MAKE THE RATE HALF, WHEN NUMBER OF TIMES PLAYED REACHES FULL RATE LIMIT 
     *-------------------------
     */
-    private $fullRateLimit = 90;
-
     private $peak = 10;
 
     private $rate = [
-        'min' => 40,
-        'max' => 100
+        'min' => 20,
+        'max' => 50
     ];
 
     private $playResult = '';
@@ -114,11 +112,6 @@ class ColorGame extends Model
             $rate = 0;
             $this->number_of_times_played += 1;
 
-            if ($this->number_of_times_played > $this->fullRateLimit) {
-                $this->rate['max'] /= 2;
-                $this->rate['min'] /= 2;
-            }
-
             if ($this->number_of_times_played % $this->peak === 0) {
                 $multiplier = $this->multiplier;
                 $rate = $this->rate['max'];
@@ -128,6 +121,7 @@ class ColorGame extends Model
                 $rate = $this->rate['min'];
                 $recieved = $rate * $multiplier;
             }
+
             $this->points += $recieved;
             $this->updated_at = now();
             $result = $this->save();

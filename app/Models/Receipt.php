@@ -35,9 +35,7 @@ class Receipt extends Model
         'clothes and accessories receipt',
     ];
 
-    private $fullRateLimit = 90;
-
-    private static $rate = 3;
+    private static $rate = 2;
 
     public function account()
     {
@@ -75,9 +73,6 @@ class Receipt extends Model
     public function updateReceipt()
     {
         if ($this->canUploadReceipt()) {
-            if ($this->number_of_times_uploaded > $this->fullRateLimit) {
-                self::$rate = 2;
-            }
             $this->updated_at = now();
             return $this->save();
         }
