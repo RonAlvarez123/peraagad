@@ -2,9 +2,10 @@
 
 namespace App\Rules;
 
+use App\Models\Code;
 use Illuminate\Contracts\Validation\Rule;
 
-class SpecialChars implements Rule
+class CodeExistsAndUnusedRule implements Rule
 {
     /**
      * Create a new rule instance.
@@ -25,11 +26,8 @@ class SpecialChars implements Rule
      */
     public function passes($attribute, $value)
     {
-        $specialchars = ['.', '@', '<', '>', ';', '/'];
-        foreach ($specialchars as $specialchar) {
-            if (stripos($value, $specialchar) !== false) {
-                return false;
-            }
+        if (!Code::where(['account_code' => $value, 'used' => false])->first()) {
+            return false;
         }
         return true;
     }
@@ -41,6 +39,6 @@ class SpecialChars implements Rule
      */
     public function message()
     {
-        return 'You have included an invalid character.';
+        return 'You have entered an invalid code.';
     }
 }

@@ -72,7 +72,7 @@ class UserCaptcha extends Model
 
     public function getRemainingTime()
     {
-        $seconds = Carbon::now()->diffInSeconds($this->getValidTime());
+        $seconds = now()->diffInSeconds($this->getValidTime());
         return "{$seconds} seconds";
     }
 }

@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Helper;
-use App\Models\Account;
-use App\Rules\SpecialChars;
 use Illuminate\Http\Request;
 
 class CashoutRequestController extends Controller

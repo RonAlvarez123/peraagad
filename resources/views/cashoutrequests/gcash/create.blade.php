@@ -15,7 +15,7 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Account Number</label>
-            <input type="text" class="form-control {{ $errors->has('account_number') ? 'border-danger' : '' }}"
+            <input type="number" class="form-control {{ $errors->has('account_number') ? 'border-danger' : '' }}"
                 name="account_number" required value="{{ old('account_number') }}">
             @error('account_number')
                 <p class="text-danger">{{ $message }}</p>

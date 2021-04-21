@@ -18,7 +18,7 @@ class CreateBanksTable extends Migration
             $table->unsignedBigInteger('cashout_id');
             $table->string('account_name');
             $table->string('account_number');
-            $table->string('bank_name');
+            $table->string('bank_partner');
         });
     }
 

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ColorGameClaimRequest;
 use App\Models\Account;
 use App\Models\ColorGame;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 class ColorGameController extends Controller
 {
@@ -29,18 +29,14 @@ class ColorGameController extends Controller
         return redirect()->route('colorgame.edit');
     }
 
-    public function claim()
+    public function claim(ColorGameClaimRequest $request)
     {
-        request()->validate([
-            'reward' => ['required', Rule::in(ColorGame::getRewardIds())],
-        ]);
-
         $account = Account::select('id', 'user_id', 'money')->where('user_id', auth()->user()->user_id)
             ->with('colorGame:id,user_id,points,multiplier,updated_at')
             ->first();
         $rewards = ColorGame::getRewards();
         foreach ($rewards as $reward) {
-            if ($reward['id'] == request()->input('reward') && $account->colorGame->points >= $reward['points']) {
+            if ($reward['id'] == $request->reward && $account->colorGame->points >= $reward['points']) {
                 $account->getMoney($reward['money']);
                 $account->colorGame->reducePoints($reward['points']);
                 $points = number_format($reward['points']);

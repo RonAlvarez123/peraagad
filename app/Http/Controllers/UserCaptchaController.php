@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\CaptchaSlotLimitReachedException;
+use App\Http\Requests\UserCaptchaUpdateRequest;
 use App\Models\Account;
 use App\Models\Captcha;
 use App\Models\UserCaptcha;
-use App\Rules\SpecialChars;
 use Illuminate\Http\Request;
 
 class UserCaptchaController extends Controller
@@ -25,14 +25,10 @@ class UserCaptchaController extends Controller
             ->with('captcha', Captcha::getRandomCaptcha());
     }
 
-    public function update()
+    public function update(UserCaptchaUpdateRequest $request)
     {
-        request()->validate([
-            'value' => ['required', new SpecialChars],
-        ]);
-
-        $captcha = Captcha::select('value')->where('id', request()->input('id'))->first();
-        if ($captcha && $captcha->value === request()->input('value')) {
+        $captcha = Captcha::select('value')->where('id', $request->id)->first();
+        if ($captcha->value == $request->value) {
             $account = Account::select('id', 'user_id', 'money')->where('user_id', auth()->user()->user_id)->first();
             $userCaptcha = $account->userCaptcha;
             try {
@@ -45,6 +41,7 @@ class UserCaptchaController extends Controller
                 return redirect()->route('usercaptcha.edit');
             }
         }
-        return redirect()->route('usercaptcha.edit')->withErrors(['value' => 'You entered an invalid captcha.']);
+        return redirect()->route('usercaptcha.edit')
+            ->withErrors(['value' => 'You entered an invalid captcha.']);
     }
 }

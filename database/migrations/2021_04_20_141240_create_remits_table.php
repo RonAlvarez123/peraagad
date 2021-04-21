@@ -23,6 +23,7 @@ class CreateRemitsTable extends Migration
             $table->string('municipality');
             $table->string('province');
             $table->string('address');
+            $table->string('remittance_outlet');
         });
     }
 

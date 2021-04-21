@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('customStyle')
-    <link rel="stylesheet" href="{{ asset('css/auth/show.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/auth/create.css') }}">
 @endsection
 
 @section('title')

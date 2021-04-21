@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GetCodeStoreRequest;
 use App\Models\Account;
 use App\Models\CodeRequest;
 use App\Rules\SpecialChars;
@@ -17,29 +18,25 @@ class GetCodeController extends Controller
         $account = Account::select('user_id', 'money', 'level', 'direct', 'indirect', 'role')->where('user_id', auth()->user()->user_id)  // NEW
             ->with([
                 'codes' => function ($query) {
-                    $query->select('user_id', 'account_code')->where('used', false);
+                    $query->select('user_id', 'account_code');
                 }
             ])
             ->withCount(['timesRequestedForCode', 'codes'])
             ->first();
-        // return $account->codes . $account->hasCodes();
 
-        return view('getcode.index')->with('account', $account);
+        return view('getcode.index')
+            ->with('account', $account);
     }
 
     public function create()
     {
-        return view('getcode.create')->with('account', Account::select('money', 'direct', 'indirect', 'role')->where('user_id', auth()->user()->user_id)->first());
+        return view('getcode.create')
+            ->with('account', Account::select('money', 'direct', 'indirect', 'role')->where('user_id', auth()->user()->user_id)->first());
     }
 
-    public function store()
+    public function store(GetCodeStoreRequest $request)
     {
-        request()->validate([
-            'number_of_codes' => ['required', 'gte:1', 'lte:9'],
-            'password' => ['required', new SpecialChars]
-        ]);
-
-        if (!Hash::check(request()->input('password'), auth()->user()->password)) {
+        if (!Hash::check($request->password, auth()->user()->password)) {
             return redirect()->route('getcode.create')
                 ->withErrors(['password' => 'Incorrect Password'])
                 ->withInput();
@@ -47,10 +44,11 @@ class GetCodeController extends Controller
 
         CodeRequest::create([
             'user_id' => auth()->user()->user_id,
-            'number_of_codes' => request()->input('number_of_codes'),
-            'requested_at' => Carbon::now()->toDateTimeString(),
+            'number_of_codes' => $request->number_of_codes,
+            'requested_at' => now(),
         ]);
 
-        return redirect()->route('getcode.create')->with('status', 'Code request complete.');
+        return redirect()->route('getcode.create')
+            ->with('status', 'Code request complete.');
     }
 }

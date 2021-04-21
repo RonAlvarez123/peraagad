@@ -32,6 +32,7 @@
 }
 
 main {
+    background-color: white;
 
     .content {
         display: flex;
@@ -52,8 +53,9 @@ main {
             }
 
             h5 {
+                color: #5c5c5c;
                 font-size: .65em;
-                margin-bottom: 20px;
+                margin-bottom: 30px;
             }
 
             h6 {
@@ -78,6 +80,7 @@ main {
             }
 
             .disclaimer {
+                color: #5c5c5c;
                 margin-bottom: 10px;
             }
         }
@@ -124,6 +127,8 @@ main {
     }
 
     main {
+        background-color: rgb(241, 241, 241);
+        display: block;
 
         .content {
             font-size: 20px;
@@ -131,7 +136,7 @@ main {
             width: 100%;
 
             .contentContainer {
-                background-color: rgb(241, 241, 241);
+                background-color: white;
                 box-shadow: 0 0 3px gray;
                 padding: 40px;
                 width: 700px;

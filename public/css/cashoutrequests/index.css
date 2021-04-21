@@ -82,10 +82,8 @@ main .cashoutContent.summary header {
   margin-bottom: 20px;
   padding: 20px;
 }
-main .cashoutContent.summary header h4, main .cashoutContent.summary header h5 {
-  color: #07807e;
-}
 main .cashoutContent.summary header h5 {
+  color: #07807e;
   margin-bottom: 0;
 }
 main .cashoutContent.summary h5, main .cashoutContent.summary h6 {
@@ -124,11 +122,13 @@ main .cashoutContent.summary a.button-submit {
 main .cashoutContent.summary a.button-submit:hover {
   color: white;
 }
-main .cashoutContent h4, main .cashoutContent h5, main .cashoutContent h6, main .cashoutContent label, main .cashoutContent p {
+main .cashoutContent h4, main .cashoutContent h5, main .cashoutContent h6, main .cashoutContent label, main .cashoutContent p, main .cashoutContent select {
   font-weight: bold;
 }
-main .cashoutContent h4 {
+main .cashoutContent h4, main .cashoutContent select {
   color: #383838;
+}
+main .cashoutContent h4 {
   font-size: 1.5em;
   margin-bottom: 20px;
   text-align: center;
@@ -155,11 +155,8 @@ main .cashoutContent .instructions, main .cashoutContent p {
   main .cashoutContent.summary header {
     background-color: #07807e;
   }
-  main .cashoutContent.summary header h4 {
-    color: gold;
-  }
   main .cashoutContent.summary header h5 {
-    color: white;
+    color: gold;
   }
 }
 @media (min-width: 768px) {

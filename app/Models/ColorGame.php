@@ -152,7 +152,7 @@ class ColorGame extends Model
 
     public function getRemainingTime()
     {
-        $result = Carbon::now()->diffInRealMinutes($this->getValidTime()) / 60;
+        $result = now()->diffInRealMinutes($this->getValidTime()) / 60;
         $time = explode('.', $result);
         $hours = $time[0];
         $minutes = 0;

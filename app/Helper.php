@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Models\Account;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -27,23 +26,6 @@ class Helper
         }
 
         return $str;
-    }
-
-    public static function invites(Account $account) // pang indirect - kelangan pa puliduhin
-    {
-        for ($i = 1; $i <= 6; $i++) {
-            if ($account->referrer_id === null) {
-                break;
-            }
-            $account = $account->getReferrerAccount;
-            if ($i === 1) {
-                $account->addDirectInvite();
-                $account->colorGame->setMultiplier($account->direct);
-            } else {
-                $account->addIndirectInvite();
-            }
-        }
-        return 'no Errors';
     }
 
     public static function passwordMatch($value)

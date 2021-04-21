@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Helper;
+use App\Http\Requests\AdminCaptchaStoreRequest;
 use App\Models\Account;
 use App\Models\Captcha;
-use App\Rules\SpecialChars;
 use Illuminate\Http\Request;
 
 class AdminCaptchaController extends Controller
@@ -16,17 +16,13 @@ class AdminCaptchaController extends Controller
             ->with('account', Account::select('user_id', 'role')->where('user_id', auth()->user()->user_id)->first());
     }
 
-    public function store()
+    public function store(AdminCaptchaStoreRequest $request)
     {
-        request()->validate([
-            'value' => ['required', 'min:6', new SpecialChars],
-            'file' => ['required', 'mimetypes:image/svg,image/svg+xml'],
-        ]);
 
-        request()->file('file')->storeAs('public/captcha', $filePath = Helper::renameFile('/captcha', request()->file('file')->getClientOriginalName()));
+        $request->file('file')->storeAs('public/captcha', $filePath = Helper::renameFile('/captcha', $request->file('file')->getClientOriginalName()));
 
         $captcha = Captcha::create([
-            'value' => request()->input('value'),
+            'value' => $request->value,
             'path' => $filePath,
         ]);
 

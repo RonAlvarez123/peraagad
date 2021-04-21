@@ -31,7 +31,7 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Phone Number</label>
-            <input type="text" class="form-control {{ $errors->has('phone_number') ? 'border-danger' : '' }}"
+            <input type="number" class="form-control {{ $errors->has('phone_number') ? 'border-danger' : '' }}"
                 name="phone_number" required value="{{ old('phone_number') }}">
             @error('phone_number')
                 <p class="text-danger">{{ $message }}</p>
@@ -58,6 +58,18 @@
             <input type="text" class="form-control {{ $errors->has('address') ? 'border-danger' : '' }}"
                 name="address" required value="{{ old('address') }}">
             @error('address')
+                <p class="text-danger">{{ $message }}</p>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Remittance Outlet</label>
+            <select class="form-select {{ $errors->has('remittance_outlet') ? 'border-danger' : '' }}" aria-label="Default select example"
+                name="remittance_outlet" required value="{{ old('remittance_outlet') }}">
+                @foreach ($outlets as $outlet)
+                    <option value="{{ $outlet }}">{{ ucwords($outlet) }}</option>
+                @endforeach
+            </select>
+            @error('remittance_outlet')
                 <p class="text-danger">{{ $message }}</p>
             @enderror
         </div>

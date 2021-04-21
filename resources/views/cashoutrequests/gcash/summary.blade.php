@@ -4,7 +4,6 @@
     <section class="cashoutContent summary">
 
         <header>
-            <h4>Cashout Summary</h4>
             <h5>We're now processing your request...</h5>
         </header>
         <section class="container px-4 px-md-5">
@@ -33,8 +32,8 @@
                 <h6><span>PHP</span> {{ $account->getCashoutTax() }}</h6>
             </div>
             <div class="amountContainer mb-2">
-                <label>Cashout Total</label>
-                <h6><span>PHP</span> {{ $account->getDeductedCashout() }}</h6>
+                <label>Amount to be Recieved</label>
+                <h6 class="text-danger"><span>PHP</span> {{ $account->getDeductedCashout() }}</h6>
             </div>
             <div class="balance my-4">
                 <label>Your balance now is</label>

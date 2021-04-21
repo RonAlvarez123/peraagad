@@ -21,4 +21,17 @@ class Remit extends Model
         'province',
         'address',
     ];
+
+    private static $outlets = [
+        'cebuana lhuillier',
+        'm lhuillier',
+        'palawan express',
+        'western union',
+        'smart padala',
+    ];
+
+    public static function getOutlets()
+    {
+        return self::$outlets;
+    }
 }

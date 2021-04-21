@@ -18,6 +18,12 @@ class Account extends Model
         'role',
     ];
 
+    private static $roles = [
+        'user',
+        'moderator',
+        'admin',
+    ];
+
     private int $directBonus = 50;
     private int $indirectBonus = 5;
     private int $signUpBonus = 200;
@@ -48,7 +54,7 @@ class Account extends Model
 
     public function codes()
     {
-        return $this->hasMany(Code::class, 'user_id', 'user_id');
+        return $this->hasMany(Code::class, 'user_id', 'user_id')->where('used', false);
     }
 
     public function hasCodes()
@@ -218,5 +224,10 @@ class Account extends Model
     public function getBalance()
     {
         return $this->money;
+    }
+
+    public static function getRoles()
+    {
+        return self::$roles;
     }
 }

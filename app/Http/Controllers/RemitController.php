@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helper;
-use App\Http\Requests\RemitRequest;
+use App\Http\Requests\RemitStoreRequest;
 use App\Models\Account;
 use App\Models\CashoutRequest;
 use App\Models\Remit;
@@ -14,10 +14,12 @@ class RemitController extends Controller
     public function create()
     {
         $account = Account::select('user_id', 'role')->where('user_id', auth()->user()->user_id)->first();
-        return view('cashoutrequests.remit.create')->with('account', $account);
+        return view('cashoutrequests.remit.create')
+            ->with('account', $account)
+            ->with('outlets', Remit::getOutlets());
     }
 
-    public function store(RemitRequest $request)
+    public function store(RemitStoreRequest $request)
     {
         if (Helper::passwordMatch($request->password)) {
             $account = Account::select('id', 'user_id', 'money', 'role')->where('user_id', auth()->user()->user_id)->first();
@@ -40,6 +42,7 @@ class RemitController extends Controller
                     'municipality' => $request->municipality,
                     'province' => $request->province,
                     'address' => $request->address,
+                    'remittance_outlet' => $request->remittance_outlet,
                 ]);
 
                 return view('cashoutrequests.remit.summary')

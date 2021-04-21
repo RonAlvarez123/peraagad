@@ -52,7 +52,7 @@
                     </div>
                     <div class="buttonGreenContainer"><button type="submit" class="buttonGreen">Login</button></div>
                 </form>
-                <h4>Not a member yet? <a href="{{ route('auth.show') }}" class="normalLink">Sign Up Now!</a></h4>
+                <h4>Not a member yet? <a href="{{ route('auth.create') }}" class="normalLink">Sign Up Now!</a></h4>
             </section>
 
             <section class="sectionLogin2">

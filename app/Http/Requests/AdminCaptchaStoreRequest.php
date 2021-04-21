@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\SpecialChars;
+use App\Rules\NoSpecialCharsRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class GcashRequest extends FormRequest
+class AdminCaptchaStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,8 @@ class GcashRequest extends FormRequest
     public function rules()
     {
         return [
-            'account_name' => ['required', new SpecialChars],
-            'account_number' => ['required', new SpecialChars],
+            'value' => ['required', 'min:6', new NoSpecialCharsRule],
+            'file' => ['required', 'mimetypes:image/svg,image/svg+xml'],
         ];
     }
 }

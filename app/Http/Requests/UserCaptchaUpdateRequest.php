@@ -2,10 +2,11 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\SpecialChars;
+use App\Rules\CaptchaExistsRule;
+use App\Rules\NoSpecialCharsRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class BankRequest extends FormRequest
+class UserCaptchaUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +26,8 @@ class BankRequest extends FormRequest
     public function rules()
     {
         return [
-            'account_name' => ['required', new SpecialChars],
-            'account_number' => ['required', new SpecialChars],
-            'bank_name' => ['required', new SpecialChars],
+            'value' => ['required', new NoSpecialCharsRule],
+            'id' => ['required', new CaptchaExistsRule]
         ];
     }
 }

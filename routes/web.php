@@ -33,7 +33,7 @@ Route::middleware(['throttle:login'])->group(function () {
 
 Route::get('/', [AuthController::class, 'index'])->name('auth.index');
 
-Route::get('/register', [AuthController::class, 'show'])->name('auth.show');
+Route::get('/register', [AuthController::class, 'create'])->name('auth.create');
 Route::post('/register', [AuthController::class, 'store'])->name('auth.store');
 
 

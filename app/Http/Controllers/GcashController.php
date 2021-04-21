@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helper;
-use App\Http\Requests\GcashRequest;
+use App\Http\Requests\GcashStoreRequest;
 use App\Models\Account;
 use App\Models\CashoutRequest;
 use App\Models\Gcash;
@@ -14,10 +14,11 @@ class GcashController extends Controller
     public function create()
     {
         $account = Account::select('user_id', 'role')->where('user_id', auth()->user()->user_id)->first();
-        return view('cashoutrequests.gcash.create')->with('account', $account);
+        return view('cashoutrequests.gcash.create')
+            ->with('account', $account);
     }
 
-    public function store(GcashRequest $request)
+    public function store(GcashStoreRequest $request)
     {
         if (Helper::passwordMatch($request->password)) {
             $account = Account::select('id', 'user_id', 'money', 'role')->where('user_id', auth()->user()->user_id)->first();
