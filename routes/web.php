@@ -87,6 +87,7 @@ Route::middleware(['auth'])->group(function () {
     */
     Route::middleware(['role.admin'])->group(function () {
         Route::get('/admin/coderequests', [CodeRequestController::class, 'index'])->name('coderequest.index');
+        Route::get('/admin/coderequests/{codeRequest}', [CodeRequestController::class, 'show'])->name('coderequest.show');
         Route::post('/admin/coderequests', [CodeRequestController::class, 'accept'])->name('coderequest.accept');
         Route::delete('/admin/coderequests', [CodeRequestController::class, 'decline'])->name('coderequest.decline');
 

@@ -9,7 +9,7 @@
 @endsection
 
 @section('adminContent')
-    <section class="search">
+    {{-- <section class="search">
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="User Account Code" aria-label="User Account Code"
                 aria-describedby="button-addon2">
@@ -57,6 +57,53 @@
     @empty
         <h5 class="text-center">There are no code requests.</h5>
     @endforelse
+    </section> --}}
+
+    <section class="adminContent">
+        <form class="search">
+            <h4>Search For A Code Request</h4>
+            <div class="mb-3">
+                <label class="form-label">Category</label>
+                <select class="form-select" aria-label="Default select example">
+                    <option value="1">Account Code</option>
+                    <option value="2">Firstname</option>
+                    <option value="3">Lastname</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Order by</label>
+                <select class="form-select" aria-label="Default select example">
+                    <option value="1">Newest First</option>
+                    <option value="2">Oldest First</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Value</label>
+                <input type="text" class="form-control">
+            </div>
+            <button type="submit" class="button-submit">SEARCH</button>
+        </form>
+
+        <div class="content">
+            <div class="links">
+                @forelse ($coderequests as $coderequest)
+                    <a href="/admin/coderequests/{{ $coderequest->id }}">
+                        <section class="number">
+                            <span>{{ $coderequest->number_of_codes }}</span>
+                        </section>
+                        <section class="details">
+                            <div class="detailsHeader">
+                                <h6>{{ $coderequest->user->account_code }}</h6>
+                                <aside>{{ \Carbon\Carbon::parse($coderequest->requested_at)->diffForHumans() }}</aside>
+                            </div>
+                            <div class="nameContainer">{{ $coderequest->user->firstname . ' ' . $coderequest->user->lastname }}</div>
+                        </section>
+                    </a>
+                @empty
+                    <h5 class="text-center">There are no code requests.</h5>
+                @endforelse
+            </div>
+        </div>
     </section>
 @endsection
 

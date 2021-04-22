@@ -20,9 +20,14 @@ class CodeRequestController extends Controller
             ->with('coderequests', CodeRequest::select('id', 'user_id', 'number_of_codes', 'requested_at')
                 ->with([
                     'user' => function ($query) {
-                        $query->select('user_id', 'firstname', 'middlename', 'lastname', 'phone_number', 'city', 'province', 'account_code');
+                        $query->select('user_id', 'firstname', 'lastname', 'account_code');
                     }
                 ])->get()); // <-------- WITH EAGER LOADING //
+    }
+
+    public function show(CodeRequest $codeRequest)
+    {
+        return $codeRequest;
     }
 
     public function accept()
