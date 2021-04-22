@@ -2,7 +2,7 @@
     "/js/app.js": "/js/app.js",
     "/js/getcode/copyToClipboard.js": "/js/getcode/copyToClipboard.js",
     "/js/receipt/fileUpload.js": "/js/receipt/fileUpload.js",
-    "/css/getcode/create.css": "/css/getcode/create.css",
+    "/css/coderequests/show.css": "/css/coderequests/show.css",
     "/css/coderequests/index.css": "/css/coderequests/index.css",
     "/css/profile/index.css": "/css/profile/index.css",
     "/css/auth/create.css": "/css/auth/create.css",
@@ -13,5 +13,6 @@
     "/css/receipt/edit.css": "/css/receipt/edit.css",
     "/css/usercaptcha/edit.css": "/css/usercaptcha/edit.css",
     "/css/admincaptcha/create.css": "/css/admincaptcha/create.css",
-    "/css/getcode/index.css": "/css/getcode/index.css"
+    "/css/getcode/index.css": "/css/getcode/index.css",
+    "/css/getcode/create.css": "/css/getcode/create.css"
 }

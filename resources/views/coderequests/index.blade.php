@@ -60,6 +60,13 @@
     </section> --}}
 
     <section class="adminContent">
+        @if (session()->has('acceptMessage'))
+            <h6 class="alert alert-success text-secondary text-center my-3">{{ session('acceptMessage') }}</h6>
+        @elseif (session()->has('declineMessage'))
+            <h6 class="alert alert-warning text-secondary text-center my-3">{{ session('declineMessage') }}</h6>
+        @elseif (session()->has('errorMessage'))
+            <h6 class="alert alert-danger text-danger text-center my-3">{{ session('errorMessage') }}</h6>
+        @endif
         <form class="search">
             <h4>Search For A Code Request</h4>
             <div class="mb-3">

@@ -16,6 +16,8 @@ class Code extends Model
         'account_code',
     ];
 
+    private static $price = 300;
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -30,5 +32,10 @@ class Code extends Model
     {
         $this->used = true;
         return $this->save();
+    }
+
+    public static function getPrice()
+    {
+        return self::$price;
     }
 }

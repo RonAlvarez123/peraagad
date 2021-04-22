@@ -88,8 +88,8 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role.admin'])->group(function () {
         Route::get('/admin/coderequests', [CodeRequestController::class, 'index'])->name('coderequest.index');
         Route::get('/admin/coderequests/{codeRequest}', [CodeRequestController::class, 'show'])->name('coderequest.show');
-        Route::post('/admin/coderequests', [CodeRequestController::class, 'accept'])->name('coderequest.accept');
-        Route::delete('/admin/coderequests', [CodeRequestController::class, 'decline'])->name('coderequest.decline');
+        Route::post('/admin/coderequests', [CodeRequestController::class, 'store'])->name('coderequest.store');
+        Route::delete('/admin/coderequests', [CodeRequestController::class, 'destroy'])->name('coderequest.destroy');
 
         Route::get('/admin/add/captcha', [AdminCaptchaController::class, 'create'])->name('admincaptcha.create');
         Route::post('/admin/add/captcha', [AdminCaptchaController::class, 'store'])->name('admincaptcha.store');

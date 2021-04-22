@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Helper;
+use App\Http\Requests\CodeRequestStoreRequest;
 use App\Models\Account;
 use App\Models\Code;
 use App\Models\CodeRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CodeRequestController extends Controller
@@ -22,23 +24,25 @@ class CodeRequestController extends Controller
                     'user' => function ($query) {
                         $query->select('user_id', 'firstname', 'lastname', 'account_code');
                     }
-                ])->get()); // <-------- WITH EAGER LOADING //
+                ])->latest('requested_at')->get()); // <-------- WITH EAGER LOADING //
     }
 
     public function show(CodeRequest $codeRequest)
     {
-        return $codeRequest;
+        // return $codeRequest;
+        return view('coderequests.show')
+            ->with('account', Account::select('user_id', 'role')->where('user_id', auth()->user()->user_id)->first())
+            ->with('user', User::select('user_id', 'firstname', 'middlename', 'lastname', 'phone_number', 'city', 'province', 'account_code')->where('user_id', $codeRequest->user_id)->first())
+            ->with('coderequest', $codeRequest);
     }
 
-    public function accept()
+    public function store(CodeRequestStoreRequest $request)
     {
-        for ($i = 0; $i < request()->input('number_of_codes'); $i++) {
-            $this->createCode(request()->input('user_id'));
+        for ($i = 0; $i < $request->number_of_codes; $i++) {
+            $this->createCode($request->user_id);
         }
 
-        $result = CodeRequest::destroy(request()->input('coderequest_id'));
-
-        if ($result == true) {
+        if (CodeRequest::destroy($request->coderequest_id)) {
             return redirect()->route('coderequest.index')
                 ->with('acceptMessage', 'You have successfully accepted a code request.');
         }
@@ -46,11 +50,9 @@ class CodeRequestController extends Controller
             ->with('errorMessage', 'Code Request Approval Failed');
     }
 
-    public function decline()
+    public function destroy(CodeRequestStoreRequest $request)
     {
-        $result = CodeRequest::destroy(request()->input('coderequest_id'));
-
-        if ($result == true) {
+        if (CodeRequest::destroy($request->coderequest_id)) {
             return redirect()->route('coderequest.index')
                 ->with('declineMessage', 'You have successfully declined a code request.');
         }
