@@ -86,11 +86,14 @@ main .adminContent .search h4 {
   margin-bottom: 20px;
   text-align: center;
 }
-main .adminContent .search label, main .adminContent .search input, main .adminContent .search select {
+main .adminContent .search label, main .adminContent .search input, main .adminContent .search select, main .adminContent .search p {
   font-size: 0.8em;
 }
 main .adminContent .search label, main .adminContent .search select {
   color: #5c5c5c;
+  font-weight: bold;
+}
+main .adminContent .search p {
   font-weight: bold;
 }
 main .adminContent .search button {

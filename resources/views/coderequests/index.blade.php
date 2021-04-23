@@ -71,22 +71,31 @@
             <h4>Search For A Code Request</h4>
             <div class="mb-3">
                 <label class="form-label">Category</label>
-                <select class="form-select" aria-label="Default select example">
-                    <option value="1">Account Code</option>
-                    <option value="2">Firstname</option>
-                    <option value="3">Lastname</option>
+                <select class="form-select {{ $errors->has('category') ? 'border-danger' : '' }}" aria-label="Default select example" name="category" required value="{{ old('category') }}">
+                    <option value="account_code">Account Code</option>
+                    <option value="firstname">Firstname</option>
+                    <option value="lastname">Lastname</option>
                 </select>
+                @error('category')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
             </div>
             <div class="mb-3">
                 <label class="form-label">Order by</label>
-                <select class="form-select" aria-label="Default select example">
-                    <option value="1">Newest First</option>
-                    <option value="2">Oldest First</option>
+                <select class="form-select {{ $errors->has('order') ? 'border-danger' : '' }}" aria-label="Default select example" name="order" required value="{{ old('order') }}">
+                    <option value="new">Newest First</option>
+                    <option value="old">Oldest First</option>
                 </select>
+                @error('order')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
             </div>
             <div class="mb-3">
                 <label class="form-label">Value</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control {{ $errors->has('value') ? 'border-danger' : '' }}" name="value" required value="{{ old('value') }}">
+                @error('value')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
             </div>
             <button type="submit" class="button-submit">SEARCH</button>
         </form>
@@ -107,7 +116,7 @@
                         </section>
                     </a>
                 @empty
-                    <h5 class="text-center">There are no code requests.</h5>
+                    <h5 class="text-center">No code requests found.</h5>
                 @endforelse
             </div>
         </div>

@@ -26,12 +26,16 @@ main {
                 text-align: center;
             }
 
-            label, input, select {
+            label, input, select, p {
                 font-size: .8em;
             }
 
             label, select {
                 color: #5c5c5c;
+                font-weight: bold;
+            }
+
+            p {
                 font-weight: bold;
             }
 
