@@ -57,11 +57,15 @@
                         <div class="col-4 col-sm-4">Points</div>
                         <div class="col-4 col-sm-4">PHP</div>
                     </div>
-                    @foreach ($rewards as $reward)
+                    @foreach ($rewards as $key => $reward)
                         <form action="{{ route('colorgame.claim') }}" method="POST" class="row dataContainer">
                             @csrf
                             <div class="col-4 col-sm-4 fw-bold text-secondary">{{ number_format($reward['points']) }}</div>
-                            <div class="col-4 col-sm-4 fw-bold text-secondary">{{ number_format($reward['money']) }}</div>
+                            @if ($key == 4)
+                                <div class="col-4 col-sm-4 fw-bold text-secondary">{{ ucwords($reward['money']) }}</div>
+                            @else
+                                <div class="col-4 col-sm-4 fw-bold text-secondary">{{ number_format($reward['money']) }}</div>
+                            @endif
                             <input type="hidden" name="reward" value="{{ $reward['id'] }}">
                             <div class="col-4 col-sm-4"><button class="btn btn-success fw-bold {{ $reward['points'] > $account->colorGame->points ? 'disabled' : '' }}">Claim</button></div>
                         </form>

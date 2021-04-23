@@ -38,6 +38,11 @@ class ColorGame extends Model
             'points' => '500000',
             'money' => '18000'
         ],
+        [
+            'id' => 5,
+            'points' => '1000000',
+            'money' => '1 motorcycle'
+        ],
     ];
 
     /*

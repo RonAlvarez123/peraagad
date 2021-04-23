@@ -85,150 +85,250 @@ main .content > .alert {
     margin: 0 100px 20px 100px;
   }
 }
-.extraDetails {
-  align-items: center;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  font-size: 0.8em;
+main .wallet {
+  margin-bottom: 20px;
 }
-
-.buttonGreenContainer {
-  display: flex;
-  justify-content: center;
-  width: 60%;
+main .wallet .walletContainer, main .wallet .invites {
+  box-shadow: 0 0 3px gray;
+  margin: 20px auto 0 auto;
+  max-width: 400px;
+  padding: 20px;
 }
-.buttonGreenContainer .buttonGreen {
-  background-color: #0ab0ae;
-  border: 2px solid #0ab0ae;
-  border-radius: 50px;
-  box-shadow: 0 0 2px #888888;
-  color: white;
+main .wallet .walletContainer {
+  background-color: white;
+}
+main .wallet .walletContainer h6 {
+  color: #3f3f3f;
   font-size: 1em;
   font-weight: bold;
-  padding: 5px 20px;
-  width: 100%;
-  transition: background-color 250ms, color 250ms, transform 250ms;
 }
-.buttonGreenContainer .buttonGreen:hover {
-  background-color: white;
-  color: #0ab0ae;
-  transform: scale(1.05);
-}
-
-.linkGreenContainer {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
-.linkGreenContainer .linkGreen {
-  background-color: #07807e;
-  border: 1px solid white;
-  box-shadow: 0 0 4px #1f1f1f;
-  color: white;
+main .wallet .walletContainer label, main .wallet .walletContainer select, main .wallet .walletContainer p {
+  color: #3f3f3f;
   font-weight: bold;
-  margin: 15px 0;
-  padding: 5px 10px;
-  text-align: center;
-  text-decoration: none;
-  width: 50%;
-  transition: background-color 250ms, color 250ms;
 }
-.linkGreenContainer .linkGreen:hover {
-  background-color: #0e293f;
-  color: white;
-}
-
-.normalLink {
-  transition: color 250ms;
-}
-
-.normalLink:hover {
-  color: #187b8d;
-}
-
-.socialMedia {
-  display: flex;
-  justify-content: center;
-}
-.socialMedia a {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  height: 50px;
-  width: 50px;
-  margin: 0 20px;
-  transition: transform 250ms;
-}
-.socialMedia a:hover {
-  transform: scale(1.15);
-}
-.socialMedia img {
-  height: 100%;
-  width: 100%;
-}
-
-@media screen and (min-width: 768px) {
-  .buttonGreenContainer {
-    width: 60%;
-  }
-}
-main {
-  align-items: center;
-  font-size: 15px;
-}
-main > * {
-  max-width: 500px;
-  width: 100%;
-}
-main .content {
-  text-align: center;
-}
-main .content .contentContainer > * {
-  text-align: center;
-  margin-bottom: 10px;
-}
-main .content .contentContainer h4 {
+main .wallet .walletContainer .balance h6 {
+  color: #054f4f;
   font-size: 1.5em;
+  margin: 0px;
 }
-main .content .contentContainer input {
+main .wallet .walletContainer .balance h6 span {
+  color: #3f3f3f;
+  font-size: 0.6em;
+}
+main .wallet .walletContainer .balance label {
+  font-size: 0.6em;
+  transform: translateY(-50%);
+}
+main .wallet .walletContainer div label, main .wallet .walletContainer div select {
   font-size: 0.8em;
 }
-main .content .contentContainer button {
-  background-color: white;
-  border: 2px solid #0ab0ae;
-  border-radius: 5px;
-  box-shadow: 0 0 3px #021f1f;
-  color: #0ab0ae;
-  font-size: 1em;
-  font-weight: bold;
-  padding: 5px 10px;
-  transition: background-color 250ms, color 250ms;
+main .wallet .walletContainer div label, main .wallet .walletContainer div select, main .wallet .walletContainer div p {
+  color: #5c5c5c;
 }
-main .content .contentContainer button:hover {
-  background-color: #0ab0ae;
-  color: white;
+main .wallet .walletContainer div p {
+  font-size: 0.6em;
+}
+main .wallet .invites {
+  background-color: white;
+  font-weight: bold;
+}
+main .wallet .invites .badge-container {
+  display: flex;
+  justify-content: flex-end;
+}
+main .wallet .invites h6 {
+  color: #3f3f3f;
+  font-size: 1em;
+}
+main .wallet .invites .tableContainer {
+  background-color: #5c5c5c;
+  box-shadow: 0 0 3px #292929;
+  color: #f8f8f8;
+}
+main .wallet .invites .tableContainer .dataContainer {
+  border-bottom: 1px solid white;
+  display: flex;
+  padding: 5px;
+}
+main .wallet .invites .tableContainer .dataContainer:last-child {
+  border: none;
+}
+main .wallet .invites .tableContainer .dataContainer div {
+  flex-basis: 50%;
+  font-size: 0.8em;
+  text-align: center;
 }
 
 @media (min-width: 576px) {
-  main {
+  main .wallet {
+    font-size: 17px;
+  }
+  main .wallet .walletContainer, main .wallet .invites {
+    padding: 30px;
+  }
+}
+@media (min-width: 768px) {
+  main .wallet {
+    font-size: 19px;
+  }
+  main .wallet .invites .badge-container .badge {
+    transform: translate(20%, -50%);
+  }
+}
+.file-upload-container .text-danger.error-message {
+  font-size: 13px;
+}
+.file-upload-container input {
+  display: none;
+}
+.file-upload-container .file-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.file-upload-container .file-upload > * {
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 5px 15px;
+  text-align: center;
+}
+.file-upload-container .file-upload p {
+  align-items: center;
+  border: 2px dashed rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  min-width: 150px;
+}
+.file-upload-container .file-upload button {
+  background-color: #505053;
+  border: 2px solid #505053;
+  box-shadow: 0 0 2px gray;
+  color: white;
+  transition: background-color 250ms;
+}
+.file-upload-container .file-upload button:hover {
+  background-color: #373739;
+}
+
+@media (min-width: 576px) {
+  .file-upload-container {
+    font-size: 17px;
+  }
+  .file-upload-container .file-upload {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+}
+.button-submit {
+  background-color: #0ab0ae;
+  border: 2px solid #0ab0ae;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+  width: 100%;
+  transition: background-color 250ms, border 250ms;
+}
+.button-submit:hover {
+  background-color: #07807e;
+  border: 2px solid #07807e;
+}
+
+section#announcement {
+  background-color: #07807e;
+  color: white;
+  margin-top: 20px;
+}
+section#announcement div {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0 auto;
+  max-width: 400px;
+  padding: 20px;
+  text-align: center;
+}
+section#announcement span {
+  color: gold;
+}
+
+@media (min-width: 576px) {
+  section#announcement {
+    font-size: 16px;
+  }
+  section#announcement div {
+    max-width: 500px;
+  }
+}
+@media (min-width: 768px) {
+  section#announcement {
+    font-size: 18px;
+    margin-top: 60px;
+  }
+  section#announcement div {
+    max-width: 900px;
+    padding: 30px;
+  }
+}
+main {
+  display: block;
+}
+main .content .alert {
+  margin: 0 auto;
+  max-width: 400px;
+}
+main .content .contentContainer {
+  background-color: white;
+  box-shadow: 0 0 3px gray;
+  margin: 0 auto;
+  max-width: 400px;
+  padding: 20px;
+}
+main .content .contentContainer > * {
+  margin: 0 auto;
+  max-width: 400px;
+}
+main .content .contentContainer > div {
+  margin-bottom: 20px;
+}
+main .content .contentContainer h4 {
+  font-size: 1.5em;
+  margin-bottom: 40px;
+  text-align: center;
+}
+main .content .contentContainer label, main .content .contentContainer .instructions {
+  color: #5c5c5c;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+main .content .contentContainer input, main .content .contentContainer p {
+  font-size: 0.8em;
+}
+main .content .contentContainer .select-container select {
+  color: #5c5c5c;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+main .content .contentContainer .select-container p {
+  font-size: 13px;
+}
+
+@media (min-width: 576px) {
+  main .content {
     font-size: 17px;
   }
 }
 @media (min-width: 768px) {
-  main {
-    align-items: center;
-    flex-direction: column;
+  main .content {
     font-size: 19px;
   }
-  main > * {
-    max-width: 700px;
-    width: 100%;
+  main .content .alert {
+    max-width: 500px;
   }
-  main .content {
-    width: 100%;
-  }
-  main .content .contentContainer button {
-    padding: 8px 20px;
+  main .content .contentContainer {
+    max-width: 500px;
+    padding: 40px;
   }
 }
