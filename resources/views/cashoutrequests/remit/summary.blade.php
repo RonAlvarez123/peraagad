@@ -39,6 +39,7 @@
                 <label>Cashout Type</label>
                 <h6>Money Remittance</h6>
             </div>
+            <hr>
             <div class="amountContainer mb-2">
                 <label>Remittance Outlet</label>
                 <h6>{{ ucwords($remit->remittance_outlet) }}</h6>
@@ -55,6 +56,7 @@
                 <label>Withholding Tax</label>
                 <h6><span>PHP</span> {{ $account->getCashoutTax() }}</h6>
             </div>
+            <hr>
             <div class="amountContainer mb-2">
                 <label>Amount to be Recieved</label>
                 <h6 class="text-danger"><span>PHP</span> {{ $account->getDeductedCashout() }}</h6>

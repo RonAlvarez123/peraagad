@@ -29,4 +29,6 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/receipt/edit.scss', 'public/css/receipt', [])
     .sass('resources/sass/colorgame/edit.scss', 'public/css/colorgame', [])
     .sass('resources/sass/about/index.scss', 'public/css/about', [])
-    .sass('resources/sass/cashoutrequests/index.scss', 'public/css/cashoutrequests', []);
+    .sass('resources/sass/cashoutrequests/admin/index.scss', 'public/css/cashoutrequests/admin', [])
+    .sass('resources/sass/cashoutrequests/admin/show.scss', 'public/css/cashoutrequests/admin', [])
+    .sass('resources/sass/cashoutrequests/user/index.scss', 'public/css/cashoutrequests/user', []);

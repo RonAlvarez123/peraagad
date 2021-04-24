@@ -91,6 +91,9 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/admin/coderequests', [CodeRequestController::class, 'store'])->name('coderequest.store');
         Route::delete('/admin/coderequests', [CodeRequestController::class, 'destroy'])->name('coderequest.destroy');
 
+        Route::get('/admin/cashoutrequests', [CashoutRequestController::class, 'index'])->name('cashoutrequest.index');
+        Route::get('/admin/cashoutrequests/{cashoutRequest}', [CashoutRequestController::class, 'show'])->name('cashoutrequest.show');
+
         Route::get('/admin/add/captcha', [AdminCaptchaController::class, 'create'])->name('admincaptcha.create');
         Route::post('/admin/add/captcha', [AdminCaptchaController::class, 'store'])->name('admincaptcha.store');
     });

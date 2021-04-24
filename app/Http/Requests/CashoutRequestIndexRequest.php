@@ -2,13 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Bank;
-use App\Rules\NoLettersRule;
 use App\Rules\NoSpecialCharsRule;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class BankStoreRequest extends FormRequest
+class CashoutRequestIndexRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,9 +25,8 @@ class BankStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'account_name' => ['required', new NoSpecialCharsRule],
-            'account_number' => ['required', 'min:5', 'max:15', new NoSpecialCharsRule, new NoLettersRule],
-            'bank_partner' => ['required', new NoSpecialCharsRule, Rule::in(Bank::getPartners())],
+            'type' => ['required_with:order', 'in:gcash,bank,remit', new NoSpecialCharsRule],
+            'order' => ['required_with:type', 'in:new,old', new NoSpecialCharsRule],
         ];
     }
 }

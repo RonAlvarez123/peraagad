@@ -24,7 +24,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
                                 <li><a class="dropdown-item {{ Route::currentRouteName() === 'coderequest.index' ? 'active' : '' }}" href="{{ route('coderequest.index') }}">CODE REQUESTS</a></li>
-                                <li><a class="dropdown-item" href="#">CASHOUT REQUESTS</a></li>
+                                <li><a class="dropdown-item {{ Route::currentRouteName() === 'cashoutrequest.index' ? 'active' : '' }}" href="{{ route('cashoutrequest.index') }}">CASHOUT REQUESTS</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -34,7 +34,6 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
                                 <li><a class="dropdown-item {{ Route::currentRouteName() === 'admincaptcha.create' ? 'active' : '' }}" href="{{ route('admincaptcha.create') }}">CAPTCHA</a></li>
-                                <li><a class="dropdown-item" href="#">SPELLING BEE</a></li>
                             </ul>
                         </li>
                         <form action="{{ route('auth.logout') }}" method="POST" class="nav-item">
