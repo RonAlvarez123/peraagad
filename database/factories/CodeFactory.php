@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Helper;
 use App\Models\Code;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CodeFactory extends Factory
@@ -24,7 +25,7 @@ class CodeFactory extends Factory
     {
         return [
             'user_id' => 2,
-            'account_code' => Helper::randomString(11, 2),
+            'account_code' => Helper::randomString(11, User::latest()->first()->user_id ?? ''),
         ];
     }
 }

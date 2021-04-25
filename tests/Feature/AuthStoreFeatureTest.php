@@ -21,18 +21,13 @@ class AuthStoreFeatureTest extends TestCase
 
     /*
     *-----------------------------------
-    *   Testing Order
+    *   TESTING ORDER
     *   1. Admin
     *   2. Pioneer
     *   3. User
     *   4. Required Fields
     *-----------------------------------
     */
-
-    // public function __construct()
-    // {
-    //     $this->setUpFaker();
-    // }
 
     public function test_faker()
     {
@@ -78,31 +73,32 @@ class AuthStoreFeatureTest extends TestCase
     }
 
 
-
-
     /*
     *-----------------------------------
     *   USER
     *-----------------------------------
     */
-
     public function test_a_user_can_sign_up()
     {
-        $codeFactory = Code::factory()->create(['user_id' => User::latest()->first()->user_id]);
-
+        $codeFactory = Code::factory()
+            ->create(['user_id' => User::latest()->first()->user_id]);
         $code = Code::where(['account_code' => $codeFactory->account_code, 'used' => false])->first();
+        // Code::where(['account_code' => $code->account_code, 'used' => false])->update(['used' => true]); //force the test to fail
 
+        $account = Account::where(['user_id' => $code->user_id])->first();
         $rootAccounts = $this->getRootAccounts(Account::where('user_id', $code->user_id)->first());
 
         $userData = $this->getUserData();
+        $this->account_code_must_be_unique_and_unused($code->account_code);
         $userData['account_code'] = $code->account_code;
 
         $response = $this->post('/register', $userData);
 
         $account = User::latest()->first()->account;
+
         $this->checkRootAccountsMoney($account, $rootAccounts);
 
-        $code = Code::where(['account_code' => $codeFactory->account_code])->first();
+        $code = Code::where(['account_code' => $code->account_code])->first();
         $this->assertEquals(true, $code->used);
         $this->newAccountStats($account);
         $this->assertEquals(200, $account->money);
@@ -111,49 +107,59 @@ class AuthStoreFeatureTest extends TestCase
     }
 
 
-
     /*
     *-----------------------------------
     *   REQUIRED FIELD TESTS
     *-----------------------------------
     */
-
-    public function test_firstname_is_required()
+    public function test_required_fields()
     {
-        $this->field_is_required('firstname');
-    }
+        $fields = $this->getFields();
+        $fields[] = 'account_code';
+        foreach ($fields as $field) {
+            $this->field_is_required($field);
+        }
 
-    public function test_middlename_is_required()
-    {
-        $this->field_is_required('middlename');
-    }
-
-    public function test_lastname_is_required()
-    {
-        $this->field_is_required('lastname');
-    }
-
-    public function test_phone_number_is_required()
-    {
-        $this->field_is_required('phone_number');
-    }
-
-    public function test_city_is_required()
-    {
-        $this->field_is_required('city');
-    }
-
-    public function test_province_is_required()
-    {
-        $this->field_is_required('province');
-    }
-
-    public function test_password_is_required()
-    {
-        $this->field_is_required('password');
         // dd(session('errors')->get('password')[0]);
     }
 
+
+    /*
+    *-----------------------------------
+    *   FILTERING FIELDS WITH SPECIAL CHARACTERS
+    *-----------------------------------
+    */
+    public function test_field_must_not_contain_special_characters()
+    {
+        $userData = $this->getUserData();
+        foreach ($this->getFields() as $field) {
+            foreach (Helper::getSpecialChars() as $character) {
+                $userData[$field] = $character;
+
+                $response = $this->post('/register', $userData);
+                $response->assertSessionHasErrors($field);
+
+                $this->assertEquals(true, in_array('You cannot include a special character.', session('errors')->get($field)));
+            }
+        }
+    }
+
+
+    /*
+    *-----------------------------------
+    *   OTHER TESTS
+    *-----------------------------------
+    */
+    public function test_phone_number_must_be_unique()
+    {
+        $userData = $this->getUserData();
+        $userData['phone_number'] = User::latest()->first()->phone_number ?? User::factory()->create()->phone_number;
+
+        $response = $this->post('/register', $userData);
+        $response->assertSessionHasErrors('phone_number');
+
+        $this->assertEquals(true, in_array('The phone number has already been taken.', session('errors')->get('phone_number')));
+    }
 
 
     /*
@@ -161,18 +167,19 @@ class AuthStoreFeatureTest extends TestCase
     *   HELPER METHODS
     *-----------------------------------
     */
-    public function newAccountStats(Account $account)
+    private function newAccountStats(Account $account)
     {
-        $this->assertGreaterThanOrEqual(1, User::all()->count(), 'actual value is less than the expected value');
-        $this->assertGreaterThanOrEqual(1, Account::all()->count(), 'actual value is less than the expected value');
+        $message = 'actual value is less than the expected value';
+        $this->assertGreaterThanOrEqual(1, User::all()->count(), $message);
+        $this->assertGreaterThanOrEqual(1, Account::all()->count(), $message);
         $this->assertEquals('basic', $account->level);
         $this->assertEquals(0, $account->direct);
         $this->assertEquals(0, $account->indirect);
         $this->assertEquals(0, $account->number_of_bonus_claimed);
         $this->assertEquals(null, $account->bonus_claimed_at);
-        $this->assertGreaterThanOrEqual(1, Receipt::all()->count(), 'actual value is less than the expected value');
-        $this->assertGreaterThanOrEqual(1, ColorGame::all()->count(), 'actual value is less than the expected value');
-        $this->assertGreaterThanOrEqual(1, UserCaptcha::all()->count(), 'actual value is less than the expected value');
+        $this->assertGreaterThanOrEqual(1, Receipt::all()->count(), $message);
+        $this->assertGreaterThanOrEqual(1, ColorGame::all()->count(), $message);
+        $this->assertGreaterThanOrEqual(1, UserCaptcha::all()->count(), $message);
     }
 
     private function getUserData()
@@ -190,13 +197,31 @@ class AuthStoreFeatureTest extends TestCase
         ];
     }
 
-    public function field_is_required($field)
+    private function getFields()
+    {
+        return [
+            'firstname',
+            'middlename',
+            'lastname',
+            'phone_number',
+            'city',
+            'province',
+            'password',
+        ];
+    }
+
+    private function field_is_required($field)
     {
         $userData = $this->getUserData();
         $userData[$field] = '';
 
         $response = $this->post('/register', $userData);
         $response->assertSessionHasErrors($field);
+    }
+
+    public function account_code_must_be_unique_and_unused($code)
+    {
+        $this->assertDatabaseHas('codes', ['account_code' => $code]);
     }
 
     private function checkRootAccountsExpectedMoney(Account $account, $rootAccounts)

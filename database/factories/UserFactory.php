@@ -5,7 +5,6 @@ namespace Database\Factories;
 use App\Helper;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 class UserFactory extends Factory
 {
@@ -30,7 +29,7 @@ class UserFactory extends Factory
             'phone_number' => '09' . Helper::randomNumber(9),
             'city' => 'San Jose Del Monte',
             'province' => 'Bulacan',
-            'account_code' => Helper::randomString(11, 1),
+            'account_code' => Helper::randomString(11, User::latest()->first()->user_id ?? ''),
             'password' => 'admin123', // password
         ];
     }

@@ -80,4 +80,42 @@ class Helper
 
         // return 'name:' . $name . '---' . 'ext:' . $ext . '---' . 'newpath:' . $newPath . '---' . 'newname:' . $newName . '---' . 'answer:' . $answer . '---' . 'counter:' . $counter;
     }
+
+    public static function getSpecialChars()
+    {
+        return [
+            '.',
+            ',',
+            '/',
+            ';',
+            '\'',
+            '[',
+            ']',
+            '\\',
+            '*',
+            '/',
+            '+',
+            '-',
+            '`',
+            '~',
+            '!',
+            '@',
+            '#',
+            '$',
+            '%',
+            '^',
+            '&',
+            '*',
+            '(',
+            ')',
+            '<',
+            '>',
+            '?',
+            ':',
+            '"',
+            '{',
+            '}',
+            '|',
+        ];
+    }
 }

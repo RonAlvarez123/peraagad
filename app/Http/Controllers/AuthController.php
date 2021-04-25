@@ -36,10 +36,11 @@ class AuthController extends Controller
         $user = User::create($validated);
         $user->setUserId();
 
-        // $validCode = Code::where(['account_code' => $validated['account_code'], 'used' => false])->first(); // MAKE THIS A COMMENT WHEN CREATING AN ACCOUNT FOR ADMIN
-        // $validCode->setToUsed(); // MAKE THIS A COMMENT WHEN CREATING AN ACCOUNT FOR ADMIN
-        $accountValue = AccountService::getAccountValue($user->id /*, true, $validCode->user_id*/); // if with referral, add true as 2nd param and add the referrer_id as 3rd param
-        // $accountValue = AccountService::getAccountValue($user->id, true, $validCode->user_id);
+
+        // $accountValue = AccountService::getAccountValue($user->id /*, true, $validCode->user_id*/); // if with referral, add true as 2nd param and add the referrer_id as 3rd param
+        $validCode = Code::where(['account_code' => $validated['account_code'], 'used' => false])->first(); // MAKE THIS A COMMENT WHEN CREATING AN ACCOUNT FOR ADMIN
+        $validCode->setToUsed(); // MAKE THIS A COMMENT WHEN CREATING AN ACCOUNT FOR ADMIN
+        $accountValue = AccountService::getAccountValue($user->id, true, $validCode->user_id);
         $account = Account::create($accountValue);
 
         if (!request()->has('role')) {

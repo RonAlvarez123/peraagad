@@ -2,6 +2,7 @@
 
 namespace App\Rules;
 
+use App\Helper;
 use Illuminate\Contracts\Validation\Rule;
 
 class NoSpecialCharsRule implements Rule
@@ -25,8 +26,7 @@ class NoSpecialCharsRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        $specialchars = ['.', ',', '@', '<', '>', ';', '/', '\'', '"'];
-        foreach ($specialchars as $specialchar) {
+        foreach (Helper::getSpecialChars() as $specialchar) {
             if (stripos($value, $specialchar) !== false) {
                 return false;
             }
