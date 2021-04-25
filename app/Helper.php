@@ -28,6 +28,17 @@ class Helper
         return $str;
     }
 
+    public static function randomNumber($length)
+    {
+        $result = '';
+
+        for ($i = 0; $i < $length; $i++) {
+            $result .= mt_rand(0, 9);
+        }
+
+        return $result;
+    }
+
     public static function passwordMatch($value)
     {
         if (Hash::check($value, auth()->user()->password)) {
