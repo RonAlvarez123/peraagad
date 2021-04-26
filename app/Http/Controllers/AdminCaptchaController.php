@@ -18,20 +18,14 @@ class AdminCaptchaController extends Controller
 
     public function store(AdminCaptchaStoreRequest $request)
     {
-
         $request->file('file')->storeAs('public/captcha', $filePath = Helper::renameFile('/captcha', $request->file('file')->getClientOriginalName()));
 
-        $captcha = Captcha::create([
-            'value' => $request->value,
-            'path' => $filePath,
-        ]);
-
-        if (!$captcha) {
+        if (Captcha::create(['value' => $request->value, 'path' => $filePath])) {
             return redirect()->route('admincaptcha.create')
-                ->withErrors(['value' => 'Captcha addition failed.']);
+                ->with('status', 'Captcha added successfuly.');
         }
 
         return redirect()->route('admincaptcha.create')
-            ->with('status', 'Captcha added successfuly.');
+            ->withErrors(['value' => 'Captcha addition failed.']);
     }
 }

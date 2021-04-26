@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Account;
 use App\Models\User;
+use App\Services\ProfileService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -31,35 +33,24 @@ class ProfileController extends Controller
         return redirect()->route('profile.index');
     }
 
-    public function update()
+    public function update(ProfileUpdateRequest $request)
     {
-        request()->validate([
-            'old_password' => ['required'],
-            'new_password' => ['required', 'min:6', 'confirmed'],
-        ]);
-
         $user = User::select('id', 'user_id', 'password', 'updated_at')->where('user_id', auth()->user()->user_id)->first();
 
-        if (!Hash::check(request()->input('old_password'), $user->password)) {
+        if (!Hash::check($request->old_password, $user->password)) {
             return redirect()->route('profile.index')
-                ->withErrors([
-                    'old_password' => 'The password is incorrect.',
-                    'main_error' => 'Password change failed.',
-                ]);
-        } elseif (Hash::check(request()->input('new_password'), $user->password)) {
+                ->withErrors(array_merge(ProfileService::getMainError(), ['old_password' => 'The password is incorrect.']));
+        } elseif (Hash::check($request->new_password, $user->password)) {
             return redirect()->route('profile.index')
-                ->withErrors([
-                    'new_password' => 'The new password is the same as the old password.',
-                    'main_error' => 'Password change failed.',
-                ]);
+                ->withErrors(array_merge(ProfileService::getMainError(), ['new_password' => 'The new password is the same as the old password.']));
         }
 
-        if ($user->changePassword(request()->input('new_password'))) {
+        if ($user->changePassword($request->new_password)) {
             return redirect()->route('profile.index')
                 ->with('status', 'You have changed your password.');
         }
 
         return redirect()->route('profile.index')
-            ->withErrors(['main_error' => 'Password change failed.']);
+            ->withErrors(ProfileService::getMainError());
     }
 }

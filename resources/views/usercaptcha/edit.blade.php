@@ -51,7 +51,7 @@
         @if ($account->userCaptcha->canUseCaptcha())
             @if ($captcha)
                 <div class="captcha my-3">
-                    <img src="{{ asset('storage/captcha/'. $captcha->path) }}" alt="Captcha Image" class="unselectable">
+                    <img src="{{ asset('storage/public/captcha/'. $captcha->path) }}" alt="Captcha Image" class="unselectable">
                 </div>
                 <div class="valueContainer">
                     <label class="form-label">Captcha Value</label>

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReceiptUpdateRequest;
 use App\Models\Account;
 use App\Models\Receipt;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 class ReceiptController extends Controller
 {
@@ -17,13 +16,8 @@ class ReceiptController extends Controller
             ->with('receipt', Receipt::select('user_id', 'updated_at')->where('user_id', $userId)->first());
     }
 
-    public function update()
+    public function update(ReceiptUpdateRequest $request)
     {
-        request()->validate([
-            'file' => ['required', 'mimetypes:image/jpeg,image/png', 'max:1024'],
-            'category' => ['required', Rule::in(Receipt::getCategories())],
-        ]);
-
         $account = Account::select('id', 'user_id', 'money')->where('user_id', auth()->user()->user_id)->first();
 
         if ($account) {
@@ -33,7 +27,6 @@ class ReceiptController extends Controller
                     ->with('status', 'Receipt upload successful.');
             }
             return redirect()->route('receipt.edit');
-            // ->withErrors(['category' => 'You already uploaded. Please wait some time to upload again.']);
         }
         return redirect()->route('receipt.edit')
             ->withErrors(['category' => 'Receipt upload failed.']);
