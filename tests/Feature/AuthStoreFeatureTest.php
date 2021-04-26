@@ -224,7 +224,7 @@ class AuthStoreFeatureTest extends TestCase
         $this->assertDatabaseHas('codes', ['account_code' => $code]);
     }
 
-    private function checkRootAccountsExpectedMoney(Account $account, $rootAccounts)
+    private function checkRootAccountsExpectedMoney(Account $account, $rootAccounts) // JUST A HELPER TO GET RESULTS AND LOG IT
     {
         $array = [];
         for ($i = 1; $i < count($rootAccounts); $i++) {
