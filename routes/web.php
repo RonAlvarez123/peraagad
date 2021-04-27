@@ -4,7 +4,6 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminCaptchaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BankController;
-use App\Http\Controllers\CashoutController;
 use App\Http\Controllers\CashoutRequestController;
 use App\Http\Controllers\CodeRequestController;
 use App\Http\Controllers\ColorGameController;

@@ -48,7 +48,7 @@ class AuthStoreFeatureTest extends TestCase
 
         $response = $this->post('/register', $userData);
 
-        $account = User::latest()->first()->account;
+        $account = User::where('account_code', $userData['account_code'])->first()->account;
 
         $this->newAccountStats($account);
         $this->assertEquals(200, $account->money);
@@ -64,7 +64,7 @@ class AuthStoreFeatureTest extends TestCase
 
         $response = $this->post('/register', $userData);
 
-        $account = User::latest()->first()->account;
+        $account = User::where('account_code', $userData['account_code'])->first()->account;
 
         $this->newAccountStats($account);
         $this->assertEquals(0, $account->money);
@@ -94,7 +94,7 @@ class AuthStoreFeatureTest extends TestCase
 
         $response = $this->post('/register', $userData);
 
-        $account = User::latest()->first()->account;
+        $account = User::where('account_code', $userData['account_code'])->first()->account;
 
         $this->checkRootAccountsMoney($account, $rootAccounts);
 

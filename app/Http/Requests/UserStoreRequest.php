@@ -35,7 +35,7 @@ class UserStoreRequest extends FormRequest
             'province' => ['required', 'min:3', new NoSpecialCharsRule],
             'account_code' => [
                 'required',
-                // new CodeExistsAndUnusedRule,
+                new CodeExistsAndUnusedRule,
             ],
             'password' => ['required', 'confirmed', 'min:6', new NoSpecialCharsRule],
 
