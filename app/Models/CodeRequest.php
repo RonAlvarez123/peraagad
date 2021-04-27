@@ -26,4 +26,9 @@ class CodeRequest extends Model
     {
         return $this->belongsTo(Account::class, 'user_id', 'user_id');
     }
+
+    public function getTotalPrice()
+    {
+        return Code::getPrice() * $this->number_of_codes;
+    }
 }

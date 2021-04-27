@@ -24,7 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('province');
             $table->string('account_code')->unique();
             $table->string('password');
-            $table->timestamps();
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at')->nullable()->default(null);
         });
     }
 

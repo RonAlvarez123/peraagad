@@ -1,0 +1,134 @@
+@import "../../colors";
+@import "../../nav";
+@import "../../submit";
+
+main {
+    padding: 20px;
+
+    & > * {
+        margin: 0 auto;
+        max-width: 400px;
+    }
+
+    .adminContent {
+        background-color: $light-color;
+
+        header {
+            color: darken($primary-color, 10%);
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+
+            div {
+                display: grid;
+                gap: 10px;
+                grid-template-columns: 1fr 1fr;
+                justify-content: space-between;
+
+                h6 {
+                    color: #383838;
+                    text-align: right;
+                }
+    
+                label {
+                    font-size: .7em;
+                }
+    
+                h6 {
+                    font-size: 1em;
+                }
+    
+                span {
+                    font-size: .6em;
+                }
+    
+                h6, label {
+                    font-weight: bold;
+                }
+        
+                label, input {
+                    font-size: .8em;
+                }
+        
+                label {
+                    color: #5c5c5c;
+                }
+            }
+
+            .buttonsContainer {
+                display: grid;
+                gap: 10px;
+                grid-template-columns: 1fr 1fr;
+                margin: 20px 0;
+
+                button {
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .modal {
+            
+            .modal-dialog {
+
+                .modal-content {
+
+                    .modal-body {
+                        
+                        div {
+
+                            label, input {
+                                font-size: .8em;
+        
+                            }
+
+                            label, p {
+                                color: #5c5c5c;
+                                font-weight: bold;
+                            }
+
+                            p {
+                                font-size: .7em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    main {
+        background-color: rgb(240, 240, 240);
+
+        & > * {
+            max-width: 500px;
+        }
+
+        .adminContent {
+            box-shadow: 0 0 3px gray;
+            font-size: 17px;
+
+            header {
+                background-color: darken($primary-color, 10%);
+                color: gold;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    main {
+
+        .adminContent {
+            font-size: 19px;
+   
+        }
+    }
+}

@@ -1,0 +1,189 @@
+.navbar.navbar-dark {
+  background-color: #0ab0ae;
+  box-shadow: 0 0 5px black;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.navbar.navbar-dark .navbar-brand {
+  padding: 0 0 0 10px;
+}
+.navbar.navbar-dark .navLogo {
+  height: 80px;
+}
+.navbar.navbar-dark .nav-item button.stand-alone {
+  background-color: #0ab0ae;
+  border: none;
+  color: white;
+}
+.navbar.navbar-dark .nav-link {
+  color: white;
+  font-weight: bold;
+}
+.navbar.navbar-dark .nav-link:hover {
+  color: #e6ddca;
+}
+.navbar.navbar-dark .nav-link:focus {
+  color: #f6c55c;
+}
+.navbar.navbar-dark .dropdown-menu .dropdown-item:hover {
+  background-color: #dcdcdc;
+  color: #a76406;
+}
+.navbar.navbar-dark .dropdown-menu .dropdown-item.active {
+  background-color: #0ab0ae;
+  color: white;
+}
+
+@media (min-width: 576px) {
+  .navbar.navbar-dark .navbar-brand {
+    padding: 0 0 0 20px;
+  }
+  .navbar.navbar-dark .navLogo {
+    height: 100px;
+  }
+}
+@media (min-width: 768px) {
+  .navbar.navbar-dark .navbar-collapse {
+    justify-content: flex-end;
+    padding: 0 20px 0 0;
+  }
+}
+main .sectionContainer {
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 20px;
+}
+main .sectionContainer > * {
+  padding: 20px 0;
+}
+main .sectionContainer .content > * {
+  text-align: center;
+}
+main .sectionContainer .content h4 {
+  font-size: 1.5em;
+}
+main .sectionContainer .content h6 {
+  font-size: 0.9em;
+}
+main .sectionContainer .content .colorsContainer {
+  display: grid;
+  gap: 10px;
+  place-items: center;
+  margin: 20px 0;
+}
+main .sectionContainer .content .colorsContainer button {
+  border: 3px solid #555;
+  box-shadow: 0 0 3px #222;
+  height: 100px;
+  width: 100px;
+  transition: transform 250ms;
+}
+main .sectionContainer .content .colorsContainer button:hover {
+  transform: scale(1.1);
+}
+main .sectionContainer .content .colorsContainer button:nth-child(3) {
+  background-color: #e95151;
+}
+main .sectionContainer .content .colorsContainer button:nth-child(4) {
+  background-color: orange;
+}
+main .sectionContainer .content .colorsContainer button:nth-child(5) {
+  background-color: yellow;
+}
+main .sectionContainer .content .colorsContainer button:nth-child(6) {
+  background-color: #3fe03f;
+}
+main .sectionContainer .content .colorsContainer button:nth-child(7) {
+  background-color: #7581ee;
+}
+main .sectionContainer .content .colorsContainer button:nth-child(8) {
+  background-color: #d275ee;
+}
+main .sectionContainer .stats {
+  background-color: #07807e;
+  box-shadow: 0 0 5px gray;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 15px;
+}
+main .sectionContainer .stats p {
+  font-size: 0.8em;
+  font-weight: bold;
+  margin: 0;
+}
+main .sectionContainer .stats p span {
+  background-color: #032e2d;
+  border-radius: 5px;
+  box-shadow: 0 0 3px black;
+  padding: 5px;
+}
+main .sectionContainer .rewards {
+  background-color: #f1f1f1;
+  box-shadow: 0 0 3px gray;
+  margin: 20px auto 0 auto;
+  max-width: 500px;
+  padding: 20px 0 10px 0;
+}
+main .sectionContainer .rewards > * {
+  text-align: center;
+}
+main .sectionContainer .rewards h5 {
+  font-size: 1.4em;
+}
+main .sectionContainer .rewards .tableContainer {
+  font-size: 0.8em;
+  padding: 0 30px;
+}
+main .sectionContainer .rewards .tableContainer > * {
+  padding: 10px 0;
+}
+main .sectionContainer .rewards .tableContainer > * > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main .sectionContainer .rewards .tableContainer .headerContainer {
+  font-weight: bold;
+}
+main .sectionContainer .rewards .tableContainer .dataContainer {
+  border-bottom: 1px solid gray;
+}
+main .sectionContainer .rewards .tableContainer .dataContainer:last-child {
+  border-bottom: none;
+}
+
+@media (min-width: 576px) {
+  main .sectionContainer .content {
+    font-size: 17px;
+  }
+  main .sectionContainer .content .colorsContainer {
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+  }
+  main .sectionContainer .content .colorsContainer button {
+    height: 150px;
+    width: 150px;
+  }
+  main .sectionContainer .content .colorsContainer button:hover {
+    transform: scale(1.05);
+  }
+}
+@media (min-width: 768px) {
+  main .sectionContainer {
+    max-width: 700px;
+  }
+  main .sectionContainer .content {
+    font-size: 20px;
+  }
+  main .sectionContainer .content .colorsContainer {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  main .sectionContainer .alert, main .sectionContainer .btn-secondary {
+    margin: 0 auto;
+    max-width: 600px;
+  }
+}

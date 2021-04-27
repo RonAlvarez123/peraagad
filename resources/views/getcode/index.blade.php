@@ -2,6 +2,7 @@
 
 @section('customStyle')
     <link rel="stylesheet" href="{{ asset('css/getcode/index.css') }}">
+    <script defer src="{{ asset('js/getcode/copyToClipboard.js') }}"></script>
 @endsection
    
 @section('title')
@@ -10,26 +11,45 @@
 
 @section('contentContainer')
     <div class="contentContainer">
-        <h4>My Valid Codes</h4>
-        @if($account->codes_count > 0)
-            <h6>THESE ARE ALL YOUR AVAILABLE ACCOUNT CODES THAT YOU CAN SELL</h6>
-        @else
-            <h6 class="my-0">YOU HAVE NO AVAILABLE ACCOUNT CODES</h6>
+        <div class="headerContainer">
+            <h4>My Valid Codes</h4>
+            @if ($account->totalCodeRequests() < 1)
+                <h6 class="mx-auto text-secondary">Tip: You can go to <span class="text-success">GET CODE &gt; REQUEST CODE</span> tab to get a code.</h6>
+            @else
+                <h6 class="mx-auto text-secondary">Tip: You have <span class="text-info">{{ $account->totalCodeRequests() }}</span> pending code requests for a total worth of <span class="text-info">{{ $account->totalCodeRequests() * 300 }} Pesos</span>. Complete your payments to process your pending code requests.</h6>
+            @endif
+        </div>
+   
+        <div class="stats stats-mobile">
+            <p>Account Codes:<span>{{ $account->totalCodes() }}</span></p>
+            <p>Pending Requests:<span>{{ $account->totalCodeRequests() }}</span></p>
+        </div>
+
+        <div class="stats stats-desktop">
+            <p>Available Account Codes: <span>{{ $account->totalCodes() }}</span></p>
+            <p>Pending Code Requests: <span>{{ $account->totalCodeRequests() }}</span></p>
+        </div>
+
+        @if ($account->hasCodes())
+            <section class="codes">
+                <h5>Your Codes</h5>
+                <div class="container tableContainer">
+
+                @foreach ($account->codes as $code)
+                    <div class="row dataContainer">
+                        <div class="col-6 col-sm-6 text-secondary fw-bold">{{ $code->account_code }}</div>
+                        <div class="col-6 col-sm-6 tool-tip-container">
+                            <button class="btn btn-secondary fw-bold">Copy</button>
+                            <p class="tool-tip-text">Copied!</p>
+                        </div>
+                    </div>
+                @endforeach
+        
+                </div>
+            </section>
         @endif
-        @if ($account->times_requested_for_code_count > 0)
-            <h6 class="text-primary my-2">
-                AND YOU HAVE <span class="text-success fw-bold">{{ $account->totalCodeRequests() }}</span> PENDING CODE REQUESTS <br>
-                PLEASE COMPLETE YOUR PAYMENTS TO PROCESS YOUR PENDING CODE REQUESTS
-            </h6>
-        @else
-            <h6 class="my-0">PLEASE GO TO <span class="text-success fw-bold">REQUEST CODE</span> TAB TO GET A CODE</h6>
-        @endif
-        <ul class="list-group">
-            @foreach ($account->codes as $code)
-                <li class="list-group-item">{{ $code->account_code }}</li>
-            @endforeach
-        </ul>
+
+        <div class="instructions">Your customers should pay you first before you give them their codes.</div>
     </div>
-    <h6 class="text-center text-danger">YOUR CUSTOMERS SHOULD PAY YOU FIRST BEFORE YOU GIVE THEM THEIR CODES</h6>
 @endsection
         

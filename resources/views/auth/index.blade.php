@@ -13,6 +13,11 @@
 
 <body>
     <main>
+        @error('login_limit')
+            <div class="alert-container">
+                <div class="alert alert-danger">{{ $message }}</div>
+            </div>
+        @enderror
         @if (session()->has('status'))
             <div class="alert-container">
                 <div class="alert alert-success">{{ session('status') }}</div>
@@ -40,14 +45,14 @@
                 <form action="{{ route('auth.login') }}" method="POST">
                     @csrf
                     <div class="inputContainer">
-                        <input type="text" name="account_code" placeholder="Enter Account Code" required>
+                        <input type="text" name="account_code" placeholder="Enter Account Code" required value="{{ old('account_code') }}">
                     </div>
                     <div class="inputContainer">
                         <input type="password" name="password" placeholder="Enter Password" required>
                     </div>
                     <div class="buttonGreenContainer"><button type="submit" class="buttonGreen">Login</button></div>
                 </form>
-                <h4>Not a member yet? <a href="{{ route('auth.show') }}" class="normalLink">Sign Up Now!</a></h4>
+                <h4>Not a member yet? <a href="{{ route('auth.create') }}" class="normalLink">Sign Up Now!</a></h4>
             </section>
 
             <section class="sectionLogin2">
@@ -60,7 +65,7 @@
                     <a href=""><img src="{{ asset('svg/fb.svg') }}" alt=""></a>
                 </div>
                 <div class="linkGreenContainer">
-                    <a href="" class="linkGreen">Get Code</a>
+                    <a href="{{ route('getcode.create') }}" class="linkGreen">Get Code</a>
                     <a href="" class="linkGreen">Cash Out</a>
                 </div>
                 <div class="extraDetails">

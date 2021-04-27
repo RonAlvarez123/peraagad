@@ -19087,10 +19087,127 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 /***/ }),
 
+/***/ "./resources/sass/getcode/create.scss":
+/*!********************************************!*\
+  !*** ./resources/sass/getcode/create.scss ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/sass/getcode/index.scss":
 /*!*******************************************!*\
   !*** ./resources/sass/getcode/index.scss ***!
   \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/sass/admincaptcha/create.scss":
+/*!*************************************************!*\
+  !*** ./resources/sass/admincaptcha/create.scss ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/sass/usercaptcha/edit.scss":
+/*!**********************************************!*\
+  !*** ./resources/sass/usercaptcha/edit.scss ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/sass/receipt/edit.scss":
+/*!******************************************!*\
+  !*** ./resources/sass/receipt/edit.scss ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/sass/colorgame/edit.scss":
+/*!********************************************!*\
+  !*** ./resources/sass/colorgame/edit.scss ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/sass/about/index.scss":
+/*!*****************************************!*\
+  !*** ./resources/sass/about/index.scss ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/sass/cashoutrequests/admin/index.scss":
+/*!*********************************************************!*\
+  !*** ./resources/sass/cashoutrequests/admin/index.scss ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/sass/cashoutrequests/admin/show.scss":
+/*!********************************************************!*\
+  !*** ./resources/sass/cashoutrequests/admin/show.scss ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/sass/cashoutrequests/user/index.scss":
+/*!********************************************************!*\
+  !*** ./resources/sass/cashoutrequests/user/index.scss ***!
+  \********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -19113,10 +19230,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/sass/auth/show.scss":
-/*!***************************************!*\
-  !*** ./resources/sass/auth/show.scss ***!
-  \***************************************/
+/***/ "./resources/sass/auth/create.scss":
+/*!*****************************************!*\
+  !*** ./resources/sass/auth/create.scss ***!
+  \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -19152,10 +19269,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/sass/getcode/create.scss":
-/*!********************************************!*\
-  !*** ./resources/sass/getcode/create.scss ***!
-  \********************************************/
+/***/ "./resources/sass/coderequests/show.scss":
+/*!***********************************************!*\
+  !*** ./resources/sass/coderequests/show.scss ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -19469,12 +19586,21 @@ process.umask = function() { return 0; };
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
-/******/ 			"css/getcode/create": 0,
+/******/ 			"css/coderequests/show": 0,
 /******/ 			"css/coderequests/index": 0,
 /******/ 			"css/profile/index": 0,
-/******/ 			"css/auth/show": 0,
+/******/ 			"css/auth/create": 0,
 /******/ 			"css/auth/index": 0,
-/******/ 			"css/getcode/index": 0
+/******/ 			"css/cashoutrequests/user/index": 0,
+/******/ 			"css/cashoutrequests/admin/show": 0,
+/******/ 			"css/cashoutrequests/admin/index": 0,
+/******/ 			"css/about/index": 0,
+/******/ 			"css/colorgame/edit": 0,
+/******/ 			"css/receipt/edit": 0,
+/******/ 			"css/usercaptcha/edit": 0,
+/******/ 			"css/admincaptcha/create": 0,
+/******/ 			"css/getcode/index": 0,
+/******/ 			"css/getcode/create": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -19522,13 +19648,22 @@ process.umask = function() { return 0; };
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/getcode/index"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/getcode/index"], () => (__webpack_require__("./resources/sass/auth/index.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/getcode/index"], () => (__webpack_require__("./resources/sass/auth/show.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/getcode/index"], () => (__webpack_require__("./resources/sass/profile/index.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/getcode/index"], () => (__webpack_require__("./resources/sass/coderequests/index.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/getcode/index"], () => (__webpack_require__("./resources/sass/getcode/create.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/getcode/create","css/coderequests/index","css/profile/index","css/auth/show","css/auth/index","css/getcode/index"], () => (__webpack_require__("./resources/sass/getcode/index.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/coderequests/show","css/coderequests/index","css/profile/index","css/auth/create","css/auth/index","css/cashoutrequests/user/index","css/cashoutrequests/admin/show","css/cashoutrequests/admin/index","css/about/index","css/colorgame/edit","css/receipt/edit","css/usercaptcha/edit","css/admincaptcha/create","css/getcode/index","css/getcode/create"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/coderequests/show","css/coderequests/index","css/profile/index","css/auth/create","css/auth/index","css/cashoutrequests/user/index","css/cashoutrequests/admin/show","css/cashoutrequests/admin/index","css/about/index","css/colorgame/edit","css/receipt/edit","css/usercaptcha/edit","css/admincaptcha/create","css/getcode/index","css/getcode/create"], () => (__webpack_require__("./resources/sass/auth/index.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/coderequests/show","css/coderequests/index","css/profile/index","css/auth/create","css/auth/index","css/cashoutrequests/user/index","css/cashoutrequests/admin/show","css/cashoutrequests/admin/index","css/about/index","css/colorgame/edit","css/receipt/edit","css/usercaptcha/edit","css/admincaptcha/create","css/getcode/index","css/getcode/create"], () => (__webpack_require__("./resources/sass/auth/create.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/coderequests/show","css/coderequests/index","css/profile/index","css/auth/create","css/auth/index","css/cashoutrequests/user/index","css/cashoutrequests/admin/show","css/cashoutrequests/admin/index","css/about/index","css/colorgame/edit","css/receipt/edit","css/usercaptcha/edit","css/admincaptcha/create","css/getcode/index","css/getcode/create"], () => (__webpack_require__("./resources/sass/profile/index.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/coderequests/show","css/coderequests/index","css/profile/index","css/auth/create","css/auth/index","css/cashoutrequests/user/index","css/cashoutrequests/admin/show","css/cashoutrequests/admin/index","css/about/index","css/colorgame/edit","css/receipt/edit","css/usercaptcha/edit","css/admincaptcha/create","css/getcode/index","css/getcode/create"], () => (__webpack_require__("./resources/sass/coderequests/index.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/coderequests/show","css/coderequests/index","css/profile/index","css/auth/create","css/auth/index","css/cashoutrequests/user/index","css/cashoutrequests/admin/show","css/cashoutrequests/admin/index","css/about/index","css/colorgame/edit","css/receipt/edit","css/usercaptcha/edit","css/admincaptcha/create","css/getcode/index","css/getcode/create"], () => (__webpack_require__("./resources/sass/coderequests/show.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/coderequests/show","css/coderequests/index","css/profile/index","css/auth/create","css/auth/index","css/cashoutrequests/user/index","css/cashoutrequests/admin/show","css/cashoutrequests/admin/index","css/about/index","css/colorgame/edit","css/receipt/edit","css/usercaptcha/edit","css/admincaptcha/create","css/getcode/index","css/getcode/create"], () => (__webpack_require__("./resources/sass/getcode/create.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/coderequests/show","css/coderequests/index","css/profile/index","css/auth/create","css/auth/index","css/cashoutrequests/user/index","css/cashoutrequests/admin/show","css/cashoutrequests/admin/index","css/about/index","css/colorgame/edit","css/receipt/edit","css/usercaptcha/edit","css/admincaptcha/create","css/getcode/index","css/getcode/create"], () => (__webpack_require__("./resources/sass/getcode/index.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/coderequests/show","css/coderequests/index","css/profile/index","css/auth/create","css/auth/index","css/cashoutrequests/user/index","css/cashoutrequests/admin/show","css/cashoutrequests/admin/index","css/about/index","css/colorgame/edit","css/receipt/edit","css/usercaptcha/edit","css/admincaptcha/create","css/getcode/index","css/getcode/create"], () => (__webpack_require__("./resources/sass/admincaptcha/create.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/coderequests/show","css/coderequests/index","css/profile/index","css/auth/create","css/auth/index","css/cashoutrequests/user/index","css/cashoutrequests/admin/show","css/cashoutrequests/admin/index","css/about/index","css/colorgame/edit","css/receipt/edit","css/usercaptcha/edit","css/admincaptcha/create","css/getcode/index","css/getcode/create"], () => (__webpack_require__("./resources/sass/usercaptcha/edit.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/coderequests/show","css/coderequests/index","css/profile/index","css/auth/create","css/auth/index","css/cashoutrequests/user/index","css/cashoutrequests/admin/show","css/cashoutrequests/admin/index","css/about/index","css/colorgame/edit","css/receipt/edit","css/usercaptcha/edit","css/admincaptcha/create","css/getcode/index","css/getcode/create"], () => (__webpack_require__("./resources/sass/receipt/edit.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/coderequests/show","css/coderequests/index","css/profile/index","css/auth/create","css/auth/index","css/cashoutrequests/user/index","css/cashoutrequests/admin/show","css/cashoutrequests/admin/index","css/about/index","css/colorgame/edit","css/receipt/edit","css/usercaptcha/edit","css/admincaptcha/create","css/getcode/index","css/getcode/create"], () => (__webpack_require__("./resources/sass/colorgame/edit.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/coderequests/show","css/coderequests/index","css/profile/index","css/auth/create","css/auth/index","css/cashoutrequests/user/index","css/cashoutrequests/admin/show","css/cashoutrequests/admin/index","css/about/index","css/colorgame/edit","css/receipt/edit","css/usercaptcha/edit","css/admincaptcha/create","css/getcode/index","css/getcode/create"], () => (__webpack_require__("./resources/sass/about/index.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/coderequests/show","css/coderequests/index","css/profile/index","css/auth/create","css/auth/index","css/cashoutrequests/user/index","css/cashoutrequests/admin/show","css/cashoutrequests/admin/index","css/about/index","css/colorgame/edit","css/receipt/edit","css/usercaptcha/edit","css/admincaptcha/create","css/getcode/index","css/getcode/create"], () => (__webpack_require__("./resources/sass/cashoutrequests/admin/index.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/coderequests/show","css/coderequests/index","css/profile/index","css/auth/create","css/auth/index","css/cashoutrequests/user/index","css/cashoutrequests/admin/show","css/cashoutrequests/admin/index","css/about/index","css/colorgame/edit","css/receipt/edit","css/usercaptcha/edit","css/admincaptcha/create","css/getcode/index","css/getcode/create"], () => (__webpack_require__("./resources/sass/cashoutrequests/admin/show.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/coderequests/show","css/coderequests/index","css/profile/index","css/auth/create","css/auth/index","css/cashoutrequests/user/index","css/cashoutrequests/admin/show","css/cashoutrequests/admin/index","css/about/index","css/colorgame/edit","css/receipt/edit","css/usercaptcha/edit","css/admincaptcha/create","css/getcode/index","css/getcode/create"], () => (__webpack_require__("./resources/sass/cashoutrequests/user/index.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

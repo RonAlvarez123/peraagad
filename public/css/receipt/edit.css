@@ -1,0 +1,334 @@
+.navbar.navbar-dark {
+  background-color: #0ab0ae;
+  box-shadow: 0 0 5px black;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.navbar.navbar-dark .navbar-brand {
+  padding: 0 0 0 10px;
+}
+.navbar.navbar-dark .navLogo {
+  height: 80px;
+}
+.navbar.navbar-dark .nav-item button.stand-alone {
+  background-color: #0ab0ae;
+  border: none;
+  color: white;
+}
+.navbar.navbar-dark .nav-link {
+  color: white;
+  font-weight: bold;
+}
+.navbar.navbar-dark .nav-link:hover {
+  color: #e6ddca;
+}
+.navbar.navbar-dark .nav-link:focus {
+  color: #f6c55c;
+}
+.navbar.navbar-dark .dropdown-menu .dropdown-item:hover {
+  background-color: #dcdcdc;
+  color: #a76406;
+}
+.navbar.navbar-dark .dropdown-menu .dropdown-item.active {
+  background-color: #0ab0ae;
+  color: white;
+}
+
+@media (min-width: 576px) {
+  .navbar.navbar-dark .navbar-brand {
+    padding: 0 0 0 20px;
+  }
+  .navbar.navbar-dark .navLogo {
+    height: 100px;
+  }
+}
+@media (min-width: 768px) {
+  .navbar.navbar-dark .navbar-collapse {
+    justify-content: flex-end;
+    padding: 0 20px 0 0;
+  }
+}
+body {
+  background-color: #f0f0f0;
+}
+
+main {
+  display: grid;
+  margin-bottom: 20px;
+  padding: 0 20px;
+}
+main section {
+  margin: 0px 0;
+}
+main .content {
+  margin-top: 20px;
+}
+main .content > .alert {
+  box-shadow: 0 0 3px gray;
+}
+
+@media (min-width: 768px) {
+  main {
+    gap: 20px;
+    grid-template-columns: 60% 40%;
+    justify-content: center;
+  }
+}
+@media (min-width: 1000px) {
+  main {
+    margin: 0 50px 20px 50px;
+  }
+}
+@media (min-width: 1000px) {
+  main {
+    margin: 0 100px 20px 100px;
+  }
+}
+main .wallet {
+  margin-bottom: 20px;
+}
+main .wallet .walletContainer, main .wallet .invites {
+  box-shadow: 0 0 3px gray;
+  margin: 20px auto 0 auto;
+  max-width: 400px;
+  padding: 20px;
+}
+main .wallet .walletContainer {
+  background-color: white;
+}
+main .wallet .walletContainer h6 {
+  color: #3f3f3f;
+  font-size: 1em;
+  font-weight: bold;
+}
+main .wallet .walletContainer label, main .wallet .walletContainer select, main .wallet .walletContainer p {
+  color: #3f3f3f;
+  font-weight: bold;
+}
+main .wallet .walletContainer .balance h6 {
+  color: #054f4f;
+  font-size: 1.5em;
+  margin: 0px;
+}
+main .wallet .walletContainer .balance h6 span {
+  color: #3f3f3f;
+  font-size: 0.6em;
+}
+main .wallet .walletContainer .balance label {
+  font-size: 0.6em;
+  transform: translateY(-50%);
+}
+main .wallet .walletContainer div label, main .wallet .walletContainer div select {
+  font-size: 0.8em;
+}
+main .wallet .walletContainer div label, main .wallet .walletContainer div select, main .wallet .walletContainer div p {
+  color: #5c5c5c;
+}
+main .wallet .walletContainer div p {
+  font-size: 0.6em;
+}
+main .wallet .invites {
+  background-color: white;
+  font-weight: bold;
+}
+main .wallet .invites .badge-container {
+  display: flex;
+  justify-content: flex-end;
+}
+main .wallet .invites h6 {
+  color: #3f3f3f;
+  font-size: 1em;
+}
+main .wallet .invites .tableContainer {
+  background-color: #5c5c5c;
+  box-shadow: 0 0 3px #292929;
+  color: #f8f8f8;
+}
+main .wallet .invites .tableContainer .dataContainer {
+  border-bottom: 1px solid white;
+  display: flex;
+  padding: 5px;
+}
+main .wallet .invites .tableContainer .dataContainer:last-child {
+  border: none;
+}
+main .wallet .invites .tableContainer .dataContainer div {
+  flex-basis: 50%;
+  font-size: 0.8em;
+  text-align: center;
+}
+
+@media (min-width: 576px) {
+  main .wallet {
+    font-size: 17px;
+  }
+  main .wallet .walletContainer, main .wallet .invites {
+    padding: 30px;
+  }
+}
+@media (min-width: 768px) {
+  main .wallet {
+    font-size: 19px;
+  }
+  main .wallet .invites .badge-container .badge {
+    transform: translate(20%, -50%);
+  }
+}
+.file-upload-container .text-danger.error-message {
+  font-size: 13px;
+}
+.file-upload-container input {
+  display: none;
+}
+.file-upload-container .file-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.file-upload-container .file-upload > * {
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 5px 15px;
+  text-align: center;
+}
+.file-upload-container .file-upload p {
+  align-items: center;
+  border: 2px dashed rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  min-width: 150px;
+}
+.file-upload-container .file-upload button {
+  background-color: #505053;
+  border: 2px solid #505053;
+  box-shadow: 0 0 2px gray;
+  color: white;
+  transition: background-color 250ms;
+}
+.file-upload-container .file-upload button:hover {
+  background-color: #373739;
+}
+
+@media (min-width: 576px) {
+  .file-upload-container {
+    font-size: 17px;
+  }
+  .file-upload-container .file-upload {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+}
+.button-submit {
+  background-color: #0ab0ae;
+  border: 2px solid #0ab0ae;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+  width: 100%;
+  transition: background-color 250ms, border 250ms;
+}
+.button-submit:hover {
+  background-color: #07807e;
+  border: 2px solid #07807e;
+}
+
+section#announcement {
+  background-color: #07807e;
+  color: white;
+  margin-top: 20px;
+}
+section#announcement div {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0 auto;
+  max-width: 400px;
+  padding: 20px;
+  text-align: center;
+}
+section#announcement span {
+  color: gold;
+}
+
+@media (min-width: 576px) {
+  section#announcement {
+    font-size: 16px;
+  }
+  section#announcement div {
+    max-width: 500px;
+  }
+}
+@media (min-width: 768px) {
+  section#announcement {
+    font-size: 18px;
+    margin-top: 60px;
+  }
+  section#announcement div {
+    max-width: 900px;
+    padding: 30px;
+  }
+}
+main {
+  gap: 50px;
+}
+main .content .alert {
+  margin: 0 auto;
+  max-width: 400px;
+}
+main .content .contentContainer {
+  background-color: white;
+  box-shadow: 0 0 3px gray;
+  margin: 0 auto;
+  max-width: 400px;
+  padding: 20px;
+}
+main .content .contentContainer > * {
+  margin: 0 auto;
+  max-width: 400px;
+}
+main .content .contentContainer > div {
+  margin-bottom: 20px;
+}
+main .content .contentContainer h4 {
+  font-size: 1.5em;
+  margin-bottom: 40px;
+  text-align: center;
+}
+main .content .contentContainer label, main .content .contentContainer .instructions {
+  color: #5c5c5c;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+main .content .contentContainer input, main .content .contentContainer p {
+  font-size: 0.8em;
+}
+main .content .contentContainer .select-container select {
+  color: #5c5c5c;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+main .content .contentContainer .select-container p {
+  font-size: 13px;
+}
+
+@media (min-width: 576px) {
+  main .content {
+    font-size: 17px;
+  }
+}
+@media (min-width: 768px) {
+  main .content {
+    font-size: 19px;
+  }
+  main .content .alert {
+    max-width: 500px;
+  }
+  main .content .contentContainer {
+    max-width: 500px;
+    padding: 40px;
+  }
+}

@@ -1,81 +1,97 @@
 main {
+
     .wallet {
-        // border: 1px solid red;
-        margin-top: 15px;
+        margin-bottom: 20px;
 
-        // &>div {
-        //     border: 1px solid green;
-        // }
+        .walletContainer, .invites {
+            box-shadow: 0 0 3px gray;
+            margin: 20px auto 0 auto;
+            max-width: 400px;
+            padding: 20px;
+        }
 
-        div {
+        .walletContainer {
+            background-color: $light-color;
 
-            .walletContainer {
-                align-items: center;
-                background-color: $wallet-background;
-                border-radius: 10px;
-                box-shadow: 0 0 5px gray;
+            h6 {
+                color: #3f3f3f;
+                font-size: 1em;
+                font-weight: bold;
+            }
+
+            label, select, p {
+                color: #3f3f3f;
+                font-weight: bold;
+            }
+
+            .balance {
+
+                h6 {
+                    color: darken($primary-color, 20%);
+                    font-size: 1.5em;
+                    margin: 0px;
+
+                    span {
+                        color: #3f3f3f;
+                        font-size: .6em;
+                    }
+                }
+
+                label {
+                    font-size: .6em;
+                    transform: translateY(-50%);
+                }
+            }
+
+            div {
+
+                label, select {
+                    font-size: .8em;
+                }
+
+                label, select, p {
+                    color: #5c5c5c;
+                }
+
+                p {
+                    font-size: .6em;
+                }
+            }
+        }
+
+        .invites {
+            background-color: $light-color;
+            font-weight: bold;
+            
+            .badge-container {
                 display: flex;
-                flex-direction: column;
-                margin: 0 auto;
-                padding: 10px 30px 20px 30px;
-                max-width: 350px;
+                justify-content: flex-end;
+            }
 
-                &:nth-child(2) {
-                    display: block;
-                    margin-top: 10px;
-                    padding: 0 20px;
+            h6 {
+                color: #3f3f3f;
+                font-size: 1em;
+            }
 
-                    p {
+            .tableContainer {
+                background-color: #5c5c5c;
+                // border-radius: 5px;
+                box-shadow: 0 0 3px darken(#5c5c5c, 20%);
+                color: rgb(248, 248, 248);
 
-                        span {
-                            color: $primary-color;
-                            font-weight: bold;
-                        }
+                .dataContainer {
+                    border-bottom: 1px solid white;
+                    display: flex;
+                    padding: 5px;
+
+                    &:last-child {
+                        border: none;
                     }
 
-                    p.text-danger {
-                        font-size: .7em;
-                        text-align: left;
-                    }
-                }
-
-                &>* {
-                    text-align: center;
-                    margin: 5px 0;
-                }
-
-                .dropdown {
-                    margin: 10px 0;
-                }
-
-                .dropdown-toggle {
-                    background-color: $primary-color;
-                    border: 2px solid $primary-color;
-                    // border-radius: 50px;
-                    box-shadow: 0 0 2px rgb(21, 87, 65);
-                    color: $light-color;
-                    font-weight: bold;
-                    padding: 5px 10px;
-                    transition: background-color 250ms, color 250ms, transform 250ms;
-
-                    &:hover,
-                    &:focus {
-                        background-color: $light-color;
-                        color: $primary-color;
-                        transform: scale(1.05);
-                    }
-                }
-
-                .dropdown-menu {
-                    background-color: $light-color;
-
-                    .dropdown-item {
-                        color: $primary-color;
-
-                        &:hover {
-                            background-color: $primary-color;
-                            color: $light-color;
-                        }
+                    div {
+                        flex-basis: 50%;
+                        font-size: .8em;
+                        text-align: center;
                     }
                 }
             }
@@ -83,14 +99,14 @@ main {
     }
 }
 
-
-@media (min-width: 768px) {
+@media (min-width: 576px) {
     main {
-        .wallet {
 
-            &>div {
-                position: sticky;
-                top: 130px;
+        .wallet {
+            font-size: 17px;
+
+            .walletContainer, .invites {
+                padding: 30px;
             }
         }
     }
@@ -98,9 +114,19 @@ main {
 
 @media (min-width: 768px) {
     main {
+
         .wallet {
-            // margin-left: 10px;
-            width: 30%;
+            font-size: 19px;
+
+            .invites {
+            
+                .badge-container {
+    
+                    .badge {
+                        transform: translate(20%, -50%);
+                    }
+                }
+            }
         }
     }
 }

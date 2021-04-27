@@ -1,0 +1,189 @@
+@import "../colors";
+@import "../nav";
+
+main {
+
+    .sectionContainer {
+        margin: 0 auto;
+        max-width: 500px;
+        padding: 20px;
+    
+        & > * {
+            padding: 20px 0;
+        }
+
+        .content {
+
+            & > * {
+                text-align: center;
+            }
+    
+            h4 {
+                font-size: 1.5em;
+            }
+    
+            h6 {
+                font-size: .9em;
+            }
+    
+            .colorsContainer {
+                display: grid;
+                gap: 10px;
+                place-items: center;
+                margin: 20px 0;
+    
+                button{
+                    border: 3px solid #555;
+                    box-shadow: 0 0 3px #222;
+                    height: 100px;
+                    width: 100px;
+                    transition: transform 250ms;
+    
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+    
+                    &:nth-child(3) {
+                        background-color: rgb(233, 81, 81);
+                    }
+    
+                    &:nth-child(4) {
+                        background-color: orange;
+                    }
+    
+                    &:nth-child(5) {
+                        background-color: yellow;
+                    }
+    
+                    &:nth-child(6) {
+                        background-color: rgb(63, 224, 63);
+                    }
+    
+                    &:nth-child(7) {
+                        background-color: rgb(117, 129, 238);
+                    }
+
+                    &:nth-child(8) {
+                        background-color: rgb(210, 117, 238);
+                    }
+                }
+            }
+        }
+    
+        .stats {
+            background-color: darken($primary-color, 10%);
+            box-shadow: 0 0 5px gray;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 auto;
+            max-width: 600px;
+            padding: 15px;
+    
+            p {
+                font-size: .8em;
+                font-weight: bold;
+                margin: 0;
+    
+                span {
+                    background-color: darken($primary-color, 27%);
+                    border-radius: 5px;
+                    box-shadow: 0 0 3px black;
+                    padding: 5px;
+                }
+            }
+        }
+    
+        .rewards {
+            background-color: rgb(241, 241, 241);
+            box-shadow: 0 0 3px gray;
+            margin: 20px auto 0 auto;
+            max-width: 500px;
+            padding: 20px 0 10px 0;
+    
+            & > * {
+                text-align: center;
+            }
+     
+            h5 {
+                font-size: 1.4em;
+            }
+    
+            .tableContainer {
+                font-size: .8em;
+                padding: 0 30px;
+    
+                & > * {
+                    padding: 10px 0;
+    
+                    & > div {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+    
+                .headerContainer {
+                    font-weight: bold;
+                }
+    
+                .dataContainer {
+                    border-bottom: 1px solid gray;
+    
+                    &:last-child {
+                        border-bottom: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    main {
+
+        .sectionContainer {
+
+            .content {
+                font-size: 17px;
+
+                .colorsContainer {
+                    gap: 20px;
+                    grid-template-columns: 1fr 1fr;
+
+                    button {
+                        height: 150px;
+                        width: 150px;
+
+                        &:hover {
+                            transform: scale(1.05);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 768px) {
+    main {
+
+        .sectionContainer {
+            max-width: 700px;
+
+            .content {
+                font-size: 20px;
+
+                .colorsContainer {
+                    grid-template-columns: 1fr 1fr 1fr;
+                }
+            }
+
+            .alert, .btn-secondary {
+                margin: 0 auto;
+                max-width: 600px;
+            }
+        }
+    }
+}

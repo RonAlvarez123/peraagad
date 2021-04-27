@@ -2,104 +2,110 @@
 @import "../nav";
 @import "../layout";
 @import "../wallet";
-@import "../custom-input";
-@import "../loginUtilities";
+@import "../submit";
+@import "../announcement";
 
 main {
+    gap: 50px;
+
     .content {
-        // border: 1px solid red;
+        font-size: 15px;
+
+        .alert {
+            max-width: 400px;
+        }
 
         .contentContainer {
-            align-items: center;
-            border: 1px solid gray;
-            border-radius: 3px;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            justify-content: space-around;
-            padding: 20px;
+            background-color: $light-color;
+            box-shadow: 0 0 3px gray;
+            margin: 0 auto;
+            max-width: 400px;
+            padding: 30px;
 
             & > * {
+                margin: 0 auto;
+            }
+
+            h4, h6, p {
                 text-align: center;
-                margin: 5px 0;
             }
 
             h4 {
                 font-size: 1.5em;
+                margin-bottom: 5px;
             }
 
-            h5 {
-                font-size: 0.8em;
+            h6 {
+                color: rgb(83, 83, 83);
+                font-size: .9em;
+                margin-bottom: 30px;
+            }
+
+            p {
+                font-size: .8em;
+            }
+
+            article {
+                font-size: .7em;
+                text-align: left;
             }
 
             div {
-                // border: 1px solid red;
-                color: gray;
                 width: 100%;
 
-                label,
-                p {
-                    font-size: 0.8em;
+                label, input {
+                    font-size: .8em;
                 }
 
-                input {
-                    margin: 0 auto;
-                    max-width: 200px;
-                    text-align: center;
+                label {
+                    color: #5c5c5c;
+                    font-weight: bold;
+                }
+
+                p {
+                    font-size: .7em;
                 }
             }
 
-            .buttonGreenContainer {
-                max-width: 300px;
-                font-size: 0.8em;
+            .instructions {
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            .error-message {
+                text-align: left;
             }
         }
     }
 }
+
 
 @media (min-width: 576px) {
     main {
+
         .content {
             font-size: 17px;
-
-            // .contentContainer {
-
-            // }
         }
     }
 }
 
+
 @media (min-width: 768px) {
     main {
+
         .content {
-            font-size: 20px;
+            font-size: 19px;
+
+            .alert {
+                max-width: 600px;
+            }
 
             .contentContainer {
-                // h4 {
-                //     font-size: 1.3em;
-                // }
-
-                // h5 {
-                //     font-size: .9em;
-                // }
+                max-width: 600px;
+                padding: 50px;
 
                 & > * {
-                    margin: 0;
-                }
-
-                div {
-                    align-items: center;
-                    display: flex;
-                    justify-content: center;
-
-                    & > * {
-                        margin: 0 10px;
-                    }
-
-                    input {
-                        margin: 0;
-                        max-width: 150px;
-                    }
+                    max-width: 400px;
                 }
             }
         }

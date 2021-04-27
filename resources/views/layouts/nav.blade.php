@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img class="navLogo" src="{{ asset('svg/navlogo.svg') }}" alt=""></a>
+        <a class="navbar-brand" href="{{ route('profile.index') }}"><img class="navLogo" src="{{ asset('svg/navlogo.svg') }}" alt=""></a>
         @if (Request::path() === 'register')
             <ul class="navbar-nav">
                 <p class="mb-1">Already a Member?</p>
@@ -23,8 +23,8 @@
                                 VIEW ALL REQUESTS
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item {{ Request::path() === 'admin/coderequests' ? 'active' : '' }}" href="{{ route('coderequest.index') }}">CODE REQUESTS</a></li>
-                                <li><a class="dropdown-item" href="#">CASHOUT REQUESTS</a></li>
+                                <li><a class="dropdown-item {{ Route::currentRouteName() === 'coderequest.index' ? 'active' : '' }}" href="{{ route('coderequest.index') }}">CODE REQUESTS</a></li>
+                                <li><a class="dropdown-item {{ Route::currentRouteName() === 'cashoutrequest.index' ? 'active' : '' }}" href="{{ route('cashoutrequest.index') }}">CASHOUT REQUESTS</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -33,12 +33,10 @@
                                 ADD
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">CAPTCHA</a></li>
-                                <li><a class="dropdown-item" href="#">MATH SOLVER</a></li>
-                                <li><a class="dropdown-item" href="#">SPELLING BEE</a></li>
+                                <li><a class="dropdown-item {{ Route::currentRouteName() === 'admincaptcha.create' ? 'active' : '' }}" href="{{ route('admincaptcha.create') }}">CAPTCHA</a></li>
                             </ul>
                         </li>
-                        <form action="{{ route('profile.logout') }}" method="POST" class="nav-item">
+                        <form action="{{ route('auth.logout') }}" method="POST" class="nav-item">
                             @csrf
                             <button type="submit" class="nav-link stand-alone" aria-current="page">LOG OUT</button>
                         </form>
@@ -49,12 +47,12 @@
                                 MY ACCOUNT
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item {{ Request::path() === 'myaccount/profile' ? 'active' : '' }}" href="{{ route('profile.index') }}">PROFILE</a></li>
+                                <li><a class="dropdown-item {{ Route::currentRouteName() === 'profile.index' ? 'active' : '' }}" href="{{ route('profile.index') }}">PROFILE</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li>
-                                    <form action="{{ route('profile.logout') }}" method="POST">
+                                    <form action="{{ route('auth.logout') }}" method="POST">
                                         @csrf
                                         <button type="submit" class="dropdown-item" href="">LOG OUT</button>
                                     </form>
@@ -67,18 +65,9 @@
                                 WAYS TO EARN
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">UPLOAD RECEIPT</a></li>
-                                <li><a class="dropdown-item" href="#">CAPTCHA</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">SIGN UP BONUS</a></li>
-                                <li><a class="dropdown-item" href="#">MONTHLY BONUS</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">MATH SOLVER</a></li>
-                                <li><a class="dropdown-item" href="#">ROULLETE</a></li>
+                                <li><a class="dropdown-item {{ Route::currentRouteName() === 'receipt.edit' ? 'active' : '' }}" href="{{ route('receipt.edit') }}">UPLOAD RECEIPT</a></li>
+                                <li><a class="dropdown-item {{ Route::currentRouteName() === 'usercaptcha.edit' ? 'active' : '' }}" href="{{ route('usercaptcha.edit') }}">CAPTCHA</a></li>
+                                <li><a class="dropdown-item {{ Route::currentRouteName() === 'colorgame.edit' ? 'active' : '' }}" href="{{ route('colorgame.edit') }}">COLOR GAME</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -87,12 +76,12 @@
                                 GET CODE
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item {{ Request::path() === 'getcode/requestcode' ? 'active' : '' }}" href="{{ route('getcode.create') }}">REQUEST CODE</a></li>
-                                <li><a class="dropdown-item {{ Request::path() === 'getcode/myvalidcodes' ? 'active' : '' }}" href="{{ route('getcode.index') }}">MY VALID CODES</a></li>
+                                <li><a class="dropdown-item {{ Route::currentRouteName() === 'getcode.create' ? 'active' : '' }}" href="{{ route('getcode.create') }}">REQUEST CODE</a></li>
+                                <li><a class="dropdown-item {{ Route::currentRouteName() === 'getcode.index' ? 'active' : '' }}" href="{{ route('getcode.index') }}">MY VALID CODES</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">ABOUT</a>
+                            <a class="nav-link" aria-current="page" href="{{ route('about.index') }}">ABOUT</a>
                         </li>
                     @endif
                 </ul>
@@ -100,3 +89,5 @@
         @endif
     </div>
 </nav>
+{{-- <div>{{ print_r(session()->all()) }}</div>
+<div>{{ print_r(auth()->user()) }}</div> --}}

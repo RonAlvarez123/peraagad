@@ -49,201 +49,124 @@
     padding: 0 20px 0 0;
   }
 }
-main {
-  display: flex;
-  flex-direction: column;
-  padding: 0 20px;
-}
-main section {
-  margin: 0px 0;
-}
-main .content {
-  margin-top: 20px;
-}
-
-@media (min-width: 768px) {
-  main {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  main .content {
-    margin: 20px 40px;
-    width: 60%;
-  }
-}
-.extraDetails {
-  align-items: center;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  font-size: 0.8em;
-}
-
-.buttonGreenContainer {
-  display: flex;
-  justify-content: center;
-  width: 60%;
-}
-.buttonGreenContainer .buttonGreen {
+.button-submit {
   background-color: #0ab0ae;
   border: 2px solid #0ab0ae;
-  border-radius: 50px;
-  box-shadow: 0 0 2px #888888;
-  color: white;
-  font-size: 1em;
-  font-weight: bold;
-  padding: 5px 20px;
-  width: 100%;
-  transition: background-color 250ms, color 250ms, transform 250ms;
-}
-.buttonGreenContainer .buttonGreen:hover {
-  background-color: white;
-  color: #0ab0ae;
-  transform: scale(1.05);
-}
-
-.linkGreenContainer {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
-.linkGreenContainer .linkGreen {
-  background-color: #07807e;
-  border: 1px solid white;
-  box-shadow: 0 0 4px #1f1f1f;
-  color: white;
-  font-weight: bold;
-  margin: 15px 0;
-  padding: 5px 10px;
-  text-align: center;
-  text-decoration: none;
-  width: 50%;
-  transition: background-color 250ms, color 250ms;
-}
-.linkGreenContainer .linkGreen:hover {
-  background-color: #0e293f;
-  color: white;
-}
-
-.normalLink {
-  transition: color 250ms;
-}
-
-.normalLink:hover {
-  color: #187b8d;
-}
-
-.socialMedia {
-  display: flex;
-  justify-content: center;
-}
-.socialMedia a {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  height: 50px;
-  width: 50px;
-  margin: 0 20px;
-  transition: transform 250ms;
-}
-.socialMedia a:hover {
-  transform: scale(1.15);
-}
-.socialMedia img {
-  height: 100%;
-  width: 100%;
-}
-
-@media screen and (min-width: 768px) {
-  .buttonGreenContainer {
-    width: 60%;
-  }
-}
-main {
-  align-items: center;
-}
-main > * {
-  max-width: 500px;
-  width: 100%;
-}
-main .search {
-  padding-top: 20px;
-}
-main .search .input-group button.btn {
-  z-index: 0;
-}
-main .content > div {
-  box-shadow: 0 0 3px gray;
-  margin-bottom: 20px;
-}
-main .content > div .list-group-item {
-  border: none;
-}
-main .content .formContainer {
-  border-top: 1px solid rgba(0, 0, 0, 0.125);
-  display: flex;
-}
-main .content .formContainer > * {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  width: 50%;
-}
-main .content .formContainer form button {
   border-radius: 5px;
   color: white;
-  font-size: 1em;
   font-weight: bold;
-  padding: 5px 10px;
-  width: 80%;
-  transition: color 250ms, background-color 250ms, transform 250ms;
+  padding: 5px;
+  width: 100%;
+  transition: background-color 250ms, border 250ms;
 }
-main .content .formContainer form button:hover {
-  transform: scale(1.1);
-}
-main .content .formContainer .formAccept button {
-  background-color: white;
-  color: #278a27;
-  border: 2px solid #278a27;
-}
-main .content .formContainer .formAccept button:hover {
-  background-color: #278a27;
-  color: white;
-}
-main .content .formContainer .formDecline button {
-  background-color: white;
-  color: #dc1212;
-  border: 2px solid #dc1212;
-}
-main .content .formContainer .formDecline button:hover {
-  background-color: #dc1212;
-  color: white;
+.button-submit:hover {
+  background-color: #07807e;
+  border: 2px solid #07807e;
 }
 
-@media (min-width: 768px) {
+main {
+  padding: 20px;
+}
+main .adminContent {
+  display: grid;
+  gap: 20px;
+  margin: 0 auto;
+  max-width: 400px;
+}
+main .adminContent > * {
+  padding: 20px;
+}
+main .adminContent .search {
+  background-color: white;
+}
+main .adminContent .search h4 {
+  color: #3f3f3f;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+main .adminContent .search label, main .adminContent .search input, main .adminContent .search select, main .adminContent .search p {
+  font-size: 0.8em;
+}
+main .adminContent .search label, main .adminContent .search select {
+  color: #5c5c5c;
+  font-weight: bold;
+}
+main .adminContent .search p {
+  font-weight: bold;
+}
+main .adminContent .search button {
+  margin: 10px 0;
+}
+main .adminContent .content {
+  background-color: white;
+}
+main .adminContent .content .links {
+  box-shadow: 0 0 2px gray;
+  display: grid;
+}
+main .adminContent .content .links a {
+  border-bottom: 1px solid #c4c4c4;
+  color: #3f3f3f;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  text-decoration: none;
+}
+main .adminContent .content .links a .number {
+  display: grid;
+  padding: 5px;
+  place-items: center;
+}
+main .adminContent .content .links a .number span {
+  background-color: #032e2d;
+  border-radius: 50px;
+  box-shadow: 0 0 3px black;
+  color: white;
+  display: grid;
+  font-weight: bold;
+  font-size: 1.5em;
+  height: 40px;
+  place-items: center;
+  width: 40px;
+}
+main .adminContent .content .links a .details {
+  display: grid;
+  font-weight: bold;
+  padding: 5px;
+}
+main .adminContent .content .links a .details .detailsHeader {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+main .adminContent .content .links a .details .detailsHeader h6 {
+  font-size: 0.9em;
+  margin: 0;
+}
+main .adminContent .content .links a .details .detailsHeader aside {
+  font-size: 0.6em;
+}
+
+@media (min-width: 576px) {
   main {
-    align-items: center;
-    flex-direction: column;
+    background-color: #f0f0f0;
   }
-  main > * {
-    max-width: 700px;
-    width: 100%;
+  main .adminContent {
+    font-size: 16px;
+    max-width: 500px;
   }
-  main .content {
-    width: 100%;
+  main .adminContent > * {
+    box-shadow: 0 0 3px gray;
   }
-  main .content .user-details {
-    display: flex;
+  main .adminContent .content .links a .number, main .adminContent .content .links a .details {
+    padding: 7.5px;
   }
-  main .content .user-details small {
-    width: 35%;
+}
+@media (min-width: 768px) {
+  main .adminContent {
+    font-size: 17px;
   }
-  main .content .user-details p {
-    width: 65%;
-  }
-  main .content .formContainer form button {
-    padding: 8px 15px;
-    width: 50%;
+  main .adminContent .content .links a .number, main .adminContent .content .links a .details {
+    padding: 10px;
   }
 }

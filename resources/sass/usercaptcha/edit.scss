@@ -1,0 +1,94 @@
+@import "../colors";
+@import "../nav";
+@import "../layout";
+@import "../wallet";
+@import "../submit";
+@import "../unselectable";
+@import "../announcement";
+
+
+main {
+
+    .content {
+
+        .contentContainer {
+            background-color: $light-color;
+            box-shadow: 0 0 3px gray;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+
+            & > * {
+                margin: 0 auto;
+            }
+
+            .captcha-badge {
+                display: flex;
+                justify-content: flex-end;
+
+                span {
+                    transform: translate(20%, -50%);
+                }
+            }
+
+            h4  {
+                font-size: 1.5em;
+                text-align: center;
+            }
+
+            p, label, input {
+                font-size: .8em;
+            }
+
+            .captcha {
+                max-width: 200px;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            .valueContainer {
+                
+                label, p {
+                    color: #5c5c5c;
+                    font-weight: bold;
+                }
+
+                p {
+                    font-size: .7em;
+                }
+
+                .error-message {
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) {
+
+    main {
+
+        .content {
+            font-size: 17px;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+
+    main {
+
+        .content {
+            font-size: 19px;
+
+            .contentContainer {
+                margin-top: 50px;
+                max-width: 500px;
+                padding: 40px;
+            }
+        }
+    }
+}

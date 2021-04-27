@@ -1,0 +1,151 @@
+.navbar.navbar-dark {
+  background-color: #0ab0ae;
+  box-shadow: 0 0 5px black;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.navbar.navbar-dark .navbar-brand {
+  padding: 0 0 0 10px;
+}
+.navbar.navbar-dark .navLogo {
+  height: 80px;
+}
+.navbar.navbar-dark .nav-item button.stand-alone {
+  background-color: #0ab0ae;
+  border: none;
+  color: white;
+}
+.navbar.navbar-dark .nav-link {
+  color: white;
+  font-weight: bold;
+}
+.navbar.navbar-dark .nav-link:hover {
+  color: #e6ddca;
+}
+.navbar.navbar-dark .nav-link:focus {
+  color: #f6c55c;
+}
+.navbar.navbar-dark .dropdown-menu .dropdown-item:hover {
+  background-color: #dcdcdc;
+  color: #a76406;
+}
+.navbar.navbar-dark .dropdown-menu .dropdown-item.active {
+  background-color: #0ab0ae;
+  color: white;
+}
+
+@media (min-width: 576px) {
+  .navbar.navbar-dark .navbar-brand {
+    padding: 0 0 0 20px;
+  }
+  .navbar.navbar-dark .navLogo {
+    height: 100px;
+  }
+}
+@media (min-width: 768px) {
+  .navbar.navbar-dark .navbar-collapse {
+    justify-content: flex-end;
+    padding: 0 20px 0 0;
+  }
+}
+.button-submit {
+  background-color: #0ab0ae;
+  border: 2px solid #0ab0ae;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+  width: 100%;
+  transition: background-color 250ms, border 250ms;
+}
+.button-submit:hover {
+  background-color: #07807e;
+  border: 2px solid #07807e;
+}
+
+main {
+  padding: 20px;
+}
+main > * {
+  margin: 0 auto;
+  max-width: 400px;
+}
+main .adminContent {
+  background-color: white;
+}
+main .adminContent header {
+  color: #07807e;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding: 20px;
+  text-align: center;
+}
+main .adminContent section div {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+}
+main .adminContent section div h6 {
+  color: #383838;
+}
+main .adminContent section div label {
+  font-size: 0.7em;
+}
+main .adminContent section div h6 {
+  font-size: 1em;
+}
+main .adminContent section div span {
+  font-size: 0.6em;
+}
+main .adminContent section div h6, main .adminContent section div label {
+  font-weight: bold;
+}
+main .adminContent section div label, main .adminContent section div input {
+  font-size: 0.8em;
+}
+main .adminContent section div label {
+  color: #5c5c5c;
+}
+main .adminContent section .buttonsContainer {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  margin: 20px 0;
+}
+main .adminContent section .buttonsContainer button {
+  font-weight: bold;
+}
+main .adminContent .modal .modal-dialog .modal-content .modal-body div label, main .adminContent .modal .modal-dialog .modal-content .modal-body div input {
+  font-size: 0.8em;
+}
+main .adminContent .modal .modal-dialog .modal-content .modal-body div label, main .adminContent .modal .modal-dialog .modal-content .modal-body div p {
+  color: #5c5c5c;
+  font-weight: bold;
+}
+main .adminContent .modal .modal-dialog .modal-content .modal-body div p {
+  font-size: 0.7em;
+}
+
+@media (min-width: 576px) {
+  main {
+    background-color: #f0f0f0;
+  }
+  main > * {
+    max-width: 500px;
+  }
+  main .adminContent {
+    box-shadow: 0 0 3px gray;
+    font-size: 17px;
+  }
+  main .adminContent header {
+    background-color: #07807e;
+    color: gold;
+  }
+}
+@media (min-width: 768px) {
+  main .adminContent {
+    font-size: 19px;
+  }
+}

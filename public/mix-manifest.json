@@ -1,9 +1,20 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/getcode/create.css": "/css/getcode/create.css",
+    "/js/getcode/copyToClipboard.js": "/js/getcode/copyToClipboard.js",
+    "/js/receipt/fileUpload.js": "/js/receipt/fileUpload.js",
+    "/css/coderequests/show.css": "/css/coderequests/show.css",
     "/css/coderequests/index.css": "/css/coderequests/index.css",
     "/css/profile/index.css": "/css/profile/index.css",
-    "/css/auth/show.css": "/css/auth/show.css",
+    "/css/auth/create.css": "/css/auth/create.css",
     "/css/auth/index.css": "/css/auth/index.css",
-    "/css/getcode/index.css": "/css/getcode/index.css"
+    "/css/cashoutrequests/user/index.css": "/css/cashoutrequests/user/index.css",
+    "/css/cashoutrequests/admin/show.css": "/css/cashoutrequests/admin/show.css",
+    "/css/cashoutrequests/admin/index.css": "/css/cashoutrequests/admin/index.css",
+    "/css/about/index.css": "/css/about/index.css",
+    "/css/colorgame/edit.css": "/css/colorgame/edit.css",
+    "/css/receipt/edit.css": "/css/receipt/edit.css",
+    "/css/usercaptcha/edit.css": "/css/usercaptcha/edit.css",
+    "/css/admincaptcha/create.css": "/css/admincaptcha/create.css",
+    "/css/getcode/index.css": "/css/getcode/index.css",
+    "/css/getcode/create.css": "/css/getcode/create.css"
 }
