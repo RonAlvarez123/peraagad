@@ -61,7 +61,7 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         RateLimiter::for('login', function (Request $request) {
-            return Limit::perMinute(3)->response(function () {
+            return Limit::perMinute(10)->response(function () {
                 return redirect()->route('auth.index')
                     ->withErrors(['login_limit' => 'You attempted to login too many times. Please try again later.']);
             });
