@@ -66,5 +66,12 @@ class RouteServiceProvider extends ServiceProvider
                     ->withErrors(['login_limit' => 'You attempted to login too many times. Please try again later.']);
             });
         });
+
+        RateLimiter::for('cashout', function (Request $request) {
+            return Limit::perMinute(10)->response(function () {
+                return redirect()->route('profile.index')
+                    ->withErrors(['main_error' => 'You attempted to cashout too many times. Please try again later.']);
+            });
+        });
     }
 }
