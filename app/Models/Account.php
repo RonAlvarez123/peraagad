@@ -67,8 +67,8 @@ class Account extends Model
 
     public function totalCodes()
     {
-        $codes = $this->codes;
-        return count($codes);
+        $codes = $this->codes->count();
+        return $codes;
     }
 
     public function timesRequestedForCode()
