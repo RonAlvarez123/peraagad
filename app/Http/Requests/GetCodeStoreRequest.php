@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\CodeAndCodeRequestUnderLimitRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class GetCodeStoreRequest extends FormRequest
@@ -24,7 +25,7 @@ class GetCodeStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'number_of_codes' => ['required', 'numeric', 'gte:1', 'lte:9'],
+            'number_of_codes' => ['required', 'numeric', 'gte:1', 'lte:9', new CodeAndCodeRequestUnderLimitRule],
             'password' => ['required']
         ];
     }
