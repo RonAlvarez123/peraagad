@@ -69,13 +69,14 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/cashout', [CashoutRequestController::class, 'redirect'])->name('cashoutrequest.redirect');
 
         Route::get('/cashout/gcash', [GcashController::class, 'create'])->name('gcash.create');
-        Route::post('/cashout/gcash', [GcashController::class, 'store'])->name('gcash.store');
-
         Route::get('/cashout/bank', [BankController::class, 'create'])->name('bank.create');
-        Route::post('/cashout/bank', [BankController::class, 'store'])->name('bank.store');
-
         Route::get('/cashout/remit', [RemitController::class, 'create'])->name('remit.create');
-        Route::post('/cashout/remit', [RemitController::class, 'store'])->name('remit.store');
+
+        Route::middleware(['throttle:cashout'])->group(function () {
+            Route::post('/cashout/gcash', [GcashController::class, 'store'])->name('gcash.store');
+            Route::post('/cashout/bank', [BankController::class, 'store'])->name('bank.store');
+            Route::post('/cashout/remit', [RemitController::class, 'store'])->name('remit.store');
+        });
     });
 
 
