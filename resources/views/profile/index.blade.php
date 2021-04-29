@@ -2,6 +2,7 @@
 
 @section('customStyle')
     <link rel="stylesheet" href="{{ asset('css/profile/index.css') }}">
+    <script defer src="{{ asset('js/receipt/fileUpload.js') }}"></script>
 @endsection
 
 @section('title')
@@ -9,58 +10,6 @@
 @endsection
 
 @section('contentContainer')
-    {{-- @if ($account->isBonusClaimable())
-        <form action="{{ route('profile.bonus') }}" method="POST" class="alert alert-secondary d-flex align-items-center justify-content-between" role="alert">
-            @csrf
-            <h6 class="m-0 text-secondary">You have a daily bonus!</h6>
-            <button type="submit" class="btn btn-success fw-bold">Claim Bonus</button>
-        </form>
-    @endif
-    @if (session('status'))
-        <h6 class="alert alert-info text-secondary text-center mb-3">{{ session('status') }}</h6>
-    @endif
-    <div class="contentContainer">
-        <div class="mainHeader">
-            <h4 class="text-center my-3">Personal Info</h4>
-        </div>
-        <div class="subHeader">
-            <h5>Profile</h5>
-            <div class="text-danger">Please provide the correct and updated informations below</div>
-        </div>
-        <div class="details-grid name">
-            <div class="firstname">FIRST NAME</div>
-            <div class="middlename">MIDDLE NAME</div>
-            <div class="lastname">LAST NAME</div>
-            <h6>NAME</h6>
-            <p class="first">{{ $user->firstname }}</p>
-            <p class="middle">{{ $user->middlename }}</p>
-            <p class="last">{{ $user->lastname }}</p>
-        </div>
-        <div class="details-grid address">
-            <div class="city">CITY/MUNICIPALITY</div>
-            <div class="province">PROVINCE</div>
-            <h6>ADDRESS</h6>
-            <p class="c">{{ $user->city }}</p>
-            <p class="p">{{ $user->province }}</p>
-        </div>
-        <div class="details">
-            <h6>PHONE</h6>
-            <p>{{ $user->phone_number }}</p>
-        </div>
-        <div class="details">
-            <h6>EMAIL</h6>
-            <p>N/A</p>
-        </div>
-        <div class="details">
-            <h6>ACCOUNT TYPE</h6>
-            <p>{{ $account->level }}</p>
-        </div>
-        <div class="details">
-            <h6>ACCOUNT CODE</h6>
-            <p>{{ $user->account_code }}</p>
-        </div>
-    </div> --}}
-
     @if ($account->isBonusClaimable())
         <form action="{{ route('profile.bonus') }}" method="POST" class="alert alert-info d-flex align-items-center justify-content-between mb-3" role="alert">
             @csrf
@@ -79,9 +28,25 @@
 
     <div class="contentContainer">
         <section class="user-profile">
-            {{-- <div>
-                <img src="R.jpg" alt="">
-            </div> --}}
+            @if ($user->profile_pic == null)
+                <form action="{{ route('profile.picture') }}" method="POST" class="file-upload-container" enctype="multipart/form-data">
+                    @csrf
+                    @method('put')
+                    <input type="file" name="file">
+                    <div class="file-upload">
+                        <p class="{{ $errors->has('file') ? 'border-danger text-danger' : '' }}">NO FILE SELECTED</p>
+                        <button type="button">CHOOSE FILE</button>
+                    </div>
+                    @error('file')
+                        <p class="text-danger error-message">{{ $message }}</p>
+                    @enderror
+                    <button type="submit" class="button-submit my-3">SET PROFILE PICTURE</button>
+                </form>
+            @else
+                <div>
+                    <img src="{{ asset('storage/profile/'. $user->profile_pic) }}" alt="User Profile Picture">
+                </div>
+            @endif
             <h4>{{ $user->firstname . ' ' . $user->lastname }}</h4>
         </section>
 
