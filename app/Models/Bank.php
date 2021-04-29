@@ -21,14 +21,14 @@ class Bank extends Model
     private static $partners = [
         'asia united bank',
         'BDO network bank',
-        'BDO unibank inc.',
+        'BDO unibank inc',
         'BPI/BPI family savings bank',
-        'china bank savings inc.',
+        'china bank savings inc',
         'china banking corporation',
         'CIMB bank philippines',
         'eastWest rural bank',
         'land bank of the philippines',
-        'metropolitan bank and trust co.',
+        'metropolitan bank and trust co',
         'philippine national bank',
         'philippine savings bank',
         'PNB savings bank',
@@ -41,5 +41,10 @@ class Bank extends Model
     public static function getPartners()
     {
         return self::$partners;
+    }
+
+    public function cashoutRequest()
+    {
+        return $this->belongsTo(CashoutRequest::class, 'cashout_id');
     }
 }
