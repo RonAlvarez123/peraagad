@@ -119,8 +119,9 @@
         <div class="modal fade" id="approve" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="approveLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
-                <form action="{{ route('coderequest.store') }}" method="POST" class="modal-content">
+                <form action="{{ route('cashoutrequest.update', ['cashoutRequest' => $cashoutrequest->id]) }}" method="POST" class="modal-content">
                     @csrf
+                    @method('put')
                     <div class="modal-header">
                         <h5 class="modal-title" id="approveLabel">You are about to approve this cashout request worth of PHP {{ number_format($cashoutrequest->deducted_amount) }}.</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -132,9 +133,6 @@
                             <p class="instructions">Please type your password to verify that it is really you
                                 performing this cashout request approval.</p>
                         </div>
-                        {{-- <input type="text" name="coderequest_id" value="{{ $coderequest->id }}" hidden>
-                        <input type="text" name="number_of_codes" value="{{ $coderequest->number_of_codes }}" hidden>
-                        <input type="text" name="user_id" value="{{ $coderequest->user_id }}" hidden> --}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -149,7 +147,7 @@
         <div class="modal fade" id="decline" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="declineLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
-                <form action="{{ route('coderequest.destroy') }}" method="POST" class="modal-content">
+                <form action="{{ route('cashoutrequest.destroy', ['cashoutRequest' => $cashoutrequest->id]) }}" method="POST" class="modal-content">
                     @csrf
                     @method('delete')
                     <div class="modal-header">
@@ -163,9 +161,6 @@
                             <p class="instructions">Please type your password to verify that it is really you
                                 performing this decline and deletion of this cashout request.</p>
                         </div>
-                        {{-- <input type="text" name="coderequest_id" value="{{ $coderequest->id }}" hidden>
-                        <input type="text" name="number_of_codes" value="{{ $coderequest->number_of_codes }}" hidden>
-                        <input type="text" name="user_id" value="{{ $coderequest->user_id }}" hidden> --}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -11,6 +11,9 @@
 @section('adminContent')
 
     <section class="adminContent">
+        @error('main_eror')
+            <h6 class="alert alert-danger text-danger text-center my-3">{{ $message }}</h6>
+        @enderror
         @if (session()->has('acceptMessage'))
             <h6 class="alert alert-success text-secondary text-center my-3">{{ session('acceptMessage') }}</h6>
         @elseif (session()->has('declineMessage'))
@@ -47,7 +50,7 @@
         <div class="content">
             <div class="links">
                 @forelse ($cashoutrequests as $cashoutrequest)
-                    <a href="/admin/cashoutrequests/{{ $cashoutrequest->id }}">
+                    <a href="{{ route('cashoutrequest.show', ['cashoutRequest' => $cashoutrequest->id]) }}">
                         <section class="number">
                             <span>PHP {{ number_format($cashoutrequest->deducted_amount) }}</span>
                         </section>
@@ -60,7 +63,7 @@
                         </section>
                     </a>
                 @empty
-                    <h5 class="text-center">No code requests found.</h5>
+                    <h5 class="text-center">No cashout requests found.</h5>
                 @endforelse
             </div>
         </div>

@@ -60,6 +60,9 @@
     </section> --}}
 
     <section class="adminContent">
+        @error('main_eror')
+            <h6 class="alert alert-danger text-danger text-center my-3">{{ $message }}</h6>
+        @enderror
         @if (session()->has('acceptMessage'))
             <h6 class="alert alert-success text-secondary text-center my-3">{{ session('acceptMessage') }}</h6>
         @elseif (session()->has('declineMessage'))
@@ -103,7 +106,7 @@
         <div class="content">
             <div class="links">
                 @forelse ($coderequests as $coderequest)
-                    <a href="/admin/coderequests/{{ $coderequest->id }}">
+                    <a href="{{ route('coderequest.show', ['codeRequest' => $coderequest->id]) }}">
                         <section class="number">
                             <span>{{ $coderequest->number_of_codes }}</span>
                         </section>
