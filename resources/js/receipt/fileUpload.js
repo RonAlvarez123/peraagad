@@ -1,17 +1,21 @@
 const fileUploadContainer = document.querySelector('.file-upload-container');
-const fileUpload = fileUploadContainer.querySelector('.file-upload');
 
-fileUploadContainer.children[0].addEventListener('change', setFileUploadName);
-fileUpload.children[1].addEventListener('click', uploadFile);
+if (fileUploadContainer) {
+    const fileUpload = fileUploadContainer.querySelector('.file-upload');
+    const fileInput = fileUploadContainer.querySelector('input[type=file]');
 
-function uploadFile() {
-    fileUploadContainer.children[0].click();
-}
+    fileInput.addEventListener('change', setFileUploadName);
+    fileUpload.children[1].addEventListener('click', uploadFile);
 
-function setFileUploadName() {
-    let fileName = 'NO FILE SELECTED';
-    if (filePath = fileUploadContainer.children[0].value) {
-        fileName = filePath.replace('C:\\fakepath\\', '');
+    function uploadFile() {
+        fileInput.click();
     }
-    fileUpload.children[0].innerText = fileName;
+
+    function setFileUploadName() {
+        let fileName = 'NO FILE SELECTED';
+        if (filePath = fileInput.value) {
+            fileName = filePath.replace('C:\\fakepath\\', '');
+        }
+        fileUpload.children[0].innerText = fileName;
+    }
 }

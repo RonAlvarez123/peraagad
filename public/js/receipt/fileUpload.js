@@ -4,22 +4,26 @@ var __webpack_exports__ = {};
   !*** ./resources/js/receipt/fileUpload.js ***!
   \********************************************/
 var fileUploadContainer = document.querySelector('.file-upload-container');
-var fileUpload = fileUploadContainer.querySelector('.file-upload');
-fileUploadContainer.children[0].addEventListener('change', setFileUploadName);
-fileUpload.children[1].addEventListener('click', uploadFile);
 
-function uploadFile() {
-  fileUploadContainer.children[0].click();
-}
+if (fileUploadContainer) {
+  var uploadFile = function uploadFile() {
+    fileInput.click();
+  };
 
-function setFileUploadName() {
-  var fileName = 'NO FILE SELECTED';
+  var setFileUploadName = function setFileUploadName() {
+    var fileName = 'NO FILE SELECTED';
 
-  if (filePath = fileUploadContainer.children[0].value) {
-    fileName = filePath.replace('C:\\fakepath\\', '');
-  }
+    if (filePath = fileInput.value) {
+      fileName = filePath.replace('C:\\fakepath\\', '');
+    }
 
-  fileUpload.children[0].innerText = fileName;
+    fileUpload.children[0].innerText = fileName;
+  };
+
+  var fileUpload = fileUploadContainer.querySelector('.file-upload');
+  var fileInput = fileUploadContainer.querySelector('input[type=file]');
+  fileInput.addEventListener('change', setFileUploadName);
+  fileUpload.children[1].addEventListener('click', uploadFile);
 }
 /******/ })()
 ;
