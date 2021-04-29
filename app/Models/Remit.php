@@ -35,4 +35,9 @@ class Remit extends Model
     {
         return self::$outlets;
     }
+
+    public function cashoutRequest()
+    {
+        return $this->belongsTo(CashoutRequest::class, 'cashout_id');
+    }
 }
