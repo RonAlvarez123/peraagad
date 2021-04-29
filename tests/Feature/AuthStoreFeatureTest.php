@@ -64,6 +64,8 @@ class AuthStoreFeatureTest extends TestCase
 
         $response = $this->post('/register', $userData);
 
+        // dd($response);
+
         $account = User::where('account_code', $userData['account_code'])->first()->account;
 
         $this->newAccountStats($account);
@@ -81,7 +83,7 @@ class AuthStoreFeatureTest extends TestCase
     public function test_a_user_can_sign_up()
     {
         $codeFactory = Code::factory()
-            ->create(['user_id' => User::latest()->first()->user_id]);
+            ->create(['user_id' => Account::where('role', 'user')->orderBy('id', 'DESC')->first()->user->user_id]);
         $code = Code::where(['account_code' => $codeFactory->account_code, 'used' => false])->first();
         // Code::where(['account_code' => $code->account_code, 'used' => false])->update(['used' => true]); //force the test to fail
 
