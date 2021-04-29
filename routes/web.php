@@ -88,11 +88,21 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role.admin'])->group(function () {
         Route::get('/admin/coderequests', [CodeRequestController::class, 'index'])->name('coderequest.index');
         Route::get('/admin/coderequests/{codeRequest}', [CodeRequestController::class, 'show'])->name('coderequest.show');
-        Route::post('/admin/coderequests', [CodeRequestController::class, 'store'])->name('coderequest.store');
-        Route::delete('/admin/coderequests', [CodeRequestController::class, 'destroy'])->name('coderequest.destroy');
+
+        Route::middleware(['throttle:adminCodeRequest'])->group(function () {
+            Route::post('/admin/coderequests{codeRequest}', [CodeRequestController::class, 'store'])->name('coderequest.store');
+            Route::delete('/admin/coderequests{codeRequest}', [CodeRequestController::class, 'destroy'])->name('coderequest.destroy');
+        });
+
 
         Route::get('/admin/cashoutrequests', [CashoutRequestController::class, 'index'])->name('cashoutrequest.index');
         Route::get('/admin/cashoutrequests/{cashoutRequest}', [CashoutRequestController::class, 'show'])->name('cashoutrequest.show');
+
+        Route::middleware(['throttle:adminCashoutRequest'])->group(function () {
+            Route::put('/admin/cashoutrequests/{cashoutRequest}', [CashoutRequestController::class, 'update'])->name('cashoutrequest.update');
+            Route::delete('/admin/cashoutrequests/{cashoutRequest}', [CashoutRequestController::class, 'destroy'])->name('cashoutrequest.destroy');
+        });
+
 
         Route::get('/admin/add/captcha', [AdminCaptchaController::class, 'create'])->name('admincaptcha.create');
         Route::post('/admin/add/captcha', [AdminCaptchaController::class, 'store'])->name('admincaptcha.store');

@@ -73,5 +73,19 @@ class RouteServiceProvider extends ServiceProvider
                     ->withErrors(['main_error' => 'You attempted to cashout too many times. Please try again later.']);
             });
         });
+
+        RateLimiter::for('adminCodeRequest', function (Request $request) {
+            return Limit::perMinute(15)->response(function () {
+                return redirect()->route('coderequest.index')
+                    ->with('errorMessage', 'You attempted to approve or delete a code request too many times. Please try again later.');
+            });
+        });
+
+        RateLimiter::for('adminCashoutRequest', function (Request $request) {
+            return Limit::perMinute(15)->response(function () {
+                return redirect()->route('cashoutrequest.index')
+                    ->with('errorMessage', 'You attempted to approve or delete a cashout request too many times. Please try again later.');
+            });
+        });
     }
 }
