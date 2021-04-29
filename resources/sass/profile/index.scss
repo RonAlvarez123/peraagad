@@ -2,13 +2,14 @@
 @import "../nav";
 @import "../layout";
 @import "../wallet";
+@import "../fileupload";
 @import "../submit";
 @import "../announcement";
 
 main {
 
     .content {
-        
+
         .alert {
             margin: 0 auto;
             max-width: 400px;
@@ -23,11 +24,11 @@ main {
             .user-profile {
                 padding: 20px;
 
-                & > * {
+                &>* {
                     margin: 0 auto;
                 }
 
-                div {
+                &>div {
                     border-radius: 50%;
                     box-shadow: 0 0 3px black;
                     height: 150px;
@@ -39,6 +40,12 @@ main {
                         height: 100%;
                         width: 100%;
                     }
+                }
+
+                form {
+                    margin: 0 auto;
+                    margin-top: 20px;
+                    max-width: 400px;
                 }
 
                 h4 {
