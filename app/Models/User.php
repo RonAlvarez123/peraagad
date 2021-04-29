@@ -45,6 +45,7 @@ class User extends Authenticatable
         'province',
         'account_code',
         'password',
+        'profile_pic',
         'created_at',
     ];
 
@@ -120,5 +121,11 @@ class User extends Authenticatable
     public function passwordChangedAt()
     {
         return Carbon::parse($this->updated_at)->diffForHumans();
+    }
+
+    public function setProfilePic($path)
+    {
+        $this->profile_pic = $path;
+        return $this->save();
     }
 }
