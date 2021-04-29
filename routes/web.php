@@ -51,6 +51,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/myaccount/profile', [ProfileController::class, 'index'])->name('profile.index');
         Route::post('/myaccount/profile', [ProfileController::class, 'bonus'])->name('profile.bonus');
         Route::put('/myaccount/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::put('/myaccount/profile/picture', [ProfileController::class, 'picture'])->name('profile.picture');
 
         Route::get('/getcode/myvalidcodes', [GetCodeController::class, 'index'])->name('getcode.index');
         Route::get('/getcode/requestcode', [GetCodeController::class, 'create'])->name('getcode.create');
