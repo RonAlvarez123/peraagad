@@ -80,7 +80,7 @@ class User extends Authenticatable
 
     public function cashoutRequest()
     {
-        return $this->hasOne(CashoutRequest::class, 'user_id', 'user_id');
+        return $this->hasMany(CashoutRequest::class, 'user_id', 'user_id');
     }
 
     public function setUserId()
