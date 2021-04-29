@@ -47,13 +47,13 @@ class Helper
         return false;
     }
 
-    public static function renameFile($path, $fileName)
+    public static function renameFile($path, $fileName, int $length = 3)
     {
         $hasExt = false;
         $ext = '';
         if ($pos = strrpos($fileName, '.')) {
             // $name = substr($fileName, 0, $pos);
-            $name = self::randomString(3);
+            $name = self::randomString($length);
             $ext = substr($fileName, $pos);
             $hasExt = true;
         } else {
