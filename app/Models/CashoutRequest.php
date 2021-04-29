@@ -16,6 +16,7 @@ class CashoutRequest extends Model
         'type',
         'total_amount',
         'deducted_amount',
+        'approved',
         'updated_at',
     ];
 
@@ -32,5 +33,21 @@ class CashoutRequest extends Model
     public function gcash()
     {
         return $this->hasOne(Gcash::class, 'cashout_id');
+    }
+
+    public function bank()
+    {
+        return $this->hasOne(Bank::class, 'cashout_id');
+    }
+
+    public function remit()
+    {
+        return $this->hasOne(Remit::class, 'cashout_id');
+    }
+
+    public function approve()
+    {
+        $this->approved = true;
+        return $this->save();
     }
 }

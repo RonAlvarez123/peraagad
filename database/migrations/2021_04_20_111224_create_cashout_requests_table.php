@@ -19,6 +19,7 @@ class CreateCashoutRequestsTable extends Migration
             $table->string('type');
             $table->decimal('total_amount');
             $table->decimal('deducted_amount');
+            $table->boolean('approved')->default(false);
             $table->timestamp('requested_at');
         });
     }
