@@ -26,9 +26,6 @@ class CodeRequestStoreRequest extends FormRequest
     {
         return [
             'password' => ['required', new MatchCurrentUserPasswordRule],
-            'user_id' => ['required'],
-            'coderequest_id' => ['required'],
-            'number_of_codes' => ['required'],
         ];
     }
 }
