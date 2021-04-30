@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class Helper
@@ -37,14 +36,6 @@ class Helper
         }
 
         return $result;
-    }
-
-    public static function passwordMatch($value)
-    {
-        if (Hash::check($value, auth()->user()->password)) {
-            return true;
-        }
-        return false;
     }
 
     public static function renameFile($path, $fileName, int $length = 3)
