@@ -7,7 +7,6 @@ use App\Http\Requests\UserCaptchaUpdateRequest;
 use App\Models\Account;
 use App\Models\Captcha;
 use App\Models\UserCaptcha;
-use Illuminate\Http\Request;
 
 class UserCaptchaController extends Controller
 {

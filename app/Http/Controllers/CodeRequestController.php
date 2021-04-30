@@ -9,7 +9,6 @@ use App\Models\Account;
 use App\Models\CodeRequest;
 use App\Models\User;
 use App\Services\CodeRequestService;
-use Illuminate\Http\Request;
 
 class CodeRequestController extends Controller
 {

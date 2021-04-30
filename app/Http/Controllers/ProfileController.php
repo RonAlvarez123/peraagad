@@ -32,6 +32,7 @@ class ProfileController extends Controller
             return redirect()->route('profile.index')
                 ->with('status', 'You have claimed your daily bonus.');
         }
+
         return redirect()->route('profile.index');
     }
 

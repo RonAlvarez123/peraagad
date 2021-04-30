@@ -14,7 +14,6 @@ class GetCodeController extends Controller
 {
     public function index()
     {
-        // I should test the difference of -- $account->timesRequestedForCode()->count() VS $account->timesRequestedForCode->count() //
         $account = Account::select('user_id', 'money', 'level', 'direct', 'indirect', 'role')->where('user_id', auth()->user()->user_id)
             ->with([
                 'codes' => function ($query) {

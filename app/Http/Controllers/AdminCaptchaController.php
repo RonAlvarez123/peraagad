@@ -6,7 +6,6 @@ use App\Helper;
 use App\Http\Requests\AdminCaptchaStoreRequest;
 use App\Models\Account;
 use App\Models\Captcha;
-use Illuminate\Http\Request;
 
 class AdminCaptchaController extends Controller
 {

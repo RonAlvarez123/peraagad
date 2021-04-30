@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ColorGameClaimRequest;
 use App\Models\Account;
 use App\Models\ColorGame;
-use Illuminate\Http\Request;
 
 class ColorGameController extends Controller
 {
