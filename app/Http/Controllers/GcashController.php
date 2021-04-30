@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Helper;
 use App\Http\Requests\GcashStoreRequest;
 use App\Models\Account;
-use App\Models\CashoutRequest;
-use App\Models\Gcash;
-use Illuminate\Http\Request;
+use App\Services\CashoutService;
 
 class GcashController extends Controller
 {
@@ -20,34 +17,17 @@ class GcashController extends Controller
 
     public function store(GcashStoreRequest $request)
     {
-        if (Helper::passwordMatch($request->password)) {
-            $account = Account::select('id', 'user_id', 'money', 'role')->where('user_id', auth()->user()->user_id)->first();
+        $account = CashoutService::selectAccountForCashout();
 
-            if ($account->createCashoutRequest()) {
-                $cashoutRequest = CashoutRequest::create([
-                    'user_id' => $account->user_id,
-                    'type' => 'gcash',
-                    'total_amount' => $account->getTotalCashout(),
-                    'deducted_amount' => $account->getDeductedCashout(),
-                    'requested_at' => now(),
-                ]);
+        if ($account->deductMoneyForCashoutRequest()) {
+            $cashout = CashoutService::createCashoutRequest($account, 'gcash', $request);
 
-                $gcash = Gcash::create([
-                    'cashout_id' => $cashoutRequest->id,
-                    'account_name' => $request->account_name,
-                    'account_number' => $request->account_number,
-                ]);
-
-                return view('cashoutrequests.gcash.summary')
-                    ->with('account', $account)
-                    ->with('cashoutRequest', $cashoutRequest)
-                    ->with('gcash', $gcash);
-            }
-            return redirect()->route('profile.index')
-                ->withErrors(['main_error' => 'Your balance is too low to cash out.']);
+            return view('cashoutrequests.gcash.summary')
+                ->with('account', $account)
+                ->with('cashoutRequest', $cashout['request'])
+                ->with('gcash', $cashout['type']);
         }
-        return redirect()->route('gcash.create')
-            ->withInput()
-            ->withErrors(['password' => 'The password is incorrect']);
+        return redirect()->route('profile.index')
+            ->withErrors(['main_error' => 'Your balance is too low to cash out.']);
     }
 }

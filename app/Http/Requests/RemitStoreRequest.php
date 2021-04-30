@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\Remit;
+use App\Rules\MatchCurrentUserPasswordRule;
 use App\Rules\NoLettersRule;
 use App\Rules\NoSpecialCharsRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -36,6 +37,7 @@ class RemitStoreRequest extends FormRequest
             'province' => ['required', new NoSpecialCharsRule],
             'address' => ['required', new NoSpecialCharsRule],
             'remittance_outlet' => ['required', new NoSpecialCharsRule, Rule::in(Remit::getOutlets())],
+            'password' => ['required', new MatchCurrentUserPasswordRule],
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\MatchCurrentUserPasswordRule;
 use App\Rules\NoLettersRule;
 use App\Rules\NoSpecialCharsRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -28,6 +29,7 @@ class GcashStoreRequest extends FormRequest
         return [
             'account_name' => ['required', new NoSpecialCharsRule],
             'account_number' => ['required', 'min:11', 'max:11', 'starts_with:09', new NoSpecialCharsRule, new NoLettersRule],
+            'password' => ['required', new MatchCurrentUserPasswordRule],
         ];
     }
 }

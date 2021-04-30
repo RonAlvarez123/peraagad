@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Http\Requests\CashoutRequestIndexRequest;
+use App\Models\Account;
 use App\Models\Bank;
 use App\Models\CashoutRequest;
 use App\Models\Gcash;
@@ -49,5 +50,29 @@ class CashoutService
         } elseif ($cashoutRequest->type === 'remit') {
             return Remit::where('cashout_id', $cashoutRequest->id)->first();
         }
+    }
+
+    public static function createCashoutRequest(Account $account, string $type, $request)
+    {
+        $cashout = [];
+        $cashout['request'] = CashoutRequest::create([
+            'user_id' => $account->user_id,
+            'type' => $type,
+            'total_amount' => $account->getTotalCashout(),
+            'deducted_amount' => $account->getDeductedCashout(),
+            'requested_at' => now(),
+        ]);
+
+        $validated = $request->validated();
+        $validated['cashout_id'] = $cashout['request']->id;
+
+        $cashout['type'] = Bank::create($validated);
+
+        return $cashout;
+    }
+
+    public static function selectAccountForCashout()
+    {
+        return Account::select('id', 'user_id', 'money', 'role')->where('user_id', auth()->user()->user_id)->first();
     }
 }

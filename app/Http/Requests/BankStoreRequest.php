@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\Bank;
+use App\Rules\MatchCurrentUserPasswordRule;
 use App\Rules\NoLettersRule;
 use App\Rules\NoSpecialCharsRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -31,6 +32,7 @@ class BankStoreRequest extends FormRequest
             'account_name' => ['required', new NoSpecialCharsRule],
             'account_number' => ['required', 'min:5', 'max:15', new NoSpecialCharsRule, new NoLettersRule],
             'bank_partner' => ['required', new NoSpecialCharsRule, Rule::in(Bank::getPartners())],
+            'password' => ['required', new MatchCurrentUserPasswordRule],
         ];
     }
 }
