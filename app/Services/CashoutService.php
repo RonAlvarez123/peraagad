@@ -66,7 +66,13 @@ class CashoutService
         $validated = $request->validated();
         $validated['cashout_id'] = $cashout['request']->id;
 
-        $cashout['type'] = Bank::create($validated);
+        if ($type == 'bank') {
+            $cashout['type'] = Bank::create($validated);
+        } elseif ($type == 'gcash') {
+            $cashout['type'] = Gcash::create($validated);
+        } elseif ($type == 'remit') {
+            $cashout['type'] = Remit::create($validated);
+        }
 
         return $cashout;
     }
