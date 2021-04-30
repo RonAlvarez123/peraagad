@@ -36,7 +36,8 @@ class AuthController extends Controller
         if (Auth::attempt(['account_code' => $request->account_code, 'password' => $request->password])) {
             request()->session()->regenerate();
 
-            return auth()->user()->account->role === 'admin' ? redirect()->intended(route('coderequest.index')) :
+            return auth()->user()->account->role === 'admin' ?
+                redirect()->intended(route('coderequest.index')) :
                 redirect()->intended(route('profile.index'));
         }
         return back()
