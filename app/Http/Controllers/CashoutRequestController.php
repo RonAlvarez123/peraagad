@@ -60,7 +60,7 @@ class CashoutRequestController extends Controller
                 return redirect()->route('remit.create');
                 break;
             default:
-
+                abort(404);
                 break;
         }
     }
