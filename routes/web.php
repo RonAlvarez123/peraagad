@@ -26,14 +26,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['throttle:login'])->group(function () {
-    Route::post('/', [AuthController::class, 'login'])->name('auth.login');
+Route::middleware(['alreadyLoggedIn'])->group(function () {
+    Route::middleware(['throttle:login'])->group(function () {
+        Route::post('/', [AuthController::class, 'login'])->name('auth.login');
+    });
+
+    Route::get('/', [AuthController::class, 'index'])->name('auth.index');
+
+    Route::prefix('register')->group(function () {
+        Route::get('/', [AuthController::class, 'create'])->name('auth.create');
+        Route::post('/', [AuthController::class, 'store'])->name('auth.store');
+    });
 });
-
-Route::get('/', [AuthController::class, 'index'])->name('auth.index');
-
-Route::get('/register', [AuthController::class, 'create'])->name('auth.create');
-Route::post('/register', [AuthController::class, 'store'])->name('auth.store');
 
 
 Route::middleware(['auth'])->group(function () {
@@ -48,35 +52,43 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role.user'])->group(function () {
         Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 
-        Route::get('/myaccount/profile', [ProfileController::class, 'index'])->name('profile.index');
-        Route::post('/myaccount/profile', [ProfileController::class, 'bonus'])->name('profile.bonus');
-        Route::put('/myaccount/profile', [ProfileController::class, 'update'])->name('profile.update');
-        Route::put('/myaccount/profile/picture', [ProfileController::class, 'picture'])->name('profile.picture');
+        Route::prefix('myaccount/profile')->group(function () {
+            Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
+            Route::post('/', [ProfileController::class, 'bonus'])->name('profile.bonus');
+            Route::put('/', [ProfileController::class, 'update'])->name('profile.update');
+            Route::put('/picture', [ProfileController::class, 'picture'])->name('profile.picture');
+        });
 
-        Route::get('/getcode/myvalidcodes', [GetCodeController::class, 'index'])->name('getcode.index');
-        Route::get('/getcode/requestcode', [GetCodeController::class, 'create'])->name('getcode.create');
-        Route::post('/getcode/requestcode', [GetCodeController::class, 'store'])->name('getcode.store');
+        Route::prefix('getcode')->group(function () {
+            Route::get('/myvalidcodes', [GetCodeController::class, 'index'])->name('getcode.index');
+            Route::get('/requestcode', [GetCodeController::class, 'create'])->name('getcode.create');
+            Route::post('/requestcode', [GetCodeController::class, 'store'])->name('getcode.store');
+        });
 
-        Route::get('/waystoearn/captcha', [UserCaptchaController::class, 'edit'])->name('usercaptcha.edit');
-        Route::put('/waystoearn/captcha', [UserCaptchaController::class, 'update'])->name('usercaptcha.update');
+        Route::prefix('waystoearn')->group(function () {
+            Route::get('/captcha', [UserCaptchaController::class, 'edit'])->name('usercaptcha.edit');
+            Route::put('/captcha', [UserCaptchaController::class, 'update'])->name('usercaptcha.update');
 
-        Route::get('/waystoearn/uploadreceipt', [ReceiptController::class, 'edit'])->name('receipt.edit');
-        Route::put('/waystoearn/uploadreceipt', [ReceiptController::class, 'update'])->name('receipt.update');
+            Route::get('/uploadreceipt', [ReceiptController::class, 'edit'])->name('receipt.edit');
+            Route::put('/uploadreceipt', [ReceiptController::class, 'update'])->name('receipt.update');
 
-        Route::get('/waystoearn/colorgame', [ColorGameController::class, 'edit'])->name('colorgame.edit');
-        Route::post('/waystoearn/colorgame', [ColorGameController::class, 'claim'])->name('colorgame.claim');
-        Route::put('/waystoearn/colorgame', [ColorGameController::class, 'update'])->name('colorgame.update');
+            Route::get('/colorgame', [ColorGameController::class, 'edit'])->name('colorgame.edit');
+            Route::post('/colorgame', [ColorGameController::class, 'claim'])->name('colorgame.claim');
+            Route::put('/colorgame', [ColorGameController::class, 'update'])->name('colorgame.update');
+        });
 
-        Route::post('/cashout', [CashoutRequestController::class, 'redirect'])->name('cashoutrequest.redirect');
+        Route::prefix('cashout')->group(function () {
+            Route::post('/', [CashoutRequestController::class, 'redirect'])->name('cashoutrequest.redirect');
 
-        Route::get('/cashout/gcash', [GcashController::class, 'create'])->name('gcash.create');
-        Route::get('/cashout/bank', [BankController::class, 'create'])->name('bank.create');
-        Route::get('/cashout/remit', [RemitController::class, 'create'])->name('remit.create');
+            Route::get('/gcash', [GcashController::class, 'create'])->name('gcash.create');
+            Route::get('/bank', [BankController::class, 'create'])->name('bank.create');
+            Route::get('/remit', [RemitController::class, 'create'])->name('remit.create');
 
-        Route::middleware(['throttle:cashout'])->group(function () {
-            Route::post('/cashout/gcash', [GcashController::class, 'store'])->name('gcash.store');
-            Route::post('/cashout/bank', [BankController::class, 'store'])->name('bank.store');
-            Route::post('/cashout/remit', [RemitController::class, 'store'])->name('remit.store');
+            Route::middleware(['throttle:cashout'])->group(function () {
+                Route::post('/gcash', [GcashController::class, 'store'])->name('gcash.store');
+                Route::post('/bank', [BankController::class, 'store'])->name('bank.store');
+                Route::post('/remit', [RemitController::class, 'store'])->name('remit.store');
+            });
         });
     });
 
@@ -87,25 +99,29 @@ Route::middleware(['auth'])->group(function () {
     |-------------------------------------------------
     */
     Route::middleware(['role.admin'])->group(function () {
-        Route::get('/admin/coderequests', [CodeRequestController::class, 'index'])->name('coderequest.index');
-        Route::get('/admin/coderequests/{codeRequest}', [CodeRequestController::class, 'show'])->name('coderequest.show');
+        Route::prefix('admin')->group(function () {
+            Route::prefix('coderequests')->group(function () {
+                Route::get('/', [CodeRequestController::class, 'index'])->name('coderequest.index');
+                Route::get('/{codeRequest}', [CodeRequestController::class, 'show'])->name('coderequest.show');
 
-        Route::middleware(['throttle:adminCodeRequest'])->group(function () {
-            Route::post('/admin/coderequests{codeRequest}', [CodeRequestController::class, 'store'])->name('coderequest.store');
-            Route::delete('/admin/coderequests{codeRequest}', [CodeRequestController::class, 'destroy'])->name('coderequest.destroy');
+                Route::middleware(['throttle:adminCodeRequest'])->group(function () {
+                    Route::post('/{codeRequest}', [CodeRequestController::class, 'store'])->name('coderequest.store');
+                    Route::delete('/{codeRequest}', [CodeRequestController::class, 'destroy'])->name('coderequest.destroy');
+                });
+            });
+
+            Route::prefix('cashoutrequests')->group(function () {
+                Route::get('/', [CashoutRequestController::class, 'index'])->name('cashoutrequest.index');
+                Route::get('/{cashoutRequest}', [CashoutRequestController::class, 'show'])->name('cashoutrequest.show');
+
+                Route::middleware(['throttle:adminCashoutRequest'])->group(function () {
+                    Route::put('/{cashoutRequest}', [CashoutRequestController::class, 'update'])->name('cashoutrequest.update');
+                    Route::delete('/{cashoutRequest}', [CashoutRequestController::class, 'destroy'])->name('cashoutrequest.destroy');
+                });
+            });
+
+            Route::get('/add/captcha', [AdminCaptchaController::class, 'create'])->name('admincaptcha.create');
+            Route::post('/add/captcha', [AdminCaptchaController::class, 'store'])->name('admincaptcha.store');
         });
-
-
-        Route::get('/admin/cashoutrequests', [CashoutRequestController::class, 'index'])->name('cashoutrequest.index');
-        Route::get('/admin/cashoutrequests/{cashoutRequest}', [CashoutRequestController::class, 'show'])->name('cashoutrequest.show');
-
-        Route::middleware(['throttle:adminCashoutRequest'])->group(function () {
-            Route::put('/admin/cashoutrequests/{cashoutRequest}', [CashoutRequestController::class, 'update'])->name('cashoutrequest.update');
-            Route::delete('/admin/cashoutrequests/{cashoutRequest}', [CashoutRequestController::class, 'destroy'])->name('cashoutrequest.destroy');
-        });
-
-
-        Route::get('/admin/add/captcha', [AdminCaptchaController::class, 'create'])->name('admincaptcha.create');
-        Route::post('/admin/add/captcha', [AdminCaptchaController::class, 'store'])->name('admincaptcha.store');
     });
 });
