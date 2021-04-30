@@ -164,7 +164,7 @@ class Account extends Model
         return false;
     }
 
-    public function createCashoutRequest()
+    public function deductMoneyForCashoutRequest()
     {
         if ($this->canCashOut()) {
             $this->setPreviousBalance($this->money);
